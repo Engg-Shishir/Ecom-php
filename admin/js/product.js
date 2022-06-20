@@ -1,11 +1,13 @@
 $(document).ready(function(){
     getdatas();
+
   $('#insert_btn_product').click(function(e){
 
     e.preventDefault();	
     var data = new FormData();
     let pname = $("#pname").val();
     let pprice = $("#pprice").val();
+    let pcategory = $("#pcategory").val();
     let pdetails = $("#pdetails").val();
     let pquantity = $("#pquantity").val();
     let pdiscount = $("#pdiscount").val();
@@ -13,13 +15,14 @@ $(document).ready(function(){
 
     data.append('pname',pname);
     data.append('pprice',pprice);
+    data.append('pcategory',pcategory);
     data.append('pdetails',pdetails);
     data.append('pquantity',pquantity);
     data.append('pdiscount',pdiscount);
     data.append('pscharge',pscharge);
 
-    // var image = $('#file')[0].files[0];
-    // data.append('image', image);
+    var image = $('#product_photo_choser')[0].files[0];
+    data.append('image', image);
 
         $.ajax({				
             type : 'POST',
@@ -33,10 +36,9 @@ $(document).ready(function(){
                 $("#insert_btn_product").prop('disabled', true);
             },
             success : function(response){						
-                if(response=="success"){	
+                if(response.includes("success")){	
                     setTimeout(() => {
                         $(".loader").css("opacity", "0");
-                        // toastr.success('',"Successfully Inserted ");
                         
                         const Toast = Swal.mixin({
                             toast: true,
@@ -48,7 +50,7 @@ $(document).ready(function(){
                               toast.addEventListener('mouseenter', Swal.stopTimer)
                               toast.addEventListener('mouseleave', Swal.resumeTimer)
                             }
-                          })
+                        })
                           
                         Toast.fire({
                             icon: 'success',
@@ -61,10 +63,18 @@ $(document).ready(function(){
 
                         $('#product').trigger("reset");
                         $("#insert_btn_product").prop('disabled', false);
+                        $("#productInsertImagePreview").css("display", "none");
+                        $("#productInsertImagePreview").attr("src", "");
+
+                        
                     }, 2000);
                     
                 } else {
-                    toastr.error('Something going wrong',"Try again !");
+                    setTimeout(() => {
+                        toastr.error('Something going wrong',"Try again !");
+                        $(".loader").css("opacity", "0");
+                        $("#insert_btn_product").prop('disabled', false);
+                    }, 2000);
                 }
             }
         });
@@ -110,6 +120,22 @@ $(document).ready(function(){
             }
         });
    }
+
+   $('#product_photo_choser').change(function(){
+    var file = $("input[type=file]").get(0).files[0];
+
+    if(file){
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $("#productInsertImagePreview").css("display", "block");
+            $("#productInsertImagePreview").attr("src", e.target.result);
+            // $('#productInsert').css('background', 'transparent url('+e.target.result +')');
+        }
+
+        reader.readAsDataURL(file);
+    }
+});
 
 
 });

@@ -6,6 +6,7 @@ $title = "Admin | Product";
 
 
 <link rel="stylesheet" href="../css/adminlte.min.css">
+<link rel="stylesheet" href="./css/product-insert-modal.css">
 
 
 <body>
