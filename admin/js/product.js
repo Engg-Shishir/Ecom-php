@@ -13,6 +13,9 @@ $(document).ready(function(){
     let pdiscount = $("#pdiscount").val();
     let pscharge = $("#shipingCharge").val();
 
+    
+
+
     data.append('pname',pname);
     data.append('pprice',pprice);
     data.append('pcategory',pcategory);
@@ -32,13 +35,15 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
             beforeSend: function(){	
-                $(".loader").css("opacity", "1");
+                $(".loader").css({'display':'block','opacity':'1'});
                 $("#insert_btn_product").prop('disabled', true);
             },
             success : function(response){						
                 if(response.includes("success")){	
                     setTimeout(() => {
-                        $(".loader").css("opacity", "0");
+                        
+                        getdatas();
+                        $(".loader").css({'display':'none','opacity':'0'});
                         
                         const Toast = Swal.mixin({
                             toast: true,
@@ -71,10 +76,10 @@ $(document).ready(function(){
                     
                 } else {
                     setTimeout(() => {
-                        toastr.error('Something going wrong',"Try again !");
-                        $(".loader").css("opacity", "0");
+                        toastr.error('Something going wrong',"Be carefull.Try again");
+                        $(".loader").css({'display':'none','opacity':'0'});
                         $("#insert_btn_product").prop('disabled', false);
-                    }, 2000);
+                    }, 500);
                 }
             }
         });
@@ -93,30 +98,27 @@ $(document).ready(function(){
             },
             success: function(response)
             {
-            //  var data = ""
-            //  $.each(response, function(key,value){
-            //    data = data + "<tr class='text-center' id='pid"+value.id+" '>"
+             var data = ""
+             $.each(response, function(key,value){
+               data = data + "<tr class='text-center' id='pid"+value.id+" '>"
 
-            //     if(value.image !=""){
-            //         var images = "action/images/"+value.image;
-            //         data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
-            //     }else{
-            //         var images = "action/images/"+value.image;
-            //         data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
-            //     }
-            //     data = data + "<td>"+value.name+"</td>"
-            //     data = data + "<td>"+value.price+"</td>"
-            //     data = data + "<td> Category"+value.id+"</td>"
-            //     data = data + "<td>"+value.quantity+"</td>"
-            //     data = data + "<td>"+value.discount+"</td>"
-            //     data = data + "<td>"+value.scharge+"</td>"
-            //    data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
+                if(value.image !=""){
+                    var images = "image/product/"+value.image;
+                    data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
+                }
+                data = data + "<td>"+value.name+"</td>"
+                data = data + "<td>"+value.price+"</td>"
+                data = data + "<td>"+value.category+"</td>"
+                data = data + "<td>"+value.quantity+"</td>"
+                data = data + "<td>"+value.discount+"</td>"
+                data = data + "<td>"+value.scharge+"</td>"
+               data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
 
-            //    data = data + "</tr>"
+               data = data + "</tr>"
 
 
-            //  });
-            //  $('tbody').html(data);
+             });
+             $('tbody').html(data);
             }
         });
    }
@@ -135,7 +137,105 @@ $(document).ready(function(){
 
         reader.readAsDataURL(file);
     }
-});
+   });
+
+  
+
+function getSearchdata(pname){
+    $.ajax({				
+        type : 'POST',
+        url  : 'action/search.php',
+        data:{data:pname},
+        dataType: 'json',
+        success: function(response)
+        {
+            // if(response.length > 0){
+            //     alert();
+            // }
+         if(response.length > 0){
+         var data = ""
+         $.each(response, function(key,value){
+           data = data + "<tr class='text-center' id='pid"+value.id+" '>"
+
+            if(value.image !=""){
+                var images = "image/product/"+value.image;
+                data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
+            }
+            data = data + "<td>"+value.name+"</td>"
+            data = data + "<td>"+value.price+"</td>"
+            data = data + "<td>"+value.category+"</td>"
+            data = data + "<td>"+value.quantity+"</td>"
+            data = data + "<td>"+value.discount+"</td>"
+            data = data + "<td>"+value.scharge+"</td>"
+           data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
+
+           data = data + "</tr>"
+
+
+         });
+         $('tbody').html(data);
+        }else{
+            $('tbody').html();
+            $('tbody').html(response);
+        }
+    
+        }
+    });
+}
+
+
+
+
+   $("#product_search_btn").click(function(){
+         let pname = $.trim($("#table-search").val());
+         getSearchdata(pname);
+         pname="";
+   });
+
+   $("#table-search").keyup(function(){
+        let pname = $(this).val();
+        $.ajax({				
+            type : 'POST',
+            url  : 'action/search.php',
+            data:{data:pname},
+            dataType: 'json',
+            beforeSend: function(){	
+                $('#searchSpiner').css("display","block");
+            },
+            success: function(response)
+            {
+                //  alert(response);
+                // searchSpiner
+                if(response.length > 0){
+                    $('#searchSpiner').css("display","none");
+                    var data = ""
+                    $.each(response, function(key,value){
+                        data = data + "<tr class='text-center' id='pid"+value.id+" '>"
+                        if(value.image !=""){
+                            var images = "image/product/"+value.image;
+                            data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
+                        }
+                        data = data + "<td>"+value.name+"</td>"
+                        data = data + "<td>"+value.price+"</td>"
+                        data = data + "<td>"+value.category+"</td>"
+                        data = data + "<td>"+value.quantity+"</td>"
+                        data = data + "<td>"+value.discount+"</td>"
+                        data = data + "<td>"+value.scharge+"</td>"
+                        data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
+                        data = data + "</tr>"
+        
+        
+                    });
+                    $('tbody').html(data);
+                }else{
+                    $('#searchSpiner').css("display","none");
+                    var data = "<td colspan='8'><img src='./image/Fixed/noRecordFound.svg'></td>"
+                    $('tbody').html(data);
+                }
+        
+            }
+        });
+   });
 
 
 });

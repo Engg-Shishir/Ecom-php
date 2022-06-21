@@ -28,4 +28,7 @@ else
     echo $return = "<h4>No Record Found</h4>";
 }
 
+
+
+mysqli_close($conn);
 ?>

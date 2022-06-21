@@ -36,14 +36,10 @@ $('document').ready(function() {
 				success : function(response){						
 					if(response=="ok"){	
 	
-						  toastr.options = {
-							"timeOut": "5000",
-							"progressBar": true,
-						  }	
-	
 						  //   setTimeout(' window.location.href = "welcome.php"; ',4000);
 						  setTimeout(() => {
 							$(".loader").css("opacity", "0");
+							toastr.options.timeOut = 0;
 							toastr.success('You are redirected to home page',"Please wait..........");
 						  }, 2000);
 

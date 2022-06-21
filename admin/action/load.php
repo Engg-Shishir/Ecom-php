@@ -5,10 +5,11 @@ $query = "SELECT * FROM users WHERE uid = {$_SESSION['user_session']}";
 $query_run = mysqli_query($conn, $query);
 
 $cust = mysqli_fetch_array($query_run);
+
+
 if(mysqli_num_rows($query_run) > 0)
 {
     echo json_encode($cust);
-
 }
 
 
@@ -28,5 +29,5 @@ if(mysqli_num_rows($query_run) > 0)
 // {
 //     echo $return = "<h4>No Record Found</h4>";
 // }
-
+mysqli_close($conn);
 ?>
