@@ -1,6 +1,31 @@
 $(document).ready(function(){
-    // $('table').DataTable();
-    getdatas();
+  
+    load_data();  
+    function load_data(page)  
+    {  
+         $.ajax({  
+              url:"pagination.php",  
+              method:"POST",  
+              data:{page:page},  
+              success:function(data){  
+                   $('#card-body').html(data);  
+              }  
+         })  
+    }  
+
+    
+    $(document).on('click', '.page-item ', function(){  
+         var page = $(this).attr("id");
+         load_data(page);  
+        $(this).each(function(i,item){  
+           item.addClass('active');
+        }); 
+    });  
+
+
+
+
+
 
   $('#insert_btn_product').click(function(e){
 
@@ -43,7 +68,7 @@ $(document).ready(function(){
                 if(response.includes("success")){	
                     setTimeout(() => {
                         
-                        getdatas();
+                        load_data();  
                         $(".loader").css({'display':'none','opacity':'0'});
                         
                         const Toast = Swal.mixin({
@@ -86,43 +111,7 @@ $(document).ready(function(){
         });
 
   });
-
-
-
-   function getdatas(){
-        $.ajax({				
-            type : 'POST',
-            url  : 'action/loadProduct.php',
-            dataType: 'json',
-            beforeSend: function(){	
-                // alert("Do you want");
-            },
-            success: function(response)
-            {
-             var data = ""
-             $.each(response, function(key,value){
-               data = data + "<tr class='text-center' id='pid"+value.id+" '>"
-
-                if(value.image !=""){
-                    var images = "image/product/"+value.image;
-                    data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
-                }
-                data = data + "<td>"+value.name+"</td>"
-                data = data + "<td>"+value.price+"</td>"
-                data = data + "<td>"+value.category+"</td>"
-                data = data + "<td>"+value.quantity+"</td>"
-                data = data + "<td>"+value.discount+"</td>"
-                data = data + "<td>"+value.scharge+"</td>"
-               data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
-
-               data = data + "</tr>"
-
-
-             });
-             $('tbody').html(data);
-            }
-        });
-   }
+ 
 
    $('#product_photo_choser').change(function(){
     var file = $("input[type=file]").get(0).files[0];
@@ -140,61 +129,10 @@ $(document).ready(function(){
     }
    });
 
-  
-
-function getSearchdata(pname){
-    $.ajax({				
-        type : 'POST',
-        url  : 'action/search.php',
-        data:{data:pname},
-        dataType: 'json',
-        success: function(response)
-        {
-            // if(response.length > 0){
-            //     alert();
-            // }
-         if(response.length > 0){
-         var data = ""
-         $.each(response, function(key,value){
-           data = data + "<tr class='text-center' id='pid"+value.id+" '>"
-
-            if(value.image !=""){
-                var images = "image/product/"+value.image;
-                data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
-            }
-            data = data + "<td>"+value.name+"</td>"
-            data = data + "<td>"+value.price+"</td>"
-            data = data + "<td>"+value.category+"</td>"
-            data = data + "<td>"+value.quantity+"</td>"
-            data = data + "<td>"+value.discount+"</td>"
-            data = data + "<td>"+value.scharge+"</td>"
-           data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
-
-           data = data + "</tr>"
-
-
-         });
-         $('tbody').html(data);
-        }else{
-            $('tbody').html();
-            $('tbody').html(response);
-        }
-    
-        }
-    });
-}
-
-
-
-
-   $("#product_search_btn").click(function(){
-         let pname = $.trim($("#table-search").val());
-         getSearchdata(pname);
-         pname="";
-   });
 
    $("#table-search").keyup(function(){
         let pname = $(this).val();
+        if(pname !=""){
         $.ajax({				
             type : 'POST',
             url  : 'action/search.php',
@@ -209,6 +147,7 @@ function getSearchdata(pname){
                 // searchSpiner
                 if(response.length > 0){
                     $('#searchSpiner').css("display","none");
+                    var count = 0;
                     var data = ""
                     $.each(response, function(key,value){
                         data = data + "<tr class='text-center' id='pid"+value.id+" '>"
@@ -224,19 +163,84 @@ function getSearchdata(pname){
                         data = data + "<td>"+value.scharge+"</td>"
                         data = data + "<td> <button  class='btn btn-danger'onclick='deleteData("+value.id+")'>Delete</button> </td>"
                         data = data + "</tr>"
-        
+                        
+                        count++;
         
                     });
                     $('tbody').html(data);
+                    
                 }else{
                     $('#searchSpiner').css("display","none");
                     var data = "<td colspan='8'><img src='./image/Fixed/noRecordFound.svg'></td>"
+                    $("tbody").empty();
+                    $(".page-item").remove();
                     $('tbody').html(data);
                 }
         
             }
         });
+            
+    }else{
+        load_data();
+    }
    });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    const list = document.querySelectorAll('.pagination_link');
+
+//    function tabActiveLink(){
+//        list.forEach((item,i) =>{
+//           item.classList.remove('tab-li-active');
+//           this.classList.add('tab-li-active');
+//       });
+//    }
+
+//    list.forEach((item,i) =>{
+//        var index=0;
+//           $(".tab-li-active > .fa-spin").css({color:`black`});
+
+//       item.addEventListener('click',tabActiveLink);
+
+//       item.addEventListener('click', () => {
+//           index = i;
+//           var t = document.querySelector(".indicator");
+//           $(".indicator").css({top:`${(50*index)+8}px`});
+          
+//           $(".fa-spin").css({color:`#ff9e1b`});
+//           $(".tab-li-active > .fa-spin").css({color:`black`});
+//       });
+      
+//    });
+
+
+
 });
+
+
+   const list = document.querySelectorAll('.pagination_link');
+
+   function tabActiveLink(){
+       list.forEach((item,i) =>{
+        item.css({background_color:`black`});
+        this.css({background_color:`blue`});
+      });
+   }
+
+   list.forEach((item,i) =>{
+      item.addEventListener('click',tabActiveLink);  
+   });

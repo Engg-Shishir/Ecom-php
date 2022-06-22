@@ -47,15 +47,31 @@
            </tr>  
       ';  
  }  
- $output .= '</tbody></table><br /><div align="center">';  
+ $output .= '</tbody></table><br /><div id="paginationConatiner" align="right" class="d-flex align-items-center justify-content-center">';  
  $page_query = "SELECT * FROM `product` ORDER BY `id` DESC";  
  $page_result = mysqli_query($connect, $page_query);  
  $total_records = mysqli_num_rows($page_result);  
- $total_pages = ceil($total_records/$record_per_page);  
-    for($i=1; $i<=$total_pages; $i++)  
-    {  
-        $output .= "<span class='pagination_link' style='cursor:pointer; padding:10px; border:1px solid #ccc;' id='".$i."'>".$i."</span>";  
-    }  
- $output .= '</div><br /><br />';  
+ $total_pages = ceil($total_records/$record_per_page);
+ 
+          $output .= "<nav aria-label='...'>
+          <ul class='pagination'>
+               <li class='page-item disabled'>
+                    <span class='page-link'>Previous</span>
+               </li>";
+
+               for($i=1; $i<=$total_pages; $i++)  
+               {  
+                    // $output .= "<span class='pagination_link' style='cursor:pointer; padding:10px; border:1px solid #ccc;' id='".$i."'>".$i."</span> <br>";  
+                    $output .= "<li id='".$i."' style='cursor:pointer;' class='page-item' aria-current='page'>
+                        <span class='page-link '>".$i."</span> </li>";
+                   
+               }  
+
+          $output .= "<li class='page-item disabled'>
+                          <span class='page-link'>Next</span>
+                      </li>";
+
+           
+ $output .= '</ul></nav></div><br /><br />';  
  echo $output;  
  ?> 

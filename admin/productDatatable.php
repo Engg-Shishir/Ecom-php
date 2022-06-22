@@ -48,28 +48,8 @@ $title = "Admin | Product";
 </body>
 
 
-
-
-<script>  
- $(document).ready(function(){  
-      load_data();  
-      function load_data(page)  
-      {  
-           $.ajax({  
-                url:"pagination.php",  
-                method:"POST",  
-                data:{page:page},  
-                success:function(data){  
-                     $('#card-body').html(data);  
-                }  
-           })  
-      }  
-      $(document).on('click', '.pagination_link', function(){  
-           var page = $(this).attr("id");  
-           load_data(page);  
-      });  
- });  
- </script>  
+ 
+ <script src="./js/product.js"></script>
 
 <!-- <td><img src='../image/Fixed/noRecordFound.svg'></td> -->
 
