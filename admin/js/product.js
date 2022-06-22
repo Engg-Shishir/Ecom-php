@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // $('table').DataTable();
     getdatas();
 
   $('#insert_btn_product').click(function(e){
