@@ -56,7 +56,7 @@ if(isset($_FILES['image'])){
 		echo "Please upload an image file - jpeg, png, jpg";
 	}
 }else{
-	$select_sql2 = mysqli_query($conn, "UPDATE `users` SET `user`='$name',`pass`='$password',`email`='$email' WHERE `uid`='{$_SESSION['user_session']}' ");
+	$select_sql2 = mysqli_query($conn, "UPDATE `users` SET `user`='$name',`pass`='$password',`email`='$email' WHERE `uid`='{$_SESSION['user_session']}'");
 	if($select_sql2){
 		echo "success";
 	}

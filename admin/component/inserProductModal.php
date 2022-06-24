@@ -90,7 +90,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                           <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="product_photo_choser">
+                              <input type="file" class="custom-file-input" id="product_photo_choser" placeholder="hello">
                               <label class="custom-file-label" for="customFile">Product Image</label>
                           </div>
                       </div>

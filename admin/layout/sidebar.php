@@ -73,7 +73,7 @@
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                     Products
                     </a> -->
-                    <a href="../admin/productDatatable.php" class="nav-link li-product text-white">
+                    <a href="../admin/product.php" class="nav-link li-product text-white">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                     Products
                     </a>
