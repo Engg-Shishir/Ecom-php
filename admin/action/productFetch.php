@@ -6,10 +6,11 @@
 // ###############################################################
 // Create Connection
 $connect = new PDO("mysql:host=localhost; dbname=coffe", "root", "");
-
+// include_once("../../connection.php");
 // ###############################################################
 // ###############################################################
 // Get Total Row function
+
 function get_total_row($connect)
 {
   $query = "SELECT * FROM `product` ";
@@ -18,6 +19,13 @@ function get_total_row($connect)
   // Return total row
   return $statement->rowCount();
 }
+
+function load(){
+ 
+}
+
+
+
 
 // ###############################################################
 // ###############################################################
@@ -111,9 +119,55 @@ if($total_data > 0)
          <td>'.$row["quantity"].'</td> 
          <td>'.$row["discount"].'</td> 
          <td>'.$row["scharge"].'</td> 
-         <td>'.$row["name"].'</td> 
-    </tr>  
+         <td class="d-flex align-items-center justify-content-around">
+           <a onclick="showDeleteAlert('.$row["id"].')" class="btn btn-sm"id="'.$row["id"].'"><i class="fas fa-trash"></i></a>
+           <i class="fas fa-pen edit" id="'.$row["id"].'"></i>
+           <i class="fas fa-eye details" id="'.$row["id"].'"></i>
+         </td> 
+    </tr>
 '; 
+?>
+
+                  
+    <script>
+    
+    function showDeleteAlert(id){
+
+      Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: "./action/product_delete.php",
+            type: "POST",
+            cache: false,
+            data:{
+              id: id
+            },
+            success: function(response){
+              if(response=="done"){
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+              }
+            }
+          });
+        }
+      });
+
+
+    }
+    
+</script>
+<?php
   }
 }
 else 

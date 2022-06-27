@@ -5,7 +5,7 @@ $(document).ready(function(){
   function load_data(page, query,limit)
   {
     $.ajax({
-      url:"./action/fetch.php",
+      url:"./action/productFetch.php",
       method:"POST",
       data:{page:page, query:query,limit:limit},
       beforeSend: function(){	
@@ -155,6 +155,20 @@ $(document).ready(function(){
       var query = $('#search_box').val();
       load_data(1, query,limit);
    });
+
+
+
+
+//    $('a').click(function(){
+     
+//     // var id = $(this).attr("id");
+//     // alert(id);
+// alert();
+//    });
+   
+  function dleteProdact(id){
+    alert(id);
+  }
 
 });
 
