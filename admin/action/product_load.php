@@ -62,6 +62,8 @@ include_once("../../connection.php");
                 $output = '<p>Shows '.$total_data.' from '.$total_data.'</p>';
             }
           }
+
+          
           $output .= '<ul class="pagination">';
   
           for($count = 1; $count <= $total_links; $count++)

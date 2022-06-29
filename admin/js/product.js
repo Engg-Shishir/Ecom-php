@@ -18,9 +18,9 @@ $(document).ready(function(){
         var data = ""
         var total = response.length;
         // // console.log(response[total-1]);
-        $('#link').html(response[total-1]);
         
         if(total > 0){
+          $('#link').html(response[total-1]);
           $.each(response, function(key,value){
             if(key < total-1){
               data = data + "<tr class='text-center' id='pid"+value.id+" '>"
@@ -41,6 +41,7 @@ $(document).ready(function(){
             }
           });
         }else{
+          $('#link').html("");
           var images = "image/Fixed/noRecordFound.svg";
           data = data + "<tr><td colspan='8'> <img height='300px' src='"+images+"' /> </td></tr>"
         }

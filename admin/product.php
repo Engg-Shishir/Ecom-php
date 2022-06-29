@@ -14,10 +14,10 @@ $title = "Admin | Product";
 <div class="container">
 <div class="row mt-3">
     <!-- Sidebar -->
-    <div class="col-md-3">
+    <div class="col-12 col-md-3">
        <?php include_once"./layout/sidebar.php"; ?>
     </div>
-    <div class="col-md-9">
+    <div class="col-12 col-md-9">
       <?php include_once"./component/inserProductModal.php"; ?>
       <div class="card">
           <div class="card-header bg-dark">
