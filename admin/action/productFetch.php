@@ -219,16 +219,6 @@ if($total_links > 4)
         $page_array[] = $count;
       }
     }
-    // else
-    // {
-    //   $page_array[] = 1;
-    //   for($count = $page - 1; $count <= $page + 1; $count++)
-    //   {
-    //     $page_array[] = $count;
-    //   }
-    //   $page_array[] = '...';
-    //   $page_array[] = $total_links;
-    // }
   }
 }else{
   for($count = 1; $count <= $total_links; $count++)
@@ -245,7 +235,7 @@ for($count = 0; $count < count($page_array); $count++)
   if($page == $page_array[$count])
   {
     $page_link .= '
-    <li class="page-item active">
+    <li class="page-item active ">
       <a class="page-link" href="#">'.$page_array[$count].' <span class="sr-only">(current)</span></a>
     </li>
     ';
@@ -303,11 +293,7 @@ for($count = 0; $count < count($page_array); $count++)
 
 // 
 $output .= $previous_link . $page_link . $next_link;
-$output .= '
-  </ul>
-
-</div>
-';
+$output .= '</ul></div>';
 
 echo $output;
 

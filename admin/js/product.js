@@ -1,38 +1,110 @@
 $(document).ready(function(){
 
   load_data(1,"",5);
-
   function load_data(page, query,limit)
   {
+    // alert(page);
     $.ajax({
-      url:"./action/productFetch.php",
+      url:"./action/product_load.php",
       method:"POST",
-      data:{page:page, query:query,limit:limit},
+      data:{page:page, query:query,limit:limit,action:"load"},
+      dataType: "json",
       beforeSend: function(){	
           $("#searchSpiner").css("opacity","1");
           // $("#insert_btn_product").prop('disabled', true);
       },
-      success:function(data)
+      success:function(response)
       {
+        var data = ""
+        var total = response.length;
+        // // console.log(response[total-1]);
+        $('#link').html(response[total-1]);
+        
+        if(total > 0){
+          $.each(response, function(key,value){
+            if(key < total-1){
+              data = data + "<tr class='text-center' id='pid"+value.id+" '>"
+    
+               if(value.image !=""){
+                   var images = "image/product/"+value.image;
+                   data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
+               }
+               data = data + "<td>"+value.name+"</td>"
+               data = data + "<td>"+value.price+"</td>"
+               data = data + "<td>"+value.category+"</td>"
+               data = data + "<td>"+value.quantity+"</td>"
+               data = data + "<td>"+value.discount+"</td>"
+               data = data + "<td>"+value.scharge+"</td>"
+              data = data + "<td> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a> </td>"
+    
+              data = data + "</tr>"
+            }
+          });
+        }else{
+          var images = "image/Fixed/noRecordFound.svg";
+          data = data + "<tr><td colspan='8'> <img height='300px' src='"+images+"' /> </td></tr>"
+        }
+
+        $('tbody').html(data);
+
+        
         setTimeout(() => {
           $("#searchSpiner").css("opacity","0");
-          $('#dynamic_content').html(data);
+          // $('#dynamic_content').html(data);
         }, 300);
       }
     });
   }
 
+
+
   $(document).on('click', '.page-link', function(){
     var page = $(this).data('page_number');
     var query = $('#search_box').val();
     load_data(page, query,5);
+    // $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
+  });
+
+  $(document).on('click', '.deleteProduct', function(){
+       var id = $(this).data("id");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "delete this product",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: "./action/product_delete.php",
+              type: "POST",
+              cache: false,
+              data:{
+                id: id
+              },
+              success: function(response){
+                if(response.includes("done")){ 
+                  load_data(1,"",5);
+                     Swal.fire(
+                      'Deleted!',
+                      'Your file has been deleted.',
+                      'success'
+                    )
+                }
+              }
+            });
+          }
+        });
   });
 
   $('#search_box').keyup(function(){
     // $('#product_show_by_limit').val(false).trigger( "change" );
     $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
     var query = $('#search_box').val();
-    load_data(1, query,5);
+    if(query != "") load_data(1, query,5);
+    
   });
 
 
@@ -79,7 +151,7 @@ $(document).ready(function(){
                 if(response.includes("success")){	
                     setTimeout(() => {
                         
-                        load_data(1);
+                        load_data(1,"",5);
                         $(".loader").css({'display':'none','opacity':'0'});
                         
                         const Toast = Swal.mixin({
@@ -158,17 +230,6 @@ $(document).ready(function(){
 
 
 
-
-//    $('a').click(function(){
-     
-//     // var id = $(this).attr("id");
-//     // alert(id);
-// alert();
-//    });
-   
-  function dleteProdact(id){
-    alert(id);
-  }
 
 });
 

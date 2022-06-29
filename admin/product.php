@@ -51,7 +51,40 @@ $title = "Admin | Product";
             </div>
            </div>
 
-          <div class="card-body table-responsive p-0" id="dynamic_content"></div>
+          <div class="card-body table-responsive p-0" id="dynamic_content">
+              <table class="table table-bordered table-striped table-hover table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th style="text-align:center;">Image</th>
+                        <th style="text-align:center;">Name</th>
+                        <th style="text-align:center;">Price</th>
+                        <th style="text-align:center;">Category</th>
+                        <th style="text-align:center;">Quantity</th>
+                        <th style="text-align:center;">Discount</th>
+                        <th style="text-align:center;">Shiping Charge</th>
+                        <th style="text-align:center;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot class="bg-dark">
+                      <tr>
+                        <th  style="text-align:center;">Image</th>
+                        <th  style="text-align:center;">Name</th>
+                        <th  style="text-align:center;">Price</th>
+                        <th  style="text-align:center;">Category</th>
+                        <th  style="text-align:center;">Quantity</th>
+                        <th  style="text-align:center;">Discount</th>
+                        <th  style="text-align:center;">Shiping Charge</th>
+                        <th  style="text-align:center;">Action</th>
+                      </tr>
+                    </tfoot>
+              </table>
+
+              <div id="link" class="d-flex align-items-center justify-content-around mt-3">
+
+              </div>
+          </div>
       </div>
    </div> <!--  col-md-9 -->
   </div><!--  row -->
