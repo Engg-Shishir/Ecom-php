@@ -41,8 +41,8 @@
 
 ?>
 
-<div class="col-md-3">
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark shadow">
 
                 <div class="dropdown d-flex align-items-center justify-content-center">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,4 +87,3 @@
                 </ul>
                 <hr>
             </div>
-        </div>

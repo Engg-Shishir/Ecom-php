@@ -12,12 +12,12 @@
 
 <body>
     
-    <div class="container">
+    <div class="container ">
         <div class="row mt-5">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header text-center">
+                <div class="card shadow">
+                    <div class="card-header text-center shadow">
                         <h3>Admin Login</h3>
                     </div>
                     <div class="card-body">
@@ -32,12 +32,11 @@
                                 <label>Select Image</label>
                                 <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
                             </div> -->
-                            <hr />
-                            <div class="form-group d-flex align-items-center justify-content-between ">
+                            <div class="form-group d-flex align-items-center justify-content-between mt-3">
                                 <div class="loader"  style="border: 10px solid #f3f3f3;border-radius: 50%;border-top: 7px solid black;border-bottom: 7px solid red;width: 40px;height: 40px;-webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite; opacity:0;"></div>
 
 
-                                <button type="submit" class="btn btn-dark" name="login_button" id="login_button">Sign In
+                                <button type="submit" class="btn btn-dark shadow" name="login_button" id="login_button">Sign In
                                 </button> 
                             </div> 
                         </form>

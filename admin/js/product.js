@@ -20,14 +20,16 @@ $(document).ready(function(){
         // // console.log(response[total-1]);
         
         if(total > 0){
+          $('tbody').remove();
+          $("thead").after("<tbody></tbody>");
+
           $('#link').html(response[total-1]);
           $.each(response, function(key,value){
             if(key < total-1){
               data = data + "<tr class='text-center' id='pid"+value.id+" '>"
     
                if(value.image !=""){
-                   var images = "image/product/"+value.image;
-                   data = data + "<td><img height='50pxpx' width='50px' src='"+images+"' /> </td>"
+                   data = data + "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"
                }
                data = data + "<td>"+value.name+"</td>"
                data = data + "<td>"+value.price+"</td>"
@@ -35,7 +37,8 @@ $(document).ready(function(){
                data = data + "<td>"+value.quantity+"</td>"
                data = data + "<td>"+value.discount+"</td>"
                data = data + "<td>"+value.scharge+"</td>"
-              data = data + "<td> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a> </td>"
+              data = data +
+               "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.sno+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>"
     
               data = data + "</tr>"
             }
@@ -45,8 +48,8 @@ $(document).ready(function(){
           var images = "image/Fixed/noRecordFound.svg";
           data = data + "<tr><td colspan='8'> <img height='300px' src='"+images+"' /> </td></tr>"
         }
-
         $('tbody').html(data);
+        // $(location).attr('href', 'http://localhost/Admin/admin/product.php');
 
         
         setTimeout(() => {
@@ -100,6 +103,34 @@ $(document).ready(function(){
         });
   });
 
+  $(document).on('click', '.editProduct', function(){
+    $('#exampleModalLabel').html("Update Product");
+    $('#insert_btn_product').html("Update");
+    $('#exampleModal').modal('show');
+    var sno = $(this).data("sno");
+    $.ajax({
+      url: "./action/edit_product.php",
+      type: "POST",
+      data:{
+        sno: sno
+      },
+      dataType: "json",
+      success: function(data){
+        $("#pname").val(data.name);
+        $("#pprice").val(data.price);
+        $("#pcategory").val(data.category);
+        $("#pdetails").val(data.details);
+        $("#pquantity").val(data.quantity);
+        $("#pdiscount").val(data.discount);
+        $("#shipingCharge").val(data.scharge);
+        var image = "./image/product/"+data.image;
+        $("#productInsertImagePreview").css("display", "block").attr("src", image);
+        $("#productInsertImagePreview").attr("data-name", data.image);
+        
+      }
+    });
+});
+
   $('#search_box').keyup(function(){
     // $('#product_show_by_limit').val(false).trigger( "change" );
     $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
@@ -111,7 +142,6 @@ $(document).ready(function(){
 
 
   $('#insert_btn_product').click(function(e){
-
     e.preventDefault();	
     var data = new FormData();
     let pname = $("#pname").val();
@@ -121,10 +151,6 @@ $(document).ready(function(){
     let pquantity = $("#pquantity").val();
     let pdiscount = $("#pdiscount").val();
     let pscharge = $("#shipingCharge").val();
-
-    
-
-
     data.append('pname',pname);
     data.append('pprice',pprice);
     data.append('pcategory',pcategory);
@@ -132,68 +158,85 @@ $(document).ready(function(){
     data.append('pquantity',pquantity);
     data.append('pdiscount',pdiscount);
     data.append('pscharge',pscharge);
-
-    var image = $('#product_photo_choser')[0].files[0];
-    data.append('image', image);
-
-        $.ajax({				
-            type : 'POST',
-            url  :  'action/productInsert.php',
-            enctype: 'multipart/form-data',
-            data:data,
-            contentType: false,
-            processData: false,
-            beforeSend: function(){	
-                $(".loader").css({'display':'block','opacity':'1'});
-                $("#insert_btn_product").prop('disabled', true);
-            },
-            success : function(response){	
-              					
-                if(response.includes("success")){	
-                    setTimeout(() => {
-                        
-                        load_data(1,"",5);
-                        $(".loader").css({'display':'none','opacity':'0'});
-                        
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener('mouseenter', Swal.stopTimer)
-                              toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-                          
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Successfully Inserted !'
-                        })
+    var images = $('#product_photo_choser')[0].files[0];
 
 
+     
+ 
 
+    if($(this).text() == "Update"){
+      var alreadyUploadedImageName = $("#productInsertImagePreview").data("name");
+      var product_sno_from_image_name = alreadyUploadedImageName.split('.')[0];
+      data.append('sno', product_sno_from_image_name);
 
+      if(images) {data.append('image', images);}
+      else{
+        data.append('image', alreadyUploadedImageName);
+      }
+      data.append('action',"update");
+    }
+    else{
+      data.append('image', images);
+      data.append('action',"insert");
+    }
 
-                        $('#product').trigger("reset");
-                        $("#insert_btn_product").prop('disabled', false);
-                        $("#productInsertImagePreview").css("display", "none");
-                        $("#productInsertImagePreview").attr("src", "");
-
-                        
-                    }, 2000);
+    $.ajax({				
+      type : 'POST',
+      url  :  'action/productInsert_run.php',
+      enctype: 'multipart/form-data',
+      data:data,
+      contentType: false,
+      processData: false,
+      beforeSend: function(){	
+          $(".loader").css({'display':'block','opacity':'1'});
+          $("#insert_btn_product").prop('disabled', true);
+      },
+      success : function(response){	
+                  
+          if(response.includes("success")){	
+              setTimeout(() => {
+                load_data(1,"",5);
+                  
+                  $(".loader").css({'display':'none','opacity':'0'});
+                  
+                  const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      showConfirmButton: false,
+                      timer: 2000,
+                      timerProgressBar: true,
+                      didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                      }
+                  })
                     
-                }else{
-                    setTimeout(() => {
-                        toastr.error('Something going wrong',"Be carefull.Try again");
-                        $(".loader").css({'display':'none','opacity':'0'});
-                        $("#insert_btn_product").prop('disabled', false);
-                    }, 500);
-                }
-            }
-        });
+                  Toast.fire({
+                      icon: 'success',
+                      title: 'Successfully Done!'
+                  })
 
+
+
+
+
+                  $('#product').trigger("reset");
+                  $("#insert_btn_product").prop('disabled', false);
+                  $("#productInsertImagePreview").css("display", "none");
+                  $("#productInsertImagePreview").attr("src", "");
+
+                  
+              }, 2000);
+              
+          }else{
+              setTimeout(() => {
+                  toastr.error('Something going wrong',"Be carefull.Try again");
+                  $(".loader").css({'display':'none','opacity':'0'});
+                  $("#insert_btn_product").prop('disabled', false);
+              }, 500);
+          }
+      }
+  });
   });
  
 

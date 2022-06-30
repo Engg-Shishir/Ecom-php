@@ -87,7 +87,7 @@ $title = "Admin | Product";
           </div>
       </div>
    </div> <!--  col-md-9 -->
-  </div><!--  row -->
+</div><!--  row -->
 
   
 </div><!--  container -->

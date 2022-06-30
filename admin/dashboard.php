@@ -11,19 +11,21 @@
     <div class="row mt-3">
       
         <!-- Sidebar -->
-        <?php include_once"./layout/sidebar.php"; ?>
+        <div class="col-md-3">
+          <?php include_once"./layout/sidebar.php"; ?>
+        </div>
 
         
         <div class="col-md-9">
-            <div class="card">
+            <div class="card shadow">
             <div class="card-body admin-card-body" >
-                <div class="admin_profilePic">
+                <div class="admin_profilePic shadow">
              
                        <img id="profile_photo_show" src="" alt="vbnbv"  height="150px" width="150px" style="border-radius:50%;">
 
                 </div>
 
-                <div class="card-body">
+                <div class="card-body shadow-lg">
                         <form class="form-login" enctype="multipart/form-data">
                           <div class="row">
                             <div class="col-md-6">

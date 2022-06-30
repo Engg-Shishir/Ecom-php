@@ -16,7 +16,7 @@
                 <div class="row">
                   <div class="col-md-4"></div>
                   <div class="col-md-4">
-                    <img id="productInsertImagePreview" src="" alt="" height="250px" width="250px" style="display:none;" >
+                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="250px" width="250px" style="display:none;" >
                   </div>
                   <div class="col-md-4"></div>
                 </div>

@@ -5,6 +5,7 @@
 <?php
 include_once("../../connection.php");
 session_start();
+$action = $_POST['action'];
 $pname = $_POST['pname'];
 $pprice = $_POST['pprice'];
 $pcategory = $_POST['pcategory'];
