@@ -33,6 +33,7 @@ $title = "Admin | Product";
                       <option value="100">100</option>
                       <option value="all">All</option>
                     </select>
+                    <button id="oks">Ok</button>
                 </div>
               </div>
               <div class="col-md-6">

@@ -66,31 +66,3 @@ $('document').ready(function() {
 	}); 
 });
 
-
-// const lists = document.querySelectorAll('.nav-item');
-// lists.addEventListener('click',tabActiveLink);
-// const list = document.querySelectorAll('.nav-link');
-
-// function tabActiveLink(){
-// // 	list.forEach((item,i) =>{
-// // 	   item.classList.remove('active');
-// // 	   this.classList.add('active');
-// //    });
-
-// alert();
-// }
-
-// list.forEach((item,i) =>{
-// 	var index=0;
-// 	   $(".tab-li-active > .fa-spin").css({color:`black`});
-//    item.addEventListener('click',tabActiveLink);
-//    item.addEventListener('click', () => {
-// 	   index = i;
-// 	   var t = document.querySelector(".indicator");
-// 	   $(".indicator").css({top:`${(50*index)+8}px`});
-	   
-// 	   $(".fa-spin").css({color:`#ff9e1b`});
-// 	   $(".tab-li-active > .fa-spin").css({color:`black`});
-//    });
-   
-// });

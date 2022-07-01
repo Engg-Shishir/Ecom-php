@@ -1,11 +1,13 @@
 $(document).ready(function(){
-
-  load_data(1,"",5);
-  function load_data(page, query,limit)
+  $(document).on('click', '#oks', function(){
+    loadProduct(1,"",5);
+  })
+  loadProduct(1,"",5);
+  function loadProduct(page, query,limit)
   {
     // alert(page);
     $.ajax({
-      url:"./action/product_load.php",
+      url:"./action/product.php",
       method:"POST",
       data:{page:page, query:query,limit:limit,action:"load"},
       dataType: "json",
@@ -22,39 +24,30 @@ $(document).ready(function(){
         if(total > 0){
           $('tbody').remove();
           $("thead").after("<tbody></tbody>");
+          $('tbody').html();
 
           $('#link').html(response[total-1]);
           $.each(response, function(key,value){
             if(key < total-1){
-              data = data + "<tr class='text-center' id='pid"+value.id+" '>"
-    
-               if(value.image !=""){
-                   data = data + "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"
-               }
-               data = data + "<td>"+value.name+"</td>"
-               data = data + "<td>"+value.price+"</td>"
-               data = data + "<td>"+value.category+"</td>"
-               data = data + "<td>"+value.quantity+"</td>"
-               data = data + "<td>"+value.discount+"</td>"
-               data = data + "<td>"+value.scharge+"</td>"
-              data = data +
-               "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.sno+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>"
-    
-              data = data + "</tr>"
+              $('<tr class="text-center">').html(
+                "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"+
+                "<td>"+value.name+"</td>"+
+                "<td>"+value.price+"</td>"+
+                "<td>"+value.category+"</td>"+
+                "<td>"+value.quantity+"</td>"+
+                "<td>"+value.discount+"</td>"+
+                "<td>"+value.scharge+"</td>"+
+                "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.id+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>").appendTo('tbody');
             }
           });
         }else{
           $('#link').html("");
           var images = "image/Fixed/noRecordFound.svg";
           data = data + "<tr><td colspan='8'> <img height='300px' src='"+images+"' /> </td></tr>"
-        }
         $('tbody').html(data);
-        // $(location).attr('href', 'http://localhost/Admin/admin/product.php');
-
-        
+        }
         setTimeout(() => {
           $("#searchSpiner").css("opacity","0");
-          // $('#dynamic_content').html(data);
         }, 300);
       }
     });
@@ -65,7 +58,7 @@ $(document).ready(function(){
   $(document).on('click', '.page-link', function(){
     var page = $(this).data('page_number');
     var query = $('#search_box').val();
-    load_data(page, query,5);
+    loadProduct(page, query,5);
     // $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
   });
 
@@ -82,15 +75,16 @@ $(document).ready(function(){
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: "./action/product_delete.php",
+              url: "./action/product.php",
               type: "POST",
               cache: false,
               data:{
-                id: id
+                id: id,
+                action:"delete"
               },
               success: function(response){
                 if(response.includes("done")){ 
-                  load_data(1,"",5);
+                  loadProduct(1,"",5);
                      Swal.fire(
                       'Deleted!',
                       'Your file has been deleted.',
@@ -109,10 +103,11 @@ $(document).ready(function(){
     $('#exampleModal').modal('show');
     var sno = $(this).data("sno");
     $.ajax({
-      url: "./action/edit_product.php",
+      url: "./action/product.php",
       type: "POST",
       data:{
-        sno: sno
+        sno: sno,
+        action:"edit"
       },
       dataType: "json",
       success: function(data){
@@ -135,7 +130,7 @@ $(document).ready(function(){
     // $('#product_show_by_limit').val(false).trigger( "change" );
     $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
     var query = $('#search_box').val();
-    if(query != "") load_data(1, query,5);
+    if(query != "") loadProduct(1, query,5);
     
   });
 
@@ -165,15 +160,12 @@ $(document).ready(function(){
  
 
     if($(this).text() == "Update"){
+      data.append('action',"update");
       var alreadyUploadedImageName = $("#productInsertImagePreview").data("name");
       var product_sno_from_image_name = alreadyUploadedImageName.split('.')[0];
       data.append('sno', product_sno_from_image_name);
 
       if(images) {data.append('image', images);}
-      else{
-        data.append('image', alreadyUploadedImageName);
-      }
-      data.append('action',"update");
     }
     else{
       data.append('image', images);
@@ -182,7 +174,7 @@ $(document).ready(function(){
 
     $.ajax({				
       type : 'POST',
-      url  :  'action/productInsert_run.php',
+      url  :  'action/product.php',
       enctype: 'multipart/form-data',
       data:data,
       contentType: false,
@@ -195,7 +187,8 @@ $(document).ready(function(){
                   
           if(response.includes("success")){	
               setTimeout(() => {
-                load_data(1,"",5);
+                $('#exampleModal').modal('hide');
+                loadProduct(1,"",5);
                   
                   $(".loader").css({'display':'none','opacity':'0'});
                   
@@ -269,11 +262,40 @@ $(document).ready(function(){
    $('#product_show_by_limit').change(function(){
       var limit = $(this).val();
       var query = $('#search_box').val();
-      load_data(1, query,limit);
+      loadProduct(1, query,limit);
    });
 
 
 
 
 });
+
+
+
+
+// data = data + "<tr class='text-center' id='pid"+value.id+" '>"
+    
+// if(value.image !=""){
+//     data = data + "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"
+// }
+// data = data + "<td>"+value.name+"</td>"
+// data = data + "<td>"+value.price+"</td>"
+// data = data + "<td>"+value.category+"</td>"
+// data = data + "<td>"+value.quantity+"</td>"
+// data = data + "<td>"+value.discount+"</td>"
+// data = data + "<td>"+value.scharge+"</td>"
+// data = data +
+// "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.id+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>"
+
+// data = data + "</tr>"
+
+// $('<tr class="text-center">').html(
+//   "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"+
+//   "<td>"+value.name+"</td>"+
+//   "<td>"+value.price+"</td>"+
+//   "<td>"+value.category+"</td>"+
+//   "<td>"+value.quantity+"</td>"+
+//   "<td>"+value.discount+"</td>"+
+//   "<td>"+value.scharge+"</td>"+
+//   "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.id+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>").appendTo('tbody');
 

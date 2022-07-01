@@ -79,4 +79,4 @@
 
 </body>
 
-<script src="js/updateProfile.js"></script>
+<script src="js/Profile.js"></script>

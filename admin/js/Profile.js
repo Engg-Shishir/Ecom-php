@@ -7,21 +7,22 @@ $('document').ready(function() {
 
         
 		var data = new FormData();
-		
 		let name = $("#name").val();
 		let email = $("#user_email").val();
 		let password = $("#password").val();
         var image = $('#file')[0].files[0];
         
+		if(image) data.append('image', image);
 
-		data.append('image', image);
+		
         data.append('name', name);
         data.append('email', email);
         data.append('password', password);
+        data.append('action', "update");
 
 			$.ajax({				
 				type : 'POST',
-				url  :  'action/update.php',
+				url  :  'action/profile.php',
 				enctype: 'multipart/form-data',
 				data:data,
 				contentType: false,
@@ -55,7 +56,10 @@ $('document').ready(function() {
     function getdata(){
 		$.ajax({				
 			type : 'POST',
-			url  : 'action/load.php',
+			url  : 'action/profile.php',
+			data : {
+				action:"load"
+			},
 			dataType: 'json',
 			beforeSend: function(){	
 			    // alert("Do you want");
