@@ -19,8 +19,6 @@ $(document).ready(function(){
       {
         var data = ""
         var total = response.length;
-        // // console.log(response[total-1]);
-        
         if(total > 0){
           $('tbody').remove();
           $("thead").after("<tbody></tbody>");
@@ -37,7 +35,7 @@ $(document).ready(function(){
                 "<td>"+value.quantity+"</td>"+
                 "<td>"+value.discount+"</td>"+
                 "<td>"+value.scharge+"</td>"+
-                "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a><a data-id='"+value.id+"' type='button' class='ml-1'><i class='fas fa-eye'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>").appendTo('tbody');
+                "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>").appendTo('tbody');
             }
           });
         }else{

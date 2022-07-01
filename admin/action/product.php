@@ -46,6 +46,8 @@
             {
                 array_push($result_array, $row);
             }
+
+            
             $total_links = ceil($total_data/$limit);
             $previous_link = '';
             $next_link = '';
@@ -152,7 +154,7 @@
     
     if($pname !="" && $pprice !="" && $pcategory !="Select Category" && $pdetails !="" && $pquantity !="" && $pdiscount !="" && $pscharge !="Select Shipping Charge"){
 
-          if($action == "insert"){
+      if($action == "insert"){
         $sno = sernum();
         $image = getImageName($sno);
         if($image !=""){

@@ -18,14 +18,13 @@
         
         <div class="col-md-9">
             <div class="card shadow">
-            <div class="card-body admin-card-body" >
-                <div class="admin_profilePic shadow">
-             
-                       <img id="profile_photo_show" src="" alt="vbnbv"  height="150px" width="150px" style="border-radius:50%;">
+                <div class="card-body admin-card-body" >
+                  <div class="row"></div>
+                    <div class="admin_profilePic shadow" style="height:150px;width:150px;border-radius:50%;">
+                      <img id="profile_photo_show" src="" alt="vbnbv"  height="150px" width="150px" style="border-radius:50%;">
+                    </div>
 
-                </div>
-
-                <div class="card-body shadow-lg">
+                    <div class="card-body shadow-lg mt-3">
                         <form class="form-login" enctype="multipart/form-data">
                           <div class="row">
                             <div class="col-md-6">
@@ -61,19 +60,18 @@
                             </div>
                           </div>
                             <hr />
-                            <div class="form-group d-flex align-items-center justify-content-between ">
-                                <div class="loader"  style="border: 10px solid #f3f3f3;border-radius: 50%;border-top: 7px solid black;border-bottom: 7px solid red;width: 40px;height: 40px;-webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite; opacity:0;"></div>
-        
+                          <div class="form-group d-flex align-items-center justify-content-between ">
+                              <div class="loader"  style="border: 10px solid #f3f3f3;border-radius: 50%;border-top: 7px solid black;border-bottom: 7px solid red;width: 40px;height: 40px;-webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite; opacity:0;"></div>
 
-                                <button type="button" class="btn btn-dark" id="update_profile_button">Update
-                                </button> 
-                            </div> 
+
+                              <button type="button" class="btn btn-dark" id="update_profile_button">Update
+                              </button> 
+                          </div> 
                         </form>
                     </div>
+                </div>
             </div>
         </div>
-        
-    </div>
 </div>
 
 
