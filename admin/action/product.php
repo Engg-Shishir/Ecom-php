@@ -30,8 +30,9 @@
         $query = "SELECT * FROM `product` ";
         if($search != '')
         {
-          $query .= 'WHERE name LIKE "%'.str_replace(' ', '%', $search).'%" ';
+          $query .= " WHERE name LIKE '%".$search."%' OR  category LIKE '%".$search."%' OR  scharge LIKE '%".$search."%' OR  discount LIKE '%".$search."%' ";
         }
+        
         $query .= 'ORDER BY id DESC ';
         $filter_query = $query . 'LIMIT '.$start.', '.$limit.'';
     
@@ -211,7 +212,9 @@
 	if($action=="delete"){
     $resultset = mysqli_query($conn, "SELECT sno FROM product WHERE id='{$_POST['id']}'");
     $sno = mysqli_fetch_array($resultset);	
-    // echo json_encode($sno[0]);
+    
+
+
     unlinkImage($sno[0]);
 
 

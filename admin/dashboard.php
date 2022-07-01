@@ -56,7 +56,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <input type="file" id="file" name='file'  required>
+                                <div class="form-group">
+                                      <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="file" name='file' required>
+                                          <label class="custom-file-label" for="customFile">Profile Photo</label>
+                                      </div>
+                                </div>
                             </div>
                           </div>
                             <hr />

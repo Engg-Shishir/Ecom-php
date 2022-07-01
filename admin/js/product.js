@@ -125,11 +125,9 @@ $(document).ready(function(){
 });
 
   $('#search_box').keyup(function(){
-    // $('#product_show_by_limit').val(false).trigger( "change" );
     $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
     var query = $('#search_box').val();
     if(query != "") loadProduct(1, query,5);
-    
   });
 
 
@@ -230,7 +228,6 @@ $(document).ready(function(){
   });
   });
  
-
    $('#product_photo_choser').change(function(){
     var file = $(this).get(0).files[0];
 
