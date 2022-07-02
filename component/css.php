@@ -26,3 +26,5 @@
 	<link rel="stylesheet" href="./Asset/css/reset.css">
 	<link rel="stylesheet" href="./Asset/style.css">
     <link rel="stylesheet" href="./Asset/css/responsive.css">
+    <link rel="stylesheet" href="./Asset/css/main-slider.css">
+    <link rel="stylesheet" href="./Asset/css/responsive-slider.css">
