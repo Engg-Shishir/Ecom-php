@@ -14,20 +14,12 @@
     <title>Eshop - eCommerce HTML5 Template.</title>
 <link rel="icon" type="image/png" href="./Asset/images/favicon.png">
 	<?php include_once"./component/css.php"; ?>
-
 </head>
 <body class="js">
      <!-- include_once"./component/topbar.php"; -->
 	 	
 	<!-- Preloader -->
-	<!-- <div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div> -->
+     <?php include_once"./component/preloader.php"; ?>
 	<!-- End Preloader -->
 	
 	

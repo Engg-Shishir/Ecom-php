@@ -6,8 +6,8 @@ $title = "Admin | Product";
 
 
 <link rel="stylesheet" href="../css/adminlte.min.css">
+<!-- <link rel="stylesheet" href="../css/summernote-bs4.min.css"> -->
 <link rel="stylesheet" href="./css/product-insert-modal.css">
-
 
 <body>
 
@@ -15,7 +15,7 @@ $title = "Admin | Product";
 <div class="row mt-3">
     <!-- Sidebar -->
     <div class="col-12 col-md-3">
-       <?php include_once"./layout/sidebar.php"; ?>
+       <?php include_once"./layout/sidebar4.php"; ?>
     </div>
     <div class="col-12 col-md-9">
       <?php include_once"./component/inserProductModal.php"; ?>
@@ -93,7 +93,16 @@ $title = "Admin | Product";
 </div><!--  container -->
 </body>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#summernote').summernote();
+  });
+</script>
 <script src="js/product.js"></script>
+
 
 <!-- <td><img src='../image/Fixed/noRecordFound.svg'></td> -->
 

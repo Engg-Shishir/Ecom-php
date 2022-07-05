@@ -82,7 +82,8 @@
                   <div class="col-md-12">
                     <div class="form-group ">
                         <label for="pdetails">Product Details:</label>
-                        <textarea placeholder="Product Details" id="pdetails" class="form-control"></textarea>
+                        <!-- <textarea placeholder="Product Details" id="pdetails" class="form-control"></textarea> -->
+                        <textarea name="specs" id="summernote""></textarea>
                     </div>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 $('document').ready(function() { 
-
+alert();
 	getdata();
 
 	$("#update_profile_button").click(function(e){

@@ -1,22 +1,24 @@
 
 <?php 
     $title = "Admin | Dashboard";
+    include_once("./layout/header.php");
+    include_once("../connection.php");
 ?>
 
+
 <link rel="stylesheet" href="css/profilepage.css">
-<link rel="stylesheet" href="../css/adminlte.min.css">
-<body>
+<body>  
+<div class="containers">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <?php  include_once("./component/navBar.php");  ?>
+      <!-- Main Sidebar Container -->
+      <?php  include_once("./component/sideBar.php");  ?>
 
-<div class="container">
-    <div class="row mt-3">
-      
-        <!-- Sidebar -->
-        <div class="col-md-3">
-          <?php include_once"./layout/sidebar.php"; ?>
-        </div>
-
-        
-        <div class="col-md-9">
+        <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
             <div class="card shadow">
                 <div class="card-body admin-card-body" >
                   <div class="row"></div>
@@ -76,10 +78,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    </div>
+  </div>
 </div>
-
-
 </body>
-
 <script src="js/Profile.js"></script>

@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en">
@@ -48,7 +45,6 @@
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -67,5 +63,6 @@
                     "hideMethod": "slideUp"
                 }
         </script>
+
 
 </head>
