@@ -1,30 +1,31 @@
 
 <?php 
-    $title = "Admin | Product";
-    include_once("./layout/header.php");
+    $title = "Admin | Dashboard";
     include_once("../connection.php");
 ?>
 
 
-<!-- <link rel="stylesheet" href="css/profilepage.css"> -->
-<body>  
-<div class="containers">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <?php  include_once("./component/navBar.php");  ?>
-      <!-- Main Sidebar Container -->
-      <?php  include_once("./component/sideBar.php");  ?>
 
-        <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Main content -->
-      <section class="content">
+<link rel="stylesheet" href="../css/adminlte.min.css">
+<!-- <link rel="stylesheet" href="../css/summernote-bs4.min.css"> -->
+<link rel="stylesheet" href="./css/product-insert-modal.css">
+
+<body>
+
+<div class="container-fluid">
+<div class="row mt-3">
+    <!-- Sidebar -->
+    <div class="col-12 col-md-3">
+       <?php  include_once("./layout/header.php"); ?>
+    </div>
+    <div class="col-12 col-md-9">
+      <?php include_once"./component/inserProductModal.php"; ?>
       <div class="card">
           <div class="card-header bg-dark">
             <div class="row">
               <div class="col-md-6">
                 <div class="d-flex align-items-center" >
-                    <button type="button" class="btn btn-light" data-toggle="modal"   data-target="#exampleModal" data-backdrop="static"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="btn btn-light" data-bs-toggle="modal"   data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
                     <select class="ml-3 form-select form-select-sm" style="width:100px;" id="product_show_by_limit">
                       <option value="5">5</option>
                       <option value="10">10</option>
@@ -86,21 +87,24 @@
               </div>
           </div>
       </div>
+   </div> <!--  col-md-9 -->
+</div><!--  row -->
 
-
-          <?php include_once"./component/inserProductModal.php"; ?>
-      </section>
-      <!-- /.content -->
-    </div>
-  <!-- /.content-wrapper -->
-    </div>
-  </div>
-</div>
+  
+</div><!--  container -->
 </body>
-<script src="js/Profile.js"></script>
-<script src="js/product.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.js"></script>
 <script>
   $(document).ready(function(){
     $('#summernote').summernote();
   });
 </script>
+<script src="js/product.js"></script>
+
+
+<!-- <td><img src='../image/Fixed/noRecordFound.svg'></td> -->
+
+

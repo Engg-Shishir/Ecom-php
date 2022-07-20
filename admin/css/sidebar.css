@@ -1,0 +1,70 @@
+
+
+
+.profile-li.actives{
+    background-color: #152152;
+    
+}
+.profile-li.actives i{
+    color: #fff;
+}
+
+
+.profile-li.actives:hover{
+    background-color: #152152 !important;
+}
+
+.profile-li.actives p{
+    color: #fff;
+}
+
+
+
+
+/* .product-li-parent.actives{
+    background-color: #152152;   
+}
+.product-li-parent.actives i{
+    color: #fff;
+}
+.product-li-parent.actives:hover{
+    background-color: #152152 !important;
+}
+.product-li-parent.actives p{
+    color: #fff;
+} */
+
+
+.all-product-li.actives{  
+    background-color: #808080; 
+}
+.all-product-li.actives i{
+    color: #fff;
+}
+.all-product-li.actives:hover{
+    background-color: #808080; 
+}
+.all-product-li.actives p{
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-item.active{
+    background-color: #152152;
+}
+.nav-item.active a{
+    color: #fff;
+}

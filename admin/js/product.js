@@ -112,7 +112,7 @@ $(document).ready(function(){
         $("#pname").val(data.name);
         $("#pprice").val(data.price);
         $("#pcategory").val(data.category);
-        $("#pdetails").val(data.details);
+        $("#summernote").val(data.details);
         $("#pquantity").val(data.quantity);
         $("#pdiscount").val(data.discount);
         $("#shipingCharge").val(data.scharge);
@@ -138,7 +138,7 @@ $(document).ready(function(){
     let pname = $("#pname").val();
     let pprice = $("#pprice").val();
     let pcategory = $("#pcategory").val();
-    let pdetails = $("#pdetails").val();
+    let pdetails = $("#summernote").val();
     let pquantity = $("#pquantity").val();
     let pdiscount = $("#pdiscount").val();
     let pscharge = $("#shipingCharge").val();

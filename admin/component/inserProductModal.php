@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header text-center bg-dark text-light">
@@ -9,16 +9,14 @@
         <!-- <button type="button" class="btn btn-sm text-light"  >
            X
         </button> -->
-        <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal"> X </button>
+        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"> X </button>
       </div>
-      <div class="modal-body" id="productInsert">
+      <div class="modal-body w-100" id="productInsert">
             <form class="form-login" id="product">
                 <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 offset-4">
                     <img id="productInsertImagePreview" data-name="" src="" alt="" height="250px" width="250px" style="display:none;" >
                   </div>
-                  <div class="col-md-4"></div>
                 </div>
                 
                 <div class="form-group d-flex align-items-center justify-content-center my-2">

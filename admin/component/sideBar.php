@@ -1,10 +1,26 @@
+<?php  
+    if(strpos($_SERVER['REQUEST_URI'], "product.php")) 
+    { ?> <script> 
+      $(function(){  
+        $('.product-li-parent').addClass("menu-open");
+        $('.all-product-li').addClass("actives");  
+          
+      })
+    </script> <?php }
 
+    if(strpos($_SERVER['REQUEST_URI'], "dashboard.php")) 
+    { ?> <script> 
+    $(function(){  $('.profile-li').addClass("actives");   })
+    </script> <?php }
+
+?>
+<link rel="stylesheet" href="css/sidebar.css">
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
           <!-- Brand Logo -->
-          <a href="../../index3.html" class="brand-link">
-            <img src="../Asset/Backend/Tamplate/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+          <a href="./dashboard.php" class="brand-link">
+            <img id="sidebar_profile_logo" src="" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-bold" id="sidebar_profile_name"></span>
           </a>
 
           <!-- Sidebar -->
@@ -14,93 +30,28 @@
             <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    with font-awesome or any other icon font library -->                
+                <li class="nav-item profile-li">
+                  <a href="./dashboard.php" class="nav-link">
+                    <i class="nav-icon fas fa-user-tie"></i>
                     <p>
-                      Dashboard
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="../../index.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v1</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../index2.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v2</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../index3.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Dashboard v3</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="../calendar.html" class="nav-link">
-                    <i class="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                      Calendar
-                      <span class="badge badge-info right">2</span>
+                      Profile
                     </p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item product-li-parent">
                   <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-circle"></i>
+                    <i class="nav-icon fas fa-chess-queen"></i>
                     <p>
-                      Level 1
+                      Product
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
+                  <ul class="nav nav-treeview" >
+                    <li class="nav-item  all-product-li">
+                      <a href="./product.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Level 2</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                          Level 2
-                          <i class="right fas fa-angle-left"></i>
-                        </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Level 2</p>
+                        <p>All Products</p>
                       </a>
                     </li>
                   </ul>

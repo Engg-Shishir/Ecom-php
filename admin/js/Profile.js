@@ -1,5 +1,4 @@
 $('document').ready(function() { 
-alert();
 	getdata();
 
 	$("#update_profile_button").click(function(e){
@@ -20,34 +19,34 @@ alert();
         data.append('password', password);
         data.append('action', "update");
 
-			$.ajax({				
-				type : 'POST',
-				url  :  'action/profile.php',
-				enctype: 'multipart/form-data',
-				data:data,
-				contentType: false,
-				processData: false,
-				beforeSend: function(){	
-					$(".loader").css("opacity", "1");
-					$("#update_profile_button").prop('disabled', true);
-				},
-				success : function(response){						
-					if(response=="success"){	
-						setTimeout(() => {
-							$(".loader").css("opacity", "0");
-							toastr.success('',"Successfully Updated ");
-							$('#sidebar_profile_logo').attr("src","");
-							$('#profile_photo_show').attr("src","");
-							getdata();
-							$("#update_profile_button").prop('disabled', false);
-						}, 3000);
-						
-					} else {
-						toastr.error('Something going wrong',"Try again !");
-					}
+		$.ajax({				
+			type : 'POST',
+			url  :  'action/profile.php',
+			enctype: 'multipart/form-data',
+			data:data,
+			contentType: false,
+			processData: false,
+			beforeSend: function(){	
+				$(".loader").css("opacity", "1");
+				$("#update_profile_button").prop('disabled', true);
+			},
+			success : function(response){						
+				if(response=="success"){	
+					setTimeout(() => {
+						$(".loader").css("opacity", "0");
+						toastr.success('',"Successfully Updated ");
+						$('#sidebar_profile_logo').attr("src","");
+						$('#profile_photo_show').attr("src","");
+						getdata();
+						$("#update_profile_button").prop('disabled', false);
+					}, 3000);
+					
+				} else {
+					toastr.error('Something going wrong',"Try again !");
 				}
-			});
-	
+			}
+		});
+
 
 
 	
@@ -67,8 +66,11 @@ alert();
 			success : function(response){	
 				$('#sidebar_profile_logo').attr("src","");
 				$('#profile_photo_show').attr("src","");
-				$('#sidebar_profile_logo').attr("src", "action/images/"+response.profile_photo);
-				$('#profile_photo_show').attr("src", "action/images/"+response.profile_photo);
+				$('#sidebar_profile_name').text(response.user);
+				$('#sidebar_profile_logo').attr("src", "action/"+response.profile_photo);
+				$('#profile_photo_show').attr("src", "action/"+response.profile_photo);
+				$('#profile_photo_show').attr("src", "");
+				$('#profile_photo_show').attr("src", "action/"+response.profile_photo);
 				$('#name').val(response.user);
 				$('#user_email').val(response.email);
 				$('#password').val(response.pass);

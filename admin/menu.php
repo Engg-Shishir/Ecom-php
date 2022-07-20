@@ -3,9 +3,9 @@
     $title = "Admin | Menu";
     include_once("../header.php");
     include_once("../connection.php");
-    // if(isset($_SESSION['user_session'])){
-    //   header("location: dashboard.php");
-    // }
+    if(isset($_SESSION['user_session'])){
+      header("location: dashboard.php");
+    }
 
 ?>
 

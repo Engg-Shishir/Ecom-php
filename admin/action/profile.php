@@ -35,25 +35,26 @@ if($action == "update"){
 		if(in_array($img_ext, $extensions) === true){
 			$types = ["image/jpeg", "image/jpg", "image/png"];
 			if(in_array($img_type, $types) === true){
-
-
 				$new_img_name = $_SESSION['user_session'].".".$img_ext;
-	            $path = "images/".$new_img_name;
+				$dirname= "images/profile/";
+	            $path = $dirname.$new_img_name;
 				
 				// Check file name is avilable avilable or not with different file type
-	            $name1 = "images/".$_SESSION['user_session'].".jpg";
-				$name2 = "images/".$_SESSION['user_session'].".png";
-				$name3 = "images/".$_SESSION['user_session'].".jpeg";
+	            // $name1 = "images/profile/".$_SESSION['user_session'].".jpg";
+				// $name2 = "images/profile/".$_SESSION['user_session'].".png";
+				// $name3 = "images/profile/".$_SESSION['user_session'].".jpeg";
+				// if(file_exists($name1)) unlink($name1);
+				// if(file_exists($name2)) unlink($name2);
+				// if(file_exists($name3)) unlink($name3);
+                
+				// mkdir('gfg');
+				array_map('unlink', glob("images/profile/*.*"));
+				rmdir($dirname);
+				mkdir($dirname);
 
-
-
-
-				if(file_exists($name1)) unlink($name1);
-				if(file_exists($name2)) unlink($name2);
-				if(file_exists($name3)) unlink($name3);
-
-				if(move_uploaded_file($tmp_name,"images/".$new_img_name)){
-					$select_sql2 = mysqli_query($conn, "UPDATE `users` SET `user`='$name',`pass`='$password',`email`='$email',`profile_photo`='$new_img_name' WHERE `uid`='{$uid}' ");
+				if(move_uploaded_file($tmp_name,$path)){
+					clearstatcache();
+					$select_sql2 = mysqli_query($conn, "UPDATE `users` SET `user`='$name',`pass`='$password',`email`='$email',`profile_photo`='$path' WHERE `uid`='{$uid}' ");
 					if($select_sql2){
 						echo "success";
 					}
