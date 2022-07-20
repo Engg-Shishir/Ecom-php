@@ -81,7 +81,7 @@
                     <div class="form-group ">
                         <label for="pdetails">Product Details:</label>
                         <!-- <textarea placeholder="Product Details" id="pdetails" class="form-control"></textarea> -->
-                        <textarea name="specs" id="summernote""></textarea>
+                        <textarea name="specs" id="summernote" class="form-control"></textarea>
                     </div>
                   </div>
                 </div>

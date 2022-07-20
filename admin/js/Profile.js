@@ -39,6 +39,7 @@ $('document').ready(function() {
 						$('#profile_photo_show').attr("src","");
 						getdata();
 						$("#update_profile_button").prop('disabled', false);
+						window.location.href = "dashboard.php";
 					}, 3000);
 					
 				} else {

@@ -18,13 +18,14 @@
         <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Main content -->
-      <section class="content">
+      <section class="content p-0">
       <div class="card">
-          <div class="card-header bg-dark">
+          <div class="card-header ">
             <div class="row">
               <div class="col-md-6">
                 <div class="d-flex align-items-center" >
-                    <button type="button" class="btn btn-light" data-toggle="modal"   data-target="#exampleModal" data-backdrop="static"><i class="fas fa-plus"></i></button>
+                    <button id="show_insert_modal_btn" type="button" class="btn btn-light" data-toggle="modal"   data-target="#exampleModal" data-backdrop="static"><i class="fas fa-plus"></i></button>
+
                     <select class="ml-3 form-select form-select-sm" style="width:100px;" id="product_show_by_limit">
                       <option value="5">5</option>
                       <option value="10">10</option>
@@ -41,7 +42,7 @@
                     <div class="input-group input-group-sm" style="width: 250px;">
                         <input type="text" id="search_box" class="form-control float-right" placeholder="Search">
                         <div class="input-group-append">
-                          <button type="submit" class="btn btn-light" id="product_search_btn">
+                          <button type="submit" class="btn" id="product_search_btn">
                             <i class="fas fa-search"></i>
                           </button>
                         </div>
@@ -67,7 +68,7 @@
                     </thead>
                     <tbody>
                     </tbody>
-                    <tfoot class="bg-dark">
+                    <tfoot class="">
                       <tr>
                         <th  style="text-align:center;">Image</th>
                         <th  style="text-align:center;">Name</th>

@@ -3,6 +3,7 @@
     { ?> <script> 
       $(function(){  
         $('.product-li-parent').addClass("menu-open");
+        $('.product-li-parent').addClass("actives");
         $('.all-product-li').addClass("actives");  
           
       })

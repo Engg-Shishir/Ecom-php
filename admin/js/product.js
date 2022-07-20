@@ -112,7 +112,8 @@ $(document).ready(function(){
         $("#pname").val(data.name);
         $("#pprice").val(data.price);
         $("#pcategory").val(data.category);
-        $("#summernote").val(data.details);
+        // $("#summernote").val(data.details);
+        $('#summernote').summernote('code', data.details);
         $("#pquantity").val(data.quantity);
         $("#pdiscount").val(data.discount);
         $("#shipingCharge").val(data.scharge);
@@ -131,6 +132,9 @@ $(document).ready(function(){
   });
 
 
+  $('#show_insert_modal_btn').click(function(){
+    $("#productInsertImagePreview").css("display", "none").attr("src", "");
+  });
 
   $('#insert_btn_product').click(function(e){
     e.preventDefault();	
@@ -142,6 +146,7 @@ $(document).ready(function(){
     let pquantity = $("#pquantity").val();
     let pdiscount = $("#pdiscount").val();
     let pscharge = $("#shipingCharge").val();
+    let actions="";
     data.append('pname',pname);
     data.append('pprice',pprice);
     data.append('pcategory',pcategory);
@@ -165,6 +170,7 @@ $(document).ready(function(){
     }
     else{
       data.append('image', images);
+      actions = "insert";
       data.append('action',"insert");
     }
 
@@ -213,12 +219,14 @@ $(document).ready(function(){
                   $("#insert_btn_product").prop('disabled', false);
                   $("#productInsertImagePreview").css("display", "none");
                   $("#productInsertImagePreview").attr("src", "");
-
+                  if(actions != "insert") window.location.href = "product.php";
                   
               }, 2000);
               
           }else{
               setTimeout(() => {
+
+                $('#product').trigger("reset");
                   toastr.error('Something going wrong',"Be carefull.Try again");
                   $(".loader").css({'display':'none','opacity':'0'});
                   $("#insert_btn_product").prop('disabled', false);
