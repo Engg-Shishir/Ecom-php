@@ -1,12 +1,14 @@
 $(document).ready(function(){
+
    $('#userRegistrationBtn').click(function(e){
       e.preventDefault();
       
       var data = new FormData();
       let userName = $("#userName").val();
       let userEmail = $("#userEmail").val();
-      let userPassword = $("#userPassword").val();
-      let userConfirmPassword= $("#userConfirmPassword").val();
+      let userPhone = $("#userPhone").val();
+      var userPassword = $("#userPassword").val();
+      var userConfirmPassword= $("#userConfirmPassword").val();
       if((userName&& userEmail&& userPassword&& userConfirmPassword)!=""){
          data.append('userName',userName);
 
@@ -26,10 +28,12 @@ $(document).ready(function(){
          //    }
          // });
 
+
          if(isValidEmailAddress(userEmail)){
             data.append('userEmail',userEmail);
-            if(userPassword == userConfirmPassword){
+            if(isPasswordMatch(userPassword,userConfirmPassword)){
                data.append('userPassword',userPassword);
+               data.append('userPhone',userPhone);
                storeUserRegistrationData();
             }else{
                $('#userConfirmPassword').addClass('is-invalid');
@@ -43,6 +47,10 @@ $(document).ready(function(){
             return pattern.test(emailAddress);
         }
 
+         function isPasswordMatch(password,cpassword){
+            if (password==cpassword) return true; 
+         }
+
 
          function storeUserRegistrationData(){
                $.ajax({				
@@ -52,26 +60,26 @@ $(document).ready(function(){
                   contentType: false,
                   processData: false,
                   beforeSend: function(){	
-                     // $(".loader").css({'display':'block','opacity':'1'});
+                     $('.signUpSpinner').css({'opacity':'1'});
+                     $("#userRegistrationBtn").prop('disabled', true);
                   },
                   success : function(response){	
-                     alert(response);
-                     //  if(response.includes("success")){	
-                     //      setTimeout(() => {
-                     //          $(".loader").css({'display':'none','opacity':'0'});
-                     //          $('#product').trigger("reset");
-                     //          window.location.href = "product.php";
-                     //      }, 2000);
+                      if(response.includes("success")){	
+                          setTimeout(() => {
+                              toastr.success("Success! Verify mail");
+                              $("#userRegistrationBtn").prop('disabled', false);
+                              $(".signUpSpinner").css({'opacity':'0'});
+                              $('#userRegistrationForm').trigger("reset");
+                              // window.location.href = "user/dashboard.php";
+                          }, 2000);
                         
-                     //  }else{
-                     //      setTimeout(() => {
-            
-                     //        $('#product').trigger("reset");
-                     //          toastr.error('Something going wrong',"Be carefull.Try again");
-                     //          $(".loader").css({'display':'none','opacity':'0'});
-                     //          $("#insert_btn_product").prop('disabled', false);
-                     //      }, 500);
-                     //  }
+                      }else{
+                          setTimeout(() => {
+                              toastr.error('Something going wrong',"Be carefull.Try again");
+                              $(".signUpSpinner").css({'opacity':'0'});
+                              $("#userRegistrationBtn").prop('disabled', false);
+                          }, 500);
+                      }
                   }
                })
          }
@@ -82,6 +90,48 @@ $(document).ready(function(){
    }); 
 
 
+   $('#userLoginBtns').click(function(e){
+      e.preventDefault();
+      
+      var email = $("#userLogin_Email").val();
+      var password = $("#userLogin_Password").val();
+
+      if(email==""||password==""){
+			toastr.error('Your field is required');
+		}else{
+         $.ajax({				
+				type : 'POST',
+				url  : 'user/Action/userLogin.php',
+				data : {
+				  email: email,
+				  password: password
+				},
+				beforeSend: function(){	
+               $('.loginSpinner').css({'opacity':'1'});
+               $(this).prop('disabled', true);
+				},
+				success : function(response){				
+					if(response.includes("success")){	
+						  setTimeout(() => {
+                        $('.loginSpinner').css({'opacity':'0'});
+                        toastr.options.timeOut = 0;
+                        toastr.success('You are redirected to home page');
+						   }, 2000);
+                     
+						setTimeout(() => {
+                     $(this).prop('disabled', false);
+							// window.location.href = "dashboard.php";
+						}, 5000);
+					}else {
+                  $('.loginSpinner').css({'opacity':'0'});
+                  $(this).prop('disabled', false);
+						toastr.error('Something going wrong');
+					}
+				}
+			});
+      }
+
+   }); 
 
 
 });    

@@ -77,7 +77,7 @@
 	</section>
 
 
-    <?php  include_once("./component/login_signUp_popup.php");  ?>
+    
 	
 
 	

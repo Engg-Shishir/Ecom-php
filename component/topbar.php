@@ -31,103 +31,15 @@
                                             <div class="card-header text-center">
                                                 <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
                                                 <hr>
-                                                <nav>
-                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">SignIn</a>
-                                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">SignUp</a>
-                                                        <a class="nav-item nav-link" id="nav-forget-tab" data-toggle="tab" href="#nav-forget" role="tab" aria-controls="nav-profile" aria-selected="false">Forget Password</a>
-                                                    </div>
-                                                </nav>
+                                                <?php include_once"./component/part/tabBar.php"; ?>
                                             </div>
                                             <div class="card-body">
                                                 <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                    <form action="../../index3.html" method="post">
-                                                        <div class="input-group mb-3">
-                                                            <input type="email" class="form-control" placeholder="Email">
-                                                            <div class="input-group-append">
-                                                                <div class="input-group-text">
-                                                                    <span class="fas fa-envelope"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                  <?php include_once"./component/part/tabContent_loginForm.php"; ?>
 
-                                                        <div class="input-group">
-                                                            <input type="password" class="form-control" placeholder="Password">
-                                                            <div class="input-group-append">
-                                                                <div class="input-group-text">
-                                                                    <span class="fas fa-lock"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                  <?php include_once"./component/part/tabContent_signUpForm.php"; ?>
 
-                                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                    <form id="userRegistrationForm">
-                                                            <div class="input-group mb-3">
-                                                                <input id="userName" type="text" class="form-control pl-2" placeholder="Your name">
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <span class="fas fa-user"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-group mb-3">
-                                                                <input id="userEmail" type="email" class="form-control pl-2" placeholder="email" autocomplete="on">
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <span class="fas fa-envelope"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-group mb-3">
-                                                                <input id="userPassword" type="password" class="form-control pl-2" placeholder="Password">
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <span class="fas fa-lock"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input-group">
-                                                                <input id="userConfirmPassword" type="password" class="form-control pl-2" placeholder="Retype password">
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <span class="fas fa-lock"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-12 text-right">
-                                                                    <button id="userRegistrationBtn"  class="btn btn-primary">SignUp</button>
-                                                                </div>
-                                                            </div>
-                                                    </form>
-                                                </div>
-
-                                                <div class="tab-pane fade" id="nav-forget" role="tabpanel" aria-labelledby="nav-forget-tab">
-                                                    <form action="recover-password.html" method="post">
-                                                        <div class="input-group">
-                                                            <input type="email" class="form-control" placeholder="Email">
-                                                            <div class="input-group-append">
-                                                                <div class="input-group-text">
-                                                                    <span class="fas fa-envelope"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                            <button type="submit" class="btn btn-primary btn-block">Request new password</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
+                                                  <?php include_once"./component/part/tabContent_recover.php"; ?>
                                                 </div>
                                             </div>
                                             </div>
