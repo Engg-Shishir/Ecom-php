@@ -1212,6 +1212,9 @@ Version:1.0
 	float: none;
 	margin-top: 8px;
 }
+.header.shop .list-main{
+  display: none !important;
+}
 .header.shop .list-main li {
 	border: none;
 	padding: 0;

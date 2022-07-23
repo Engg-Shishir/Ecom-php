@@ -11,18 +11,25 @@
         </button> -->
         <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"> X </button>
       </div>
-      <div class="modal-body w-100" id="productInsert">
+      <div class="modal-body" id="productInsert">
             <form class="form-login" id="product">
-                <div class="row">
-                  <div class="col-md-4 offset-4">
-                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="250px" width="250px" style="display:none;" >
-                  </div>
-                </div>
-                
                 <div class="form-group d-flex align-items-center justify-content-center my-2">
                     <div class="loader"  style="border: 10px solid #f3f3f3;border-radius: 50%;border-top: 7px solid black;border-bottom: 7px solid red;width: 40px;height: 40px;-webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite; opacity:0; display:none;"></div>
                 </div> 
-                <div class="row mt-3">
+                <div class="row my-auto  mt-3">
+                  <div class="col-md-10">
+                    <div class="form-group">
+                          <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="product_photo_choser" placeholder="hello">
+                              <label class="custom-file-label" for="customFile">Product Image</label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-2">
+                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="100px" width="100px" style="display:none;" >
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="pname">Name:</label>
@@ -85,16 +92,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                          <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="product_photo_choser" placeholder="hello">
-                              <label class="custom-file-label" for="customFile">Product Image</label>
-                          </div>
-                      </div>
+                <!-- <div class="row">
+                  <div class="col-md-4 offset-4">
+                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="150px" width="150px" style="display:none;" >
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group d-flex align-items-center justify-content-end mt-3">
                     <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
                     </button> 
