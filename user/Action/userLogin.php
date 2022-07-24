@@ -11,7 +11,7 @@
         if(mysqli_num_rows($resultset) > 0)
         {
             if($row['pass']==$userPassword){	
-                // $_SESSION['user_session'] = $row['uid'];			
+                $_SESSION['user_session'] = $row['uid'];			
                 echo "success";
             }else{
                 echo "failed"; 

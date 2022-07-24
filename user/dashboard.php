@@ -1,3 +1,13 @@
+
+<?php 
+  session_start();
+  if(!isset($_SESSION['user_session'])){
+    header("location: ../index.php");
+  }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +37,19 @@
                 <div class="col-md-8 offset-2">
                   <div class="row">
                     <div class="col-md-3 mx-auto my-auto">
-                        <img class=" shadow" id="profile_photo_show" src=""   height="200px" width="100%">
+                        <img class=" shadow" id="profile_photo_show" src="Asset/image/avatar.png"   height="200px" width="100%">
                     </div>
                     <div class="col-md-9">
                       <div class="card-body shadow-lg">
                           <form class="form-login" enctype="multipart/form-data">
                             <div class="row">
                               <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Your name" name="name" id="name" value="" />
+                                  <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Your name" name="name" id="name" value="" />
+                                      <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                      </div>
+                                  </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="input-group mb-3">
@@ -47,13 +62,6 @@
                             </div>
                             <div class="row  mt-3">
                               <div class="col-md-6 ">
-                                  <!-- <div class="field input">
-                                    <input type="password" name="password"   id="password"  value="" required >
-                                    <i id="show_hide_password" class="fas fa-eye-slash"></i>
-                                  </div> -->
-
-                                  
-
                                   <div class="input-group mb-3">
                                       <input type="password" class="form-control" placeholder="Enter new password" id="password" />
                                       <div class="input-group-prepend">
@@ -62,6 +70,16 @@
                                   </div>
                               </div>
                               <div class="col-md-6">
+                                  <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Phone no" name="phone" id="phone" value="" />
+                                      <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row  mt-3">
+                              <div class="col-md-12">
                                   <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="file" name='file' required>
@@ -93,4 +111,5 @@
 </div>
 
 </body>
+ <script src="Asset/js/userDashboardAction.js"></script>
 </html>

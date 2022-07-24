@@ -21,6 +21,9 @@
                             <li><i class="ti-location-pin"></i> Store location</li>
                             <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
                             <li><i class="ti-user"></i> <a href="#">My account</a></li>
+                            <?php   
+                              if(!isset($_SESSION['user_session'])){
+                            ?>
                             <li>
                                 <div class="sinlge-bar shopping" style="width:100%;">
                                     <a id="userLoginBtn" href="#"><i class="ti-power-off"></i> Login</a>
@@ -47,6 +50,10 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <?php 
+                              }
+                            ?>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -105,7 +112,16 @@
                             <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar shopping">
+                            <?php  
+                              if(isset($_SESSION['user_session'])){  
+                            ?>
+
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+
+                            <?php  
+                               }
+                            ?>
+
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">

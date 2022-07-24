@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+   
    $('#userRegistrationBtn').click(function(e){
       e.preventDefault();
       
@@ -92,7 +94,6 @@ $(document).ready(function(){
 
    $('#userLoginBtns').click(function(e){
       e.preventDefault();
-      
       var email = $("#userLogin_Email").val();
       var password = $("#userLogin_Password").val();
 
@@ -110,17 +111,18 @@ $(document).ready(function(){
                $('.loginSpinner').css({'opacity':'1'});
                $(this).prop('disabled', true);
 				},
-				success : function(response){				
+				success : function(response){			
 					if(response.includes("success")){	
 						  setTimeout(() => {
                         $('.loginSpinner').css({'opacity':'0'});
                         toastr.options.timeOut = 0;
+                        $('.user-login').toggleClass('active');
                         toastr.success('You are redirected to home page');
 						   }, 2000);
                      
 						setTimeout(() => {
                      $(this).prop('disabled', false);
-							// window.location.href = "dashboard.php";
+							window.location.href = "./user/dashboard.php";
 						}, 5000);
 					}else {
                   $('.loginSpinner').css({'opacity':'0'});
@@ -132,6 +134,7 @@ $(document).ready(function(){
       }
 
    }); 
+
 
 
 });    
