@@ -23,7 +23,11 @@
                 <div class="col-md-8 offset-2">
                   <div class="row">
                     <div class="col-md-3 mx-auto my-auto">
-                        <img class=" shadow" id="profile_photo_show" src=""   height="200px" width="100%">
+                        <!-- <img class=" shadow" id="profile_photo_show" src=""   height="200px" width="100%"> -->
+                        
+                      <div id="profileImageShowDiv">
+                        <!-- <img class=" shadow" id="profile_photo_show" src="Asset/image/avatar.png"   height="200px" width="100%"> -->
+                      </div>
                     </div>
                     <div class="col-md-9">
                       <div class="card-body shadow-lg">
@@ -58,6 +62,16 @@
                                   </div>
                               </div>
                               <div class="col-md-6">
+                                  <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Phone no" name="phone" id="phone" value="" />
+                                      <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col-md-12">
                                   <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="file" name='file' required>

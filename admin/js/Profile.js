@@ -9,6 +9,7 @@ $('document').ready(function() {
 		let name = $("#name").val();
 		let email = $("#user_email").val();
 		let password = $("#password").val();
+		let phone = $("#phone").val();
         var image = $('#file')[0].files[0];
         
 		if(image) data.append('image', image);
@@ -16,6 +17,7 @@ $('document').ready(function() {
 		
         data.append('name', name);
         data.append('email', email);
+        data.append('phone', phone);
         data.append('password', password);
         data.append('action', "update");
 
@@ -31,16 +33,24 @@ $('document').ready(function() {
 				$("#update_profile_button").prop('disabled', true);
 			},
 			success : function(response){						
-				if(response=="success"){	
+				if(response.includes("success")){	
 					setTimeout(() => {
 						$(".loader").css("opacity", "0");
-						toastr.success('',"Successfully Updated ");
-						$('#sidebar_profile_logo').attr("src","");
-						$('#profile_photo_show').attr("src","");
-						getdata();
+						
 						$("#update_profile_button").prop('disabled', false);
-						window.location.href = "dashboard.php";
-					}, 3000);
+						toastr.success("Successfully Updating...");
+					}, 2000);
+					
+
+					if(response.includes("image")){
+						setTimeout(() => {
+							$('#sidebar_profile_logo').attr("src","");
+							getdata();
+							window.location.href = "dashboard.php";
+						}, 5000);
+					}else{
+						getdata();
+					}
 					
 				} else {
 					toastr.error('Something going wrong',"Try again !");
@@ -56,7 +66,7 @@ $('document').ready(function() {
     function getdata(){
 		$.ajax({				
 			type : 'POST',
-			url  : 'action/profile.php',
+			url  : '../user/Action/fetchUser.php',
 			data : {
 				action:"load"
 			},
@@ -65,14 +75,17 @@ $('document').ready(function() {
 			    // alert("Do you want");
 			},
 			success : function(response){	
-				$('#sidebar_profile_logo').attr("src","");
-				$('#profile_photo_show').attr("src","");
-				$('#sidebar_profile_name').text(response.user);
-				$('#sidebar_profile_logo').attr("src", "action/"+response.profile_photo);
-				$('#profile_photo_show').attr("src", "action/"+response.profile_photo);
-				$('#profile_photo_show').attr("src", "");
-				$('#profile_photo_show').attr("src", "action/"+response.profile_photo);
-				$('#name').val(response.user);
+				$('#sidebar_profile_name').text(response.name);
+
+				$('#sidebar_profile_logo').attr("src", "image/"+response.photo);
+	
+                var img = "<img class=' shadow' id='profile_photo_show' src='image/"+response.photo+"'   height='200px' width='100%'>";
+				$("#profileImageShowDiv").html(img);
+
+				
+				$('#phone').val(response.phone);
+
+				$('#name').val(response.name);
 				$('#user_email').val(response.email);
 				$('#password').val(response.pass);
 				$("#file").val("");

@@ -37,7 +37,9 @@
                 <div class="col-md-8 offset-2">
                   <div class="row">
                     <div class="col-md-3 mx-auto my-auto">
-                        <img class=" shadow" id="profile_photo_show" src="Asset/image/avatar.png"   height="200px" width="100%">
+                      <div id="profileImageShowDiv">
+                        <!-- <img class=" shadow" id="profile_photo_show" src="Asset/image/avatar.png"   height="200px" width="100%"> -->
+                      </div>
                     </div>
                     <div class="col-md-9">
                       <div class="card-body shadow-lg">

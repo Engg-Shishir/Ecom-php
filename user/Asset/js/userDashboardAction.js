@@ -22,8 +22,9 @@ $(document).ready(function(){
                  $('#profile_photo_show').attr("src","image/"+response.photo);
 
 				//  $('#profile_photo_show').attr("src","image/"+response.photo);
-
-				// $("p").html("Hello <b>world</b>!");
+				$("#profileImageShowDiv").html("");
+                var img = "<img class=' shadow' id='profile_photo_show' src='image/"+response.photo+"'   height='200px' width='100%'>";
+				$("#profileImageShowDiv").html(img);
 
                  $('#name').val(response.name);
                  $('#phone').val(response.phone);
@@ -80,18 +81,19 @@ $(document).ready(function(){
 			success : function(response){				
 				if(response.includes("success")){
 					setTimeout(() => {
-						$('#sidebar_profile_logo').attr("src","");
-						$('#profile_photo_show').attr("src","");
 						$(".loader").css("opacity", "0");
-						getdata();
+						
 						$("#update_profile_button").prop('disabled', false);
-						toastr.success("Successfully Updated");
-					}, 3000);
+						toastr.success("Successfully Updating...");
+					}, 2000);
 
 					if(response.includes("image")){
 						setTimeout(() => {
+							getdata();
 							window.location.href = "dashboard.php";
-						}, 6000);
+						}, 5000);
+					}else{
+						getdata();
 					}
 					
 				}else{
