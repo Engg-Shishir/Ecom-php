@@ -1,5 +1,5 @@
 <?php
-include_once("../../connection.php");
+include_once("../../component/connection/connection.php");
 session_start();
 if(isset($_POST['email']) && isset($_POST['password'])) {
 	$user_email = trim($_POST['email']);

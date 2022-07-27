@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <style>
         @keyframes spin {
@@ -43,7 +42,7 @@
     <script src="../Asset/Backend/Tamplate/plugins/select2/js/select2.full.min.js"></script>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script> -->
     <script src="../Asset/Backend/Tamplate/plugins/summernote/summernote-bs4.min.js"></script>
-
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script>
         toastr.options = {
             "closeButton": true,

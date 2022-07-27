@@ -1,10 +1,10 @@
-$(document).ready(function(){
+$(function(){
 
-    $('.cat-heading').click(function(){
+    $('.cat-heading').on("click",function(e){
         $('.main-category').slideToggle("fast");
     });
     
-    $('#userLoginBtn').click(function(){
+    $('#userLoginBtn').on("click",function(e){
         $('.user-login').toggleClass('active');
     });
 

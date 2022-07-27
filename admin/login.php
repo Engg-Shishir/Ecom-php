@@ -2,7 +2,7 @@
     session_start();
     $title = "Admin | Login";
     include_once("./layout/header.php");
-    include_once("../connection.php");
+    include_once("../component/connection/connection.php");
     if(isset($_SESSION['user_session'])){
       header("location: dashboard.php");
     }

@@ -43,11 +43,11 @@
 	<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 	<script>
         toastr.options = {
-            "closeButton": true,
+            // "closeButton": true,
             "debug": false,
             "newestOnTop": false,
             "progressBar": true,
-            "positionClass": "toast-top-right",
+            "positionClass": "toast-top-center",
             "preventDuplicates": false,
             "onclick": null,
             "showDuration": "200",

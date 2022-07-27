@@ -1,5 +1,5 @@
 <?php
-include_once("../../connection.php");
+include_once("../../component/connection/connection.php");
 $keywords = $_POST['data'];
 $query = "SELECT  * from `product` WHERE `name` LIKE '%$keywords%'";
 

@@ -25,9 +25,9 @@
 <div class="containers">
     <div class="wrapper">
       <!-- Navbar -->
-      <?php  include_once("../admin/component/navBar.php");  ?>
+      <?php  include_once("./component/navBar.php");  ?>
       <!-- Main Sidebar Container -->
-      <?php  include_once("../admin/component/sideBar.php");  ?>
+      <?php  include_once("./component/sideBar.php");  ?>
 
         <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

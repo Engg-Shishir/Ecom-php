@@ -56,10 +56,10 @@
                       </a>
                     </li>
                   </ul>
-                </li>             
-                <li class="nav-item logout-li">
-                  <a href="./action/logout.php" class="nav-link">
-                    <ion-icon class="nav-icon" src="./image/Fixed/arrow-up-right-from-square-solid.svg"></ion-icon>
+                </li>               
+                <li class="nav-item profile-li">
+                  <a href="./Action/logout.php" class="nav-link">
+                    <ion-icon class="nav-icon" src="./Asset/image/arrow-up-right-from-square-solid.svg"></ion-icon>
                     <p>
                       Logout
                     </p>

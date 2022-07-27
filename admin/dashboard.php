@@ -2,7 +2,7 @@
 <?php 
     $title = "Admin | Dashboard";
     include_once("./layout/header.php");
-    include_once("../connection.php");
+    include_once("../component/connection/connection.php");
 ?>
 
 

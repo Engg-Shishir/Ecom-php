@@ -1,6 +1,6 @@
-$('document').ready(function() { 
+$(function() { 
 	
-	$("#login_button").click(function(e){
+	$("#login_button").on("click",function(e){
 		e.preventDefault();	
 		
 

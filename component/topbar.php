@@ -19,8 +19,6 @@
                     <div class="right-content">
                         <ul class="list-main">
                             <li><i class="ti-location-pin"></i> Store location</li>
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-                            <li><i class="ti-user"></i> <a href="#">My account</a></li>
                             <?php   
                               if(!isset($_SESSION['user_session'])){
                             ?>
@@ -52,7 +50,26 @@
                             </li>
 
                             <?php 
-                              }
+                            }else{ ?>
+                            <li>
+                                <div class="sinlge-bar shopping">
+                                    <a id="userLoginBtn" href="#"><i class="ti-user usernameShow mr-2"></i></a>
+                                    <p id="userLoginBtn">
+                                        
+                                    </p>
+                                    <!-- Shopping Item -->
+                                    <div class="user-login">
+                                            <ul class="d-flex flex-column">
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./user/dashboard.php">Profile</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Orders</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Catr</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left " href="./user/Action/logout.php">Logout</a>
+                                            </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php
+                            }
                             ?>
                         </ul>
                     </div>
@@ -240,12 +257,6 @@
                                                 <li class="active"><a href="#">Home</a></li>
                                                 <li><a href="#">Product</a></li>												
                                                 <li><a href="#">Service</a></li>
-                                                <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                    </ul>
-                                                </li>
                                                 <li><a href="#">Pages</a></li>									
                                                 <li><a href="#">Blog<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">

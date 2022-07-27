@@ -1,5 +1,5 @@
 <?php   
-    include_once("../../connection.php");
+    include_once("../../component/connection/connection.php");
     session_start();
     $userEmail = mysqli_real_escape_string($conn,$_POST['email']);
     $userPassword = mysqli_real_escape_string($conn,$_POST['password']);

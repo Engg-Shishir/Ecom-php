@@ -20,10 +20,13 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="userLoginBtns" class="btn btn-primary">
-                    <span class="spinner-border spinner-border-sm loginSpinner" style="opacity:0;"></span>
+               <div class="d-flex align-items-center justify-content-between pr-2 pl-4">
+                
+               <span class="spinner-border spinner-border-md loginSpinner" style="opacity:0;"></span>
+                <button id="userLoginBtns" class="btn btn-primary text-center mb-2">
                     Login
                 </button>
+               </div>
             </div>
         </div>
     </form>

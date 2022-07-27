@@ -1,8 +1,9 @@
-$(document).ready(function(){
+$(function(){
 
+   getdata();
 
    
-   $('#userRegistrationBtn').click(function(e){
+   $('#userRegistrationBtn').on("click",function(e){
       e.preventDefault();
       
       var data = new FormData();
@@ -92,7 +93,7 @@ $(document).ready(function(){
    }); 
 
 
-   $('#userLoginBtns').click(function(e){
+   $('#userLoginBtns').on("click",function(e){
       e.preventDefault();
       var email = $("#userLogin_Email").val();
       var password = $("#userLogin_Password").val();
@@ -117,12 +118,12 @@ $(document).ready(function(){
                         $('.loginSpinner').css({'opacity':'0'});
                         toastr.options.timeOut = 0;
                         $('.user-login').toggleClass('active');
-                        toastr.success('You are redirected to home page');
+                        toastr.success('You are loged in');
 						   }, 2000);
                      
 						setTimeout(() => {
                      $(this).prop('disabled', false);
-							window.location.href = "./user/dashboard.php";
+							window.location.href = "index.php";
 						}, 5000);
 					}else {
                   $('.loginSpinner').css({'opacity':'0'});
@@ -135,6 +136,28 @@ $(document).ready(function(){
 
    }); 
 
+
+   
+
+   function getdata(){
+        $.ajax({				
+            type : 'POST',
+            url  : 'user/Action/fetchUser.php',
+            data : {
+                action:"load"
+            },
+            dataType: 'json',
+            beforeSend: function(){	
+                // alert("Do you want");
+            },
+            success : function(response){	
+               // $('.usernameShow').text(response.name);
+               var data = "<i class='ti-user usernameShow'></i>&nbsp;"+response.name;
+               
+               $('#userLoginBtn').html(data);
+            }
+        });
+   }
 
 
 });    

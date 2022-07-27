@@ -1,5 +1,5 @@
 <?php   
-    include_once("../../connection.php");
+    include_once("../../component/connection/connection.php");
     session_start();
 
     $uids = $_SESSION['user_session'];

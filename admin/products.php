@@ -1,7 +1,7 @@
 
 <?php 
     $title = "Admin | Dashboard";
-    include_once("../connection.php");
+    include_once("../component/connection/connection.php");
 ?>
 
 

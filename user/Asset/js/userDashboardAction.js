@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 
     getdata();
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
          });
     }
 
-    $('#show_hide_password').click(function(){
+    $('#show_hide_password').on("click",function(e){
 
 		if($('#password').attr("type")== "password"){
 			$('#password').attr("type","text");
@@ -47,7 +47,7 @@ $(document).ready(function(){
 		}    
 	});
 
-    $("#update_profile_button").click(function(e){
+    $("#update_profile_button").on("click",function(e){
 		e.preventDefault();	
 
         

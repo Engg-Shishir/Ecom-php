@@ -1,5 +1,5 @@
 <?php   
-  include_once("../../connection.php");
+  include_once("../../component/connection/connection.php");
   session_start();
   $userName = mysqli_real_escape_string($conn,$_POST['userName']);
   $userEmail = mysqli_real_escape_string($conn,$_POST['userEmail']);
@@ -14,14 +14,14 @@
 
 
     // Procedural general style
-    // if (mysqli_multi_query($conn, $sql)) {
-    //     echo "New records created successfully";
-    // }
+        // if (mysqli_multi_query($conn, $sql)) {
+        //     echo "New records created successfully";
+        // }
 
     //Object oriented style
-    if($conn->multi_query($sql)==TRUE){
-      echo "success";
-    }
+        if($conn->multi_query($sql)==TRUE){
+          echo "success";
+        }
 
 
 ?>
