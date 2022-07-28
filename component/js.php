@@ -40,6 +40,7 @@
     <script src="./Asset/frontend/js/custom.js"></script>
 	<!-- User Login,SignUp,Forget Password -->
     <script src="./user/Asset/js/userAction.js"></script>
+    <script src="./Asset/frontend/js/slick.min.js"></script>
 	<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 	<script>
         toastr.options = {

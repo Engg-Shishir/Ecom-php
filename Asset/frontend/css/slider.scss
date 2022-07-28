@@ -1,0 +1,69 @@
+#sliders{
+    .slider{
+        height: 60vh;
+        width: 100%;
+        // z-index: 1;
+        position: relative;
+        // Slider Dots Disable
+        .slick-dots{
+            display: none !important; 
+        }
+        // Slider Item
+        .slickItem{
+            height: 100%;
+            width: 100%;
+            img{
+                height: 60vh;
+                width: 100%;
+            }
+        }
+
+        // Disable default slider controller
+        .slick-prev, .slick-next {
+            display: none !important;
+        }  
+        // Make custom slider controller      
+        .prev,.next {
+            position: absolute;
+            cursor: pointer;
+            top: 45%;
+            // z-index: 1;
+            font-size: 30px;
+            height: 50px;
+            width: 50px;
+            background-color: #fbebcf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            i{
+                color: #f7941d;
+            }
+        }
+        .prev{
+            left: 0%;
+        }
+        .next{
+            right: 0%;
+        }
+    }
+}
+
+@mixin header_slider {
+    header{
+        .slider{
+            height: 70vh;
+            // Slider Item
+            .slickItem{
+                img{
+                    height: 70vh;
+                }
+            }
+            // Make custom slider controller      
+            .prev,.next {
+                font-size: 20px;
+                height: 40px;
+                width: 40px;
+            }
+        }
+    }
+}

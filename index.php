@@ -30,4 +30,20 @@
 
 </body>
 	<?php include_once"./component/js.php"; ?>
+	<script>
+		$(function(){
+              // Banner Slick Slider
+				$('.content').slick({
+					dots: false,
+					infinite: true,
+					// fade: true,
+					cssEase: 'linear',
+					autoplay: true,
+					autoplaySpeed: 3000,
+					prevArrow:'.prev',
+					nextArrow:'.next'
+					
+				});
+		});
+	</script>
 </html>

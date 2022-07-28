@@ -27,6 +27,8 @@
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="./Asset/frontend/css/reset.css">
 	<link rel="stylesheet" href="./Asset/frontend/style.css">
+	<link rel="stylesheet" href="./Asset/frontend/css/slider.css">
+	<link rel="stylesheet" href="./Asset/frontend/css/slick.css">
     <link rel="stylesheet" href="./Asset/frontend/css/responsive.css">
     <link rel="stylesheet" href="./Asset/frontend/css/main-slider.css">
     <link rel="stylesheet" href="./Asset/frontend/css/responsive-slider.css">

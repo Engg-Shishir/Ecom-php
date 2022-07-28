@@ -1,85 +1,7 @@
 <!-- Header -->
 <header class="header shop">
     <!-- Topbar -->
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-12">
-                    <!-- Top Left -->
-                    <div class="top-left">
-                        <ul class="list-main">
-                            <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-                            <li><i class="ti-email"></i> support@shophub.com</li>
-                        </ul>
-                    </div>
-                    <!--/ End Top Left -->
-                </div>
-                <div class="col-lg-7 col-md-12 col-12">
-                    <!-- Top Right -->
-                    <div class="right-content">
-                        <ul class="list-main">
-                            <li><i class="ti-location-pin"></i> Store location</li>
-                            <?php   
-                              if(!isset($_SESSION['user_session'])){
-                            ?>
-                            <li>
-                                <div class="sinlge-bar shopping" style="width:100%;">
-                                    <a id="userLoginBtn" href="#"><i class="ti-power-off"></i> Login</a>
-                                    <!-- Shopping Item -->
-                                    <div class="user-login">
-                                        <div class="login-box">
-                                            <div class="card card-outline">
-                                            <div class="card-header text-center">
-                                                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
-                                                <hr>
-                                                <?php include_once"./component/part/tabBar.php"; ?>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="tab-content" id="nav-tabContent">
-                                                  <?php include_once"./component/part/tabContent_loginForm.php"; ?>
-
-                                                  <?php include_once"./component/part/tabContent_signUpForm.php"; ?>
-
-                                                  <?php include_once"./component/part/tabContent_recover.php"; ?>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <?php 
-                            }else{ ?>
-                            <li>
-                                <div class="sinlge-bar shopping">
-                                    <a id="userLoginBtn" href="#"><i class="ti-user usernameShow mr-2"></i></a>
-                                    <p id="userLoginBtn">
-                                        
-                                    </p>
-                                    <!-- Shopping Item -->
-                                    <div class="user-login">
-                                            <ul class="d-flex flex-column">
-                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./user/dashboard.php">Profile</a>
-                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Orders</a>
-                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Catr</a>
-                                                <a class=" btn animate text-light px-5 py-1 text-left " href="./user/Action/logout.php">Logout</a>
-                                            </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </div>
-                    <!-- End Top Right -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Topbar -->
-    <div class="middle-inner">
+    <div class="middle-inner" style="display:none;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-12">
@@ -175,11 +97,92 @@
         </div>
     </div>
     <!-- Header Inner -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-12">
+                    <!-- Top Left -->
+                    <div class="top-left">
+                        <ul class="list-main">
+                            <li>   
+                              <a href="index.html"><img src="./Asset/frontend/images/logo.png" alt="logo"></a>
+                            </li>
+                            <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
+                            <li><i class="ti-email"></i> support@shophub.com</li>
+                        </ul>
+                    </div>
+                    <!--/ End Top Left -->
+                </div>
+                <div class="col-lg-5 col-md-12 col-12">
+                    <!-- Top Right -->
+                    <div class="right-content">
+                        <ul class="list-main">
+                            <li><i class="ti-location-pin"></i> Store location</li>
+                            <?php   
+                              if(!isset($_SESSION['user_session'])){
+                            ?>
+                            <li>
+                                <div class="sinlge-bar shopping" style="width:100%;">
+                                    <a id="userLoginBtn" href="#"><i class="ti-power-off"></i> Login</a>
+                                    <!-- Shopping Item -->
+                                    <div class="user-login">
+                                        <div class="login-box">
+                                            <div class="card card-outline">
+                                            <div class="card-header text-center">
+                                                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                                                <hr>
+                                                <?php include_once"./component/part/tabBar.php"; ?>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="tab-content" id="nav-tabContent">
+                                                  <?php include_once"./component/part/tabContent_loginForm.php"; ?>
+
+                                                  <?php include_once"./component/part/tabContent_signUpForm.php"; ?>
+
+                                                  <?php include_once"./component/part/tabContent_recover.php"; ?>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <?php 
+                            }else{ ?>
+                            <li>
+                                <div class="sinlge-bar shopping">
+                                    <a id="userLoginBtn" href="#"><i class="ti-user usernameShow mr-2"></i></a>
+                                    <p id="userLoginBtn">
+                                        
+                                    </p>
+                                    <!-- Shopping Item -->
+                                    <div class="user-login">
+                                            <ul class="d-flex flex-column">
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./user/dashboard.php">Profile</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Orders</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Catr</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left " href="./user/Action/logout.php">Logout</a>
+                                            </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                    <!-- End Top Right -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Topbar -->
     <div class="header-inner">
         <div class="container">
             <div class="cat-nav-head">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-md-12 col-lg-3">
                         <div class="all-category">
                             <h3 style="cursor:pointer;" class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
                             <ul class="main-category" style="display:none;">
@@ -247,24 +250,34 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-12">
+                    <div class="col-md-12 col-lg-9">
                         <div class="menu-area">
                             <!-- Main Menu -->
-                            <nav class="navbar navbar-expand-lg">
+                            <nav class="navbar navbar-expand-lg mb-2 mb-lg-0">
                                 <div class="navbar-collapse">	
-                                    <div class="nav-inner">	
-                                        <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a href="#">Home</a></li>
-                                                <li><a href="#">Product</a></li>												
-                                                <li><a href="#">Service</a></li>
-                                                <li><a href="#">Pages</a></li>									
-                                                <li><a href="#">Blog<i class="ti-angle-down"></i></a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">Contact Us</a></li>
-                                            </ul>
+                                    <div class="nav-inner w-100">	
+                                        <ul class="nav main-menu menu navbar-nav w-100 text-center">
+                                            <li class="active"><a href="#">Home</a></li>
+                                            <li><a href="#">Product</a></li>												
+                                            <li><a href="#">Service</a></li>
+                                            <li><a href="#">Pages</a></li>									
+                                            <li><a href="#">Blog<i class="ti-angle-down"></i></a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="mb-2 mb-lg-0"><a href="contact.html">Contact Us</a></li>
+                                            <li class="mb-2 mb-lg-0 d-flex align-items-center justify-content-center">
+                                            <div class="input-group">
+                                                <input id="searchProductField" type="text" class="form-control pl-1" placeholder="Search">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text" style="cursor:pointer;">
+                                                    <i class="ti-search"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </nav>

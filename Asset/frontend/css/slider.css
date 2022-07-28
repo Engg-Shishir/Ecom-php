@@ -1,0 +1,40 @@
+#sliders .slider {
+  height: 60vh;
+  width: 100%;
+  position: relative;
+}
+#sliders .slider .slick-dots {
+  display: none !important;
+}
+#sliders .slider .slickItem {
+  height: 100%;
+  width: 100%;
+}
+#sliders .slider .slickItem img {
+  height: 60vh;
+  width: 100%;
+}
+#sliders .slider .slick-prev, #sliders .slider .slick-next {
+  display: none !important;
+}
+#sliders .slider .prev, #sliders .slider .next {
+  position: absolute;
+  cursor: pointer;
+  top: 45%;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+  background-color: #fbebcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#sliders .slider .prev i, #sliders .slider .next i {
+  color: #f7941d;
+}
+#sliders .slider .prev {
+  left: 0%;
+}
+#sliders .slider .next {
+  right: 0%;
+}/*# sourceMappingURL=slider.css.map */
