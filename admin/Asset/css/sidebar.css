@@ -1,0 +1,45 @@
+
+
+
+.dashboard-li.actives{ background-color: rgba(0,0,0,.1);}
+.dashboard-li.actives i{ color: rgb(0, 0, 0); }
+.dashboard-li.actives p{ color: rgb(0, 0, 0); }
+.dashboard-li.actives:hover{ background-color: rgba(0,0,0,.1) !important; }
+
+
+
+
+.product-li-parent.actives{background-color: rgba(0,0,0,.1);}
+.product-li-parent.actives i{color: rgb(0, 0, 0);}
+/* .product-li-parent.actives:hover{ background-color: #e5e5e5 !important;} */
+.product-li-parent.actives p{ color: rgb(0, 0, 0);}
+
+
+/* .all-product-li.actives{  background-color: #d6d6d6; } */
+.all-product-li.actives{
+    padding-left: 15px;
+}
+.all-product-li.actives i{ color: rgb(255, 255, 255); font-weight: bold;}
+/* .all-product-li.actives:hover{ background-color: #808080;} */
+.all-product-li.actives p{ color: rgb(252, 252, 252);font-weight: bold; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-item.active{
+    background-color: #152152;
+}
+.nav-item.active a{
+    color: #fff;
+}

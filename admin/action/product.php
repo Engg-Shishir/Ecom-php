@@ -1,10 +1,7 @@
- 
-
-
 
 <?php
-  include_once("../../component/connection/connection.php");
   session_start();
+  include_once("../../Connection/connection.php");
   $action = $_POST['action'];
 
   if($action=="load"){
@@ -275,7 +272,7 @@
 
         unlinkImage($sno);
 
-				move_uploaded_file($tmp_name,"../image/product/".$new_img_name);
+				move_uploaded_file($tmp_name,"../Asset/image/product/".$new_img_name);
 
                 return $new_img_name;
 			}

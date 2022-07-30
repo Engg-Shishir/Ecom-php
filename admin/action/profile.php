@@ -1,5 +1,5 @@
 <?php
-include_once("../../component/connection/connection.php");
+include_once("../../Connection/connection.php");
 session_start();
 $uid = $_SESSION['user_session'];
 $action = $_POST['action'];
@@ -91,7 +91,7 @@ if($action == "update"){
 			$types = ["image/jpeg", "image/jpg", "image/png"];
 			if(in_array($img_type, $types) === true){
 				$new_img_name = $_SESSION['user_session'].".".$img_ext;
-				$dirname= "../image/";
+				$dirname= "../Asset/image/";
 				$path = $dirname.$new_img_name;
 				
 				// Check file name is avilable avilable or not with different file type
@@ -109,7 +109,7 @@ if($action == "update"){
 
 				if(move_uploaded_file($tmp_name,$path)){
 
-					$select = mysqli_query($conn, "SELECT email FROM users WHERE uid ='".$uids."'");
+					$select = mysqli_query($conn, "SELECT email FROM users WHERE uid ='".$uid."'");
 					$row = mysqli_fetch_array($select);
 
 					$select1 = mysqli_query($conn, "UPDATE `users` SET `email`='$email',`pass`='$password' WHERE `email`='".$row['email']."'");
@@ -130,7 +130,7 @@ if($action == "update"){
 	else{         
 
 
-		$select = mysqli_query($conn, "SELECT email FROM users WHERE uid ='".$uids."'");
+		$select = mysqli_query($conn, "SELECT email FROM users WHERE uid ='".$uid."'");
 		$row = mysqli_fetch_array($select);
 
 		$select1 = mysqli_query($conn, "UPDATE `users` SET `email`='$email',`pass`='$password' WHERE `email`='".$row['email']."'");
