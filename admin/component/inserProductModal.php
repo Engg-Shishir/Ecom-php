@@ -49,10 +49,14 @@
                             <label for="pcategory">Category:</label>
                             <select class="form-control" id="pcategory">
                               <option>Select Category</option>
-                              <option>Device</option>
-                              <option>Paper</option>
-                              <option>Watch</option>
-                              <option>Aci</option>
+                              <option>Electric</option>
+                              <option>Electronics</option>
+                              <option>Education</option>
+                              <option>Cloth</option>
+                              <option>Food</option>
+                              <option>Gamming</option>
+                              <option>Medicine</option>
+                              <option>Cosmatics</option>
                             </select>
                       </div>
                   </div>
@@ -65,6 +69,11 @@
                             <option>20</option>
                             <option>35</option>
                             <option>50</option>
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+                            <option>500</option>
                           </select>
                     </div>
                   </div>

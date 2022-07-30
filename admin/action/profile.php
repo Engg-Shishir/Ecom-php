@@ -1,21 +1,20 @@
 <?php
 include_once("../../component/connection/connection.php");
 session_start();
-
-$uids = $_SESSION['user_session'];
+$uid = $_SESSION['user_session'];
 $action = $_POST['action'];
 
 
-
 if($action == "load"){
-	$query = "SELECT * FROM users WHERE uid = {$uids}";
-	$query_run = mysqli_query($conn, $query);
+	// $query = "SELECT * FROM users WHERE uid = {$uid}";
+	$query="SELECT * FROM users INNER JOIN userdetails ON users.email = userdetails.email AND users.uid=$uid";
+	$row = mysqli_query($conn, $query);
+	$cust = mysqli_fetch_array($row);
 
-	$cust = mysqli_fetch_array($query_run);
 
-
-	if(mysqli_num_rows($query_run) > 0)
+	if(mysqli_num_rows($row) > 0)
 	{
+		// $_SESSION['user_email'] = $data['email'];
 		echo json_encode($cust);
 	}
 }

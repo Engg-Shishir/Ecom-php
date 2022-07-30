@@ -27,6 +27,7 @@ $(document).ready(function(){
           $('#link').html(response[total-1]);
           $.each(response, function(key,value){
             if(key < total-1){
+              var url = "./product/details.php?id="+value.id;
               $('<tr class="text-center">').html(
                 "<td><img height='50pxpx' width='50px' src='./image/product/"+value.image+"' /> </td>"+
                 "<td>"+value.name+"</td>"+
@@ -35,7 +36,7 @@ $(document).ready(function(){
                 "<td>"+value.quantity+"</td>"+
                 "<td>"+value.discount+"</td>"+
                 "<td>"+value.scharge+"</td>"+
-                "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a></td>").appendTo('tbody');
+                "<td> <a href='#' class='editProduct' data-sno='"+value.id+"'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-id='"+value.id+"'><i class='fas fa-trash text-danger'></i></a> <a href='./product/details.php?id="+value.id+"' class='viewProduct' data-id='"+value.id+"'><i class='fas fa-eye'></i></a></td>").appendTo('tbody');
             }
           });
         }else{

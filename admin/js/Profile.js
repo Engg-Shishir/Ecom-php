@@ -66,7 +66,7 @@ $('document').ready(function() {
     function getdata(){
 		$.ajax({				
 			type : 'POST',
-			url  : '../user/Action/fetchUser.php',
+			url  : 'action/profile.php',
 			data : {
 				action:"load"
 			},
@@ -77,7 +77,7 @@ $('document').ready(function() {
 			success : function(response){	
 				$('#sidebar_profile_name').text(response.name);
 
-				$('#sidebar_profile_logo').attr("src", "image/"+response.photo);
+				$('#sidebar_profile_logo').attr("src", "./image/"+response.photo);
 	
                 var img = "<img class=' shadow' id='profile_photo_show' src='image/"+response.photo+"'   height='200px' width='100%'>";
 				$("#profileImageShowDiv").html(img);

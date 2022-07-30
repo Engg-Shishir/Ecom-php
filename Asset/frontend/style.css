@@ -35,6 +35,29 @@ Version:1.0
 20. 404 Error CSS
 21. Footer CSS
 ========================================*/
+.secondLi > .sub-category{
+	left:180px;
+	display:none;
+
+}
+
+.secondLi:hover > .sub-category{
+	left:195px !important;
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .color-plate {
 	position: fixed;
 	display: block;
