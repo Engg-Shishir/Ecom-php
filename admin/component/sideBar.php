@@ -72,7 +72,7 @@
                       </a>
                     </li>
                     <li class="nav-item  brand_category-li">
-                      <a href="./brand-category.php" class="nav-link">
+                      <a href="./category/category.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Brand & Category</p>
                       </a>

@@ -9,5 +9,3 @@
     <title> <?php if (isset($title)) {echo $title;} else {echo "My Website";} ?></title>
 
      <?php include_once("./component/link4.php"); ?>
-
-</head>

@@ -10,7 +10,7 @@ $(function() {
 
 
 		if(email==" "  || password==""){
-			toastr.error('Your field is required',"Be carefull !");
+			toastr.error('All field is required');
 
 		}else{
 			$.ajax({				
@@ -27,11 +27,13 @@ $(function() {
 				success : function(response){						
 					if(response=="ok"){	
 	
+						toastr.success('Connecting ...');
 						  //   setTimeout(' window.location.href = "welcome.php"; ',4000);
 						  setTimeout(() => {
+							toastr.remove();
 							$(".loader").css("opacity", "0");
 							toastr.options.timeOut = 0;
-							toastr.success('You are redirected to home page',"Please wait..........");
+							toastr.success('Login successfull !');
 						  }, 2000);
 
 
@@ -46,7 +48,7 @@ $(function() {
 					} else {
 						$(".loader").css("opacity", "0");
 						$("#login_button").prop('disabled', false);
-						toastr.error('Something going wrong',"Try again !");
+						toastr.error('Something going wrong!');
 					}
 				}
 			});
