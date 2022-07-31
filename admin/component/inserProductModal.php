@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header text-center bg-dark text-light">
@@ -9,7 +9,10 @@
         <!-- <button type="button" class="btn btn-sm text-light"  >
            X
         </button> -->
-        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"> X </button>
+
+        <button type="button" class="btn btn-danger shadow" data-dismiss="modal">
+           <i class="fas fa-minus"></i>
+        </button>
       </div>
       <div class="modal-body" id="productInsert">
             <form class="form-login" id="product">
@@ -45,10 +48,10 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                      <div class="form-group ">
-                            <label for="pcategory">Category:</label>
-                            <select class="form-control" id="pcategory">
-                              <option>Select Category</option>
+                    <div class="form-group">
+                            <label for="shipingCharge">Category :</label>
+                            <select class="select2" id="pcategory">
+                              <option></option>
                               <option>Electric</option>
                               <option>Electronics</option>
                               <option>Education</option>
@@ -58,13 +61,13 @@
                               <option>Medicine</option>
                               <option>Cosmatics</option>
                             </select>
-                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                           <label for="shipingCharge">Shiping Charage:</label>
-                          <select class="form-control" id="shipingCharge">
-                            <option>Select Shipping Charge</option>
+                          <select class="form-control select2" id="shipingCharge">
+                            <option class="mb-1 place"></option>
                             <option>Free</option>
                             <option>20</option>
                             <option>35</option>
@@ -109,6 +112,9 @@
                 <div class="form-group d-flex align-items-center justify-content-end mt-3">
                     <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
                     </button> 
+                  <button type="button" class="btn btn-danger shadow ml-1" data-dismiss="modal">
+                    Close
+                  </button>
                 </div> 
             </form>
       </div>

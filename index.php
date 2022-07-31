@@ -17,19 +17,19 @@
     <title>Eshop - eCommerce HTML5 Template.</title>
     <link rel="icon" type="image/png" href="./Asset/frontend/images/favicon.png">
 	
-	<?php include_once"./component/css.php"; ?>
+	<?php include_once"./Asset/Component/css.php"; ?>
 </head>
 <body class="js">
 
 	<!-- include_once"./component/preloader.php"; -->
-	<?php include_once"./component/topbar.php"; ?>
-	<?php include_once"./component/slider.php"; ?>
-	<?php include_once"./component/hotItem.php"; ?>
-	<?php include_once"./component/newslateSubscrive.php"; ?>
-	<?php include_once"./component/footer.php"; ?>
+	<?php include_once"./Asset/Component/topbar.php"; ?>
+	<?php include_once"./Asset/Component/slider.php"; ?>
+	<?php include_once"./Asset/Component/hotItem.php"; ?>
+	<?php include_once"./Asset/Component/newslateSubscrive.php"; ?>
+	<?php include_once"./Asset/Component/footer.php"; ?>
 
 </body>
-	<?php include_once"./component/js.php"; ?>
+	<?php include_once"./Asset/Component/js.php"; ?>
 	<script>
 		$(function(){
               // Banner Slick Slider

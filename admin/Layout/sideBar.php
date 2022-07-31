@@ -4,28 +4,41 @@
     if(strpos($_SERVER['REQUEST_URI'], "product.php")) 
     { ?> <script> 
       $(function(){  
-        $('.product-li-parent').addClass("menu-open");
-        $('.product-li-parent').addClass("actives");
+        $('.management-parent').addClass("menu-open");
+        $('.management-parent').addClass("actives");
         $('.all-product-li').addClass("actives");  
-          
       })
     </script> <?php }
 
     // strpos check url is contain inserted text or not.Such that,here check "product.php"
-    if(strpos($_SERVER['REQUEST_URI'], "dashboard.php")) 
-    { ?> <script> 
-    $(function(){  $('.dashboard-li').addClass("actives");})
-    // alert();
-    </script> <?php }
+    if(strpos($_SERVER['REQUEST_URI'], "dashboard.php")){ 
+      ?> 
+        <script> 
+            $(function(){  $('.dashboard-li').addClass("actives");})
+        </script> 
+      <?php 
+    }elseif(strpos($_SERVER['REQUEST_URI'], "category.php")){ 
+      ?> 
+        <script> 
+            $(function(){  
+              $('.management-parent').addClass("menu-open");
+              $('.management-parent').addClass("actives");
+              $('.brand_category-li').addClass("actives");
+            })
+        </script> 
+      <?php
+    }
+
+
 
 ?>
 
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 shadow">
           <!-- Brand Logo -->
-          <a href="./profile.php" class="brand-link d-flex flex-column align-items-center justify-content-center">
-            <img id="sidebar_profile_logo" src="Asset/image/avatar.png"style="height:100px;width:100px;border-radius:50%;text-decoration:none;">
+          <a href="./profile.php" class="brand-link d-flex flex-column align-items-center justify-content-center" style="border:none !important;">
+            <img class="shadow" id="sidebar_profile_logo" src="Asset/image/avatar.png"style="height:100px;width:100px;border-radius:50%;text-decoration:none;">
             <!-- <span class="brand-text font-bold" id="sidebar_profile_name">User Name</span> -->
           </a>
 
@@ -53,7 +66,7 @@
                     </p>
                   </a>
                 </li>  
-                <li class="nav-item product-li-parent">
+                <li class="nav-item management-parent">
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-chess-queen"></i>
                     <p>
@@ -79,7 +92,7 @@
                     <li class="nav-item  brand_category-li">
                       <a href="category.php" class="nav-link">
                         <i class=" fas fa-solid fa-angle-right"></i>
-                        <p>Brand & Category</p>
+                        <p>Category</p>
                       </a>
                     </li>
                   </ul>

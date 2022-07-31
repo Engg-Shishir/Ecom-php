@@ -9,7 +9,7 @@
     }
 ?>
 
-
+  </head>
 <!-- <link rel="stylesheet" href="css/profilepage.css"> -->
 <body>  
 <div class="containers">
@@ -102,8 +102,5 @@
 </body>
 <script src="../Asset/js/Dashboard.js"></script>
 <script src="../Asset/js/product.js"></script>
-<script>
-  $(document).ready(function(){
-    $('#summernote').summernote();
-  });
-</script>
+
+</html>

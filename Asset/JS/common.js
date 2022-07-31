@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -16,4 +16,23 @@ $(function(){
         "showMethod": "slideDown",
         "hideMethod": "slideUp"
     }
+
+    $('#summernote').summernote({
+        height: 150,
+        toolbar: [
+            [ 'style', [ 'style' ] ],
+            [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear'] ],
+            // [ 'fontname', [ 'fontname' ] ],
+            [ 'fontsize', [ 'fontsize' ] ],
+            [ 'color', [ 'color' ] ],
+            [ 'para', [ 'ol', 'ul', 'paragraph' ] ],
+            [ 'table', [ 'table' ] ],
+            [ 'view', [ 'undo', 'redo', 'codeview', 'help' ] ]
+        ]
+    });
+
+    $('.select2').select2({
+        placeholder: 'Select an option',
+         closeOnSelect: true
+      });
 });

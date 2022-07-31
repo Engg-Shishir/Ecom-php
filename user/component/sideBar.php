@@ -17,11 +17,11 @@
 ?>
 <link rel="stylesheet" href="css/sidebar.css">
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 shadow">
           <!-- Brand Logo -->
-          <a href="./dashboard.php" class="brand-link">
-            <img id="sidebar_profile_logo" src="Asset/image/avatar.png" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-bold" id="sidebar_profile_name">User Name</span>
+          <a href="./profile.php" class="brand-link d-flex flex-column align-items-center justify-content-center"  style="border:none !important;">
+            <img class="shadow" id="sidebar_profile_logo" src="Asset/image/avatar.png"style="height:100px;width:100px;border-radius:50%;text-decoration:none;">
+            <!-- <span class="brand-text font-bold" id="sidebar_profile_name">User Name</span> -->
           </a>
 
           <!-- Sidebar -->
@@ -58,7 +58,7 @@
                   </ul>
                 </li>               
                 <li class="nav-item profile-li">
-                  <a href="./Action/logout.php" class="nav-link">
+                  <a href="../Action/logout.php" class="nav-link">
                     <ion-icon class="nav-icon" src="./Asset/image/arrow-up-right-from-square-solid.svg"></ion-icon>
                     <p>
                       Logout

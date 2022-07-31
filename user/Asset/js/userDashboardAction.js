@@ -5,7 +5,7 @@ $(function(){
     function getdata(){
          $.ajax({				
              type : 'POST',
-             url  : 'Action/fetchUser.php',
+             url  : '../Action/fetchUser.php',
              data : {
                  action:"load"
              },
@@ -18,12 +18,12 @@ $(function(){
 
 				// $('#sidebar_profile_logo').attr("src","");
 				// $('#profile_photo_show').attr("src", "");
-                 $('#sidebar_profile_logo').attr("src","image/"+response.photo);
-                 $('#profile_photo_show').attr("src","image/"+response.photo);
+                 $('#sidebar_profile_logo').attr("src","../Image/"+response.photo);
+                 $('#profile_photo_show').attr("src","../Image/"+response.photo);
 
-				//  $('#profile_photo_show').attr("src","image/"+response.photo);
+				//  $('#profile_photo_show').attr("src","../Image/"+response.photo);
 				$("#profileImageShowDiv").html("");
-                var img = "<img class=' shadow' id='profile_photo_show' src='image/"+response.photo+"'   height='200px' width='100%'>";
+                var img = "<img class=' shadow' id='profile_photo_show' src='../Image/"+response.photo+"'   height='200px' width='100%'>";
 				$("#profileImageShowDiv").html(img);
 
                  $('#name').val(response.name);

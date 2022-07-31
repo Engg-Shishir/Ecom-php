@@ -131,15 +131,15 @@
                                             <div class="card-header text-center">
                                                 <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
                                                 <hr>
-                                                <?php include_once"./component/part/tabBar.php"; ?>
+                                                <?php include_once"part/tabBar.php"; ?>
                                             </div>
                                             <div class="card-body">
                                                 <div class="tab-content" id="nav-tabContent">
-                                                  <?php include_once"./component/part/tabContent_loginForm.php"; ?>
+                                                  <?php include_once"part/tabContent_loginForm.php"; ?>
 
-                                                  <?php include_once"./component/part/tabContent_signUpForm.php"; ?>
+                                                  <?php include_once"part/tabContent_signUpForm.php"; ?>
 
-                                                  <?php include_once"./component/part/tabContent_recover.php"; ?>
+                                                  <?php include_once"part/tabContent_recover.php"; ?>
                                                 </div>
                                             </div>
                                             </div>
@@ -159,7 +159,7 @@
                                     <!-- Shopping Item -->
                                     <div class="user-login">
                                             <ul class="d-flex flex-column">
-                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./user/dashboard.php">Profile</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./User/Page/dashboard.php">Profile</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Orders</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Catr</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left " href="./user/Action/logout.php">Logout</a>
