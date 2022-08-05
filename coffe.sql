@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 11:36 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Aug 05, 2022 at 12:13 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,60 @@ SET time_zone = "+00:00";
 --
 -- Database: `coffe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(30) NOT NULL,
+  `category` varchar(250) NOT NULL,
+  `description` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category`, `description`, `status`, `date_created`) VALUES
+(1, 'Smart Phone', 'Smart Phone Products', 1, '2021-08-30 10:52:25'),
+(2, 'Accessories', 'Phone Accessories', 1, '2021-08-30 10:52:49'),
+(3, 'Mobile Hardware', 'Mobile Hardware products', 1, '2021-08-30 10:53:31'),
+(4, 'External Storage', 'External Storage Products', 1, '2021-08-30 10:54:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `common`
+--
+
+CREATE TABLE `common` (
+  `id` int(100) NOT NULL,
+  `logo` varchar(100) NOT NULL,
+  `mobile` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `ftext` varchar(500) NOT NULL,
+  `fbLink` varchar(100) NOT NULL,
+  `copyRight` varchar(100) NOT NULL,
+  `slider` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jsontry`
+--
+
+CREATE TABLE `jsontry` (
+  `id` int(100) NOT NULL,
+  `manu` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`manu`)),
+  `slder` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`slder`)),
+  `footer` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`footer`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -45,15 +99,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `sno`, `name`, `price`, `category`, `details`, `quantity`, `discount`, `scharge`, `image`) VALUES
-(1, 'UN81-AL06-59EM', 'Sonya Lewis', '851', 'Watch', 'Doloribus deleniti r', '609', '73', 'Free', 'UN81-AL06-59EM.png'),
-(2, 'WM92-OT45-33WB', 'Maggy Reynolds', '168', 'Device', 'Sit voluptatem nost', '228', '97', '50', 'WM92-OT45-33WB.jpeg'),
-(3, 'ZY64-GX02-02XY', 'Regan Santiago', '460', 'Aci', 'Voluptas quasi inven', '874', '78', 'Free', 'ZY64-GX02-02XY.jpg'),
-(4, 'DU68-DM34-04ND', 'Sophia Rogers', '615', 'Device', 'Aliquip at ipsa ad ', '301', '14', '50', 'DU68-DM34-04ND.jpg'),
-(5, 'NA99-SL36-98RG', 'Kelsey Miller', '754', 'Device', 'Ut excepteur dolore ', '540', '48', '20', 'NA99-SL36-98RG.png'),
-(6, 'ZB65-ST42-18PD', 'Hashim Ford', '902', 'Select Category', 'Et quidem consequat', '291', '68', '20', 'ZB65-ST42-18PD.jpg'),
-(7, 'JQ15-QK65-41QZ', 'Gemma Mayo', '933', 'Aci', 'Irure aspernatur est', '334', '64', '50', 'JQ15-QK65-41QZ.jpg'),
-(8, 'DT30-MI60-83OB', 'Portia Fowler', '492', 'Select Category', 'Excepturi cupidatat ', '516', '66', '35', 'DT30-MI60-83OB.jpg'),
-(9, 'ND80-RB73-32ZO', 'Ebony Cummings', '769', 'Aci', 'Excepturi lorem dolo', '539', '22', '50', 'ND80-RB73-32ZO.jpg');
+(13, 'FZ91-CW01-84UG', 'Blair Roberts', '596', 'Watch', '<p><b style=\"color: rgb(0, 255, 0);\">fdghfhfh</b></p>', '528', '60', 'Free', 'FZ91-CW01-84UG.jpg'),
+(21, 'HJ35-AL16-83RQ', 'Hello', '1000', 'null', '<h1><span style=\"color: rgb(255, 156, 0);\">E-</span><span style=\"color: rgb(156, 156, 148);\">SHOPPER</span></h1><p style=\"box-sizing: inherit; padding: 0px; margin: 10px 0px 22px; font-family: Roboto, sans-serif; font-weight: 700; color: rgb(54, 52, 50); font-size: 28px; transition: all 0.4s ease 0s;\">Free E-Commerce Template</p><h6 style=\"box-sizing: inherit; padding: 0px; margin: 10px 0px 22px; font-weight: 700; color: rgb(54, 52, 50); font-size: 28px; transition: all 0.4s ease 0s;\"><span style=\"font-size: 16px; font-weight: 300; font-family: Tahoma;\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</span></h6>', '5', '50', '35', 'HJ35-AL16-83RQ.png'),
+(22, 'TY03-BO50-15CX', 'fdsfd', '54', 'Electric', '<p><b>45654654</b></p>', '456', '54', 'Free', 'TY03-BO50-15CX.jpg');
 
 -- --------------------------------------------------------
 
@@ -92,27 +140,62 @@ INSERT INTO `tbl_student` (`student_id`, `student_name`, `student_phone`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `userdetails`
+--
+
+CREATE TABLE `userdetails` (
+  `id` int(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `photo` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userdetails`
+--
+
+INSERT INTO `userdetails` (`id`, `email`, `name`, `phone`, `photo`) VALUES
+(1, 'admin@gmail.com', 'Shishir', '014034867219', '1.jpg'),
+(2, 'paniqab@mailinator.com', 'nonimeci', '543443', '2.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `uid` int(11) NOT NULL,
-  `user` varchar(255) DEFAULT NULL,
-  `pass` varchar(100) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `profile_photo` varchar(200) DEFAULT NULL
+  `pass` varchar(100) NOT NULL,
+  `role` varchar(500) NOT NULL,
+  `token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `user`, `pass`, `email`, `profile_photo`) VALUES
-(1, 'Shishir Bhuiyan', 'admin', 'admin@gmail.com', '1.jpg');
+INSERT INTO `users` (`uid`, `email`, `pass`, `role`, `token`) VALUES
+(1, 'admin@gmail.com', '123', 'admin', NULL),
+(2, 'paniqab@mailinator.com', '123', 'user', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `common`
+--
+ALTER TABLE `common`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `product`
@@ -127,22 +210,41 @@ ALTER TABLE `tbl_student`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`uid`),
-  ADD UNIQUE KEY `username` (`user`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `email_2` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `common`
+--
+ALTER TABLE `common`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_student`
@@ -151,10 +253,16 @@ ALTER TABLE `tbl_student`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

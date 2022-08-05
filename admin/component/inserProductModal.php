@@ -36,9 +36,6 @@
                           </div>
                 			</div>
                   </div>
-                  <!-- <div class="col-md-2">
-                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="100px" width="100px" style="display:none;" >
-                  </div> -->
                 </div>
                 <div class="row">
                   <div class="col-md-12">
@@ -125,10 +122,10 @@
                   </div>
                 </div> -->
                 <div class="form-group d-flex align-items-center justify-content-end mt-3">
-                    <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
-                    </button> 
-                    <!-- <button type="submit" class="btn btn-dark" id="insert_btn_product">Insert
+                    <!-- <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
                     </button>  -->
+                    <button type="submit" class="btn btn-dark" id="insert_btn_product">Insert
+                    </button> 
                   <button type="button" class="btn btn-danger shadow ml-1" data-dismiss="modal">
                     Close
                   </button>
