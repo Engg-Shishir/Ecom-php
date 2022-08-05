@@ -75,3 +75,14 @@
   .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
     background-color: #007bff;
   }
+
+  .imgGallery{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .imgGallery img {
+    padding: 8px;
+    max-width: 100px;
+  }  

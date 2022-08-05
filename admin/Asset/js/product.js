@@ -1,7 +1,56 @@
+
+
+// var fnames = [];
+// function displayImg(input, imgPreviewPlaceholder) {
+//   if (input.files) {
+//     var extension = input.files[0].name;
+//     var filesAmount = input.files.length;
+//     for (i = 0; i < filesAmount; i++) {
+//         var reader = new FileReader();
+//         reader.onload = function(event) {
+//             $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+//             $($.parseHTML('<span>')).html("3 MB").appendTo(imgPreviewPlaceholder);
+//         }
+//         reader.readAsDataURL(input.files[i]);
+//     }
+// }
+// }
+
+
+
+
+  function displayImg(input) {
+    var filesAmount = input.files.length;
+    var preview = document.querySelector('#preview');
+    for (i = 0; i < filesAmount; i++) {
+      
+        var reader = new FileReader();
+        var file = input.files[i];
+        reader.addEventListener("load", function() {
+          var image = new Image();
+          image.height = 100;
+          image.title  = file.name;
+          image.src    = this.result;
+          preview.appendChild(image);
+        });
+        
+        reader.readAsDataURL(file);
+    }
+  }
+
+
+
+
+
 $(document).ready(function(){
+
+
+
+
   $(document).on('click', '#oks', function(){
     loadProduct(1,"",5);
   })
+
   loadProduct(1,"",5);
   function loadProduct(page, query,limit)
   {
@@ -270,11 +319,43 @@ $(document).ready(function(){
    });
 
 
+  //  $('#product').submit(function(e){
+  //         e.preventDefault();
+  //         var id = $('#customFile').val();
+  //         alert(fnames);
 
+  //         // var data = new FormData(this);
+  //         // var id = $('#id').val();
+  //         // if(id =="") data.append('actions',"insert"); else data.append('actions',"update");
+
+  //         // $.ajax({				
+  //         //     type : 'POST',
+  //         //     url  :  '../Action/insertUpdateProduct.php',
+  //         //     enctype: 'multipart/form-data',
+  //         //     data:data,
+  //         //     contentType: false,
+  //         //     processData: false,
+  //         //     beforeSend: function(){	
+  //         //         // alert();
+  //         //     },
+  //         //     success : function(response){	
+  //         //         // if(response.includes("success")){
+  //         //         //     alert("Action successfully done !");
+  //         //         //     location.reload(true);
+  //         //         // }else{
+  //         //         //     alert("Something going wrong");
+  //         //         // }
+  //         //         alert(response);
+  //         //     }
+  //         // });
+  //     });
 
 
 
 });
+
+// Display chosen image name inside file choser field
+
 
 
 

@@ -20,16 +20,31 @@
                     <div class="loader"  style="border: 10px solid #f3f3f3;border-radius: 50%;border-top: 7px solid black;border-bottom: 7px solid red;width: 40px;height: 40px;-webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite; opacity:0; display:none;"></div>
                 </div> 
                 <div class="row my-auto  mt-3">
-                  <div class="col-md-10">
-                    <div class="form-group">
+                  <div class="col-md-12">
+                    <!-- <div class="form-group">
                           <div class="custom-file">
                               <input type="file" class="custom-file-input" id="product_photo_choser" placeholder="hello">
                               <label class="custom-file-label" for="customFile">Product Image</label>
                           </div>
-                      </div>
+                      </div> -->
+                      <input type="hidden" name="id" id="id" value="">
+                      <div class="form-group">
+                          <label for="" class="control-label">Images</label>
+                          <div class="custom-file">
+                              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="images[]" multiple="" onchange="displayImg(this)">
+                              <label class="custom-file-label" for="customFile">Choose file</label>
+                          </div>
+                			</div>
                   </div>
-                  <div class="col-md-2">
+                  <!-- <div class="col-md-2">
                     <img id="productInsertImagePreview" data-name="" src="" alt="" height="100px" width="100px" style="display:none;" >
+                  </div> -->
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="imgGallery bg-dark" id="preview"> 
+                         <!-- Image preview -->
+                      </div>
                   </div>
                 </div>
                 <div class="row">
@@ -112,6 +127,8 @@
                 <div class="form-group d-flex align-items-center justify-content-end mt-3">
                     <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
                     </button> 
+                    <!-- <button type="submit" class="btn btn-dark" id="insert_btn_product">Insert
+                    </button>  -->
                   <button type="button" class="btn btn-danger shadow ml-1" data-dismiss="modal">
                     Close
                   </button>
