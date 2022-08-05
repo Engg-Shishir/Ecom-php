@@ -42,7 +42,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                      <div class="imgGallery bg-dark" id="preview"> 
+                      <div class="d-flex align-items-center justify-content-center" id="preview"> 
                          <!-- Image preview -->
                       </div>
                   </div>

@@ -1,24 +1,4 @@
 
-
-// var fnames = [];
-// function displayImg(input, imgPreviewPlaceholder) {
-//   if (input.files) {
-//     var extension = input.files[0].name;
-//     var filesAmount = input.files.length;
-//     for (i = 0; i < filesAmount; i++) {
-//         var reader = new FileReader();
-//         reader.onload = function(event) {
-//             $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-//             $($.parseHTML('<span>')).html("3 MB").appendTo(imgPreviewPlaceholder);
-//         }
-//         reader.readAsDataURL(input.files[i]);
-//     }
-// }
-// }
-
-
-
-
   function displayImg(input) {
     var filesAmount = input.files.length;
     var preview = document.querySelector('#preview');
@@ -30,16 +10,14 @@
           var image = new Image();
           image.height = 100;
           image.title  = file.name;
+          image.size  = file.size;
           image.src    = this.result;
-          preview.appendChild(image);
+          preview.append(image);
         });
         
         reader.readAsDataURL(file);
     }
   }
-
-
-
 
 
 $(document).ready(function(){
