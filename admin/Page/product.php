@@ -8,7 +8,6 @@
       header("location: login.php");
     }
 ?>
-
   </head>
 <!-- <link rel="stylesheet" href="css/profilepage.css"> -->
 <body>  

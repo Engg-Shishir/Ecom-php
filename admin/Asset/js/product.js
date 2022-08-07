@@ -19,15 +19,34 @@
     }
   }
 
+   
 
 $(document).ready(function(){
 
+  
+ $('.inserProductModalCloseBtn').on("click",()=>{
+  resetProductForm("");
+ });
 
+ function resetProductForm(whoCallme){
+  $('#product').trigger("reset");
 
+  //  Reset or clear select2 field
+    jQuery('.select2').select2({
+      placeholder: "Select an option",
+      allowClear: true
+    });
+
+   $('#preview').html("");
+   $('#summernote').summernote('code', '');
+   if(whoCallme=="update") $('#exampleModal').modal('toggle');
+  //  $('#exampleModalLabel').html("Insert Product");
+  //  $('#insert_btn_product').html("Insert");
+ }
 
   $(document).on('click', '#oks', function(){
     loadProduct(1,"",5);
-  })
+  });
 
   loadProduct(1,"",5);
   function loadProduct(page, query,limit)
@@ -44,6 +63,8 @@ $(document).ready(function(){
       },
       success:function(response)
       {
+        $("#searchSpiner").css("opacity","0");
+        
         var data = ""
         var total = response.length;
         if(total > 0){
@@ -53,9 +74,11 @@ $(document).ready(function(){
 
           $('#link').html(response[total-1]);
           $.each(response, function(key,value){
+            var perseImage = JSON.parse(value.image); 
+
             if(key < total-1){
               $('<tr class="text-center">').html(
-                "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/"+value.image+"' /> </td>"+
+                "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/"+perseImage[0]+"' /> </td>"+
                 "<td>"+value.name+"</td>"+
                 "<td>"+value.price+"</td>"+
                 "<td>"+value.category+"</td>"+
@@ -69,7 +92,7 @@ $(document).ready(function(){
           $('#link').html("");
           var images = "../Asset/image/Fixed/noRecordFound.svg";
           data = data + "<tr><td colspan='8'> <img height='300px' src='"+images+"' /> </td></tr>"
-        $('tbody').html(data);
+          $('tbody').html(data);
         }
         setTimeout(() => {
           $("#searchSpiner").css("opacity","0");
@@ -136,24 +159,36 @@ $(document).ready(function(){
       },
       dataType: "json",
       success: function(data){
-        $("#pname").val(data.name);
-        $("#pprice").val(data.price);
-        $("#pcategory").val(data.category);
+        var perseImage = JSON.parse(data.image); 
+        $('#sno').val(data.sno);
+        $("#productName").val(data.name);
+        $("#productPrice").val(data.price);
+        // $("#productCategory").val(data.category); // This is work for general select dropdown
+        $("#productCategory").select2("val",data.category);    // If select element are Select2 plugin asociated, then you shold try this
         // $("#summernote").val(data.details);
         $('#summernote').summernote('code', data.details);
-        $("#pquantity").val(data.quantity);
-        $("#pdiscount").val(data.discount);
-        $("#shipingCharge").val(data.scharge);
-        var image = "../Asset/image/product/"+data.image;
-        $("#productInsertImagePreview").css("display", "block").attr("src", image);
-        $("#productInsertImagePreview").attr("data-name", data.image);
+        $("#productQuantity").val(data.quantity);
+        $("#productDiscount").val(data.discount);
+        // $("#shipingCharge").val(data.scharge);  // This is work for general select dropdown
+        $("#shipingCharge").select2("val",data.scharge); 
+        // preview.append(image);
+
+        var append_image="";
+        perseImage.forEach(e => {
+          var image = "../Asset/image/product/"+e;
+          append_image+="<img src='"+image+"' style='height:100px;width:100px; margin-right:3px;' />";
+        });
+        $('#preview').html(append_image);
+        
+        // $("#productInsertImagePreview").css("display", "block").attr("src", image);
+        // $("#productInsertImagePreview").attr("data-name", perseImage[0]);
         
       }
     });
 });
 
   $('#search_box').keyup(function(){
-    $('#product_show_by_limit option:first').prop('selected',true).trigger( "change" );
+    $('#product_show_by_limit option:first').prop('selected',true).trigger("change");
     var query = $('#search_box').val();
     if(query != "") loadProduct(1, query,5);
   });
@@ -164,31 +199,31 @@ $(document).ready(function(){
   });
 
  
-   $('#product_photo_choser').change(function(){
-    var file = $(this).get(0).files[0];
+  //  $('#product_photo_choser').change(function(){
+  //   var file = $(this).get(0).files[0];
 
-    if(file){
-      var extension = $(this).val().split('.').pop().toLowerCase();
-      var validFileExtensions = ['jpeg', 'jpg', 'png'];
-      if ($.inArray(extension, validFileExtensions) == -1) {
-        toastr.error('Should be jpg,png,jpeg',"Wrong file selected");
+  //   if(file){
+  //     var extension = $(this).val().split('.').pop().toLowerCase();
+  //     var validFileExtensions = ['jpeg', 'jpg', 'png'];
+  //     if ($.inArray(extension, validFileExtensions) == -1) {
+  //       toastr.error('Should be jpg,png,jpeg',"Wrong file selected");
   
-      }else{
-        var MB = Math.floor(file.size/1024000);   // in MB
-        if( MB> 1){
-          toastr.error('Should less then 3MB',"Large selected");
-        }else{
-          var reader = new FileReader();
-          reader.onload = function(e){
-              $("#productInsertImagePreview").css("display", "block");
-              $("#productInsertImagePreview").attr("src", e.target.result);
-              // $('#productInsert').css('background', 'transparent url('+e.target.result +')');
-          }
-          reader.readAsDataURL(file);
-        }
-      }
-    }
-   });
+  //     }else{
+  //       var MB = Math.floor(file.size/1024000);   // in MB
+  //       if( MB> 1){
+  //         toastr.error('Should less then 3MB',"Large selected");
+  //       }else{
+  //         var reader = new FileReader();
+  //         reader.onload = function(e){
+  //             $("#productInsertImagePreview").css("display", "block");
+  //             $("#productInsertImagePreview").attr("src", e.target.result);
+  //             // $('#productInsert').css('background', 'transparent url('+e.target.result +')');
+  //         }
+  //         reader.readAsDataURL(file);
+  //       }
+  //     }
+  //   }
+  //  });
 
    $('#product_show_by_limit').change(function(){
       var limit = $(this).val();
@@ -302,37 +337,31 @@ $(document).ready(function(){
    $('#product').submit(function(e){
           e.preventDefault();
 
-          if($('#insert_btn_product').text() == "Update"){
-                   
-          }else{
-            alert();
-          }
+          var sno = $('#sno').val();
+          var data = new FormData(this);
+          if(sno =="") data.append('actions',"insert"); else data.append('actions',"update");
 
-          // var data = new FormData(this);
-          // var id = $('#id').val();
-          // if(id =="") data.append('actions',"insert"); else data.append('actions',"update");
-
-          // $.ajax({				
-          //     type : 'POST',
-          //     url  :  '../Action/insertUpdateProduct.php',
-          //     enctype: 'multipart/form-data',
-          //     data:data,
-          //     contentType: false,
-          //     processData: false,
-          //     beforeSend: function(){	
-          //         // alert();
-          //     },
-          //     success : function(response){	
-          //         // if(response.includes("success")){
-          //         //     alert("Action successfully done !");
-          //         //     location.reload(true);
-          //         // }else{
-          //         //     alert("Something going wrong");
-          //         // }
-          //         alert(response);
-          //     }
-          // });
-      });
+          $.ajax({				
+              type : 'POST',
+              url  :  '../Action/insertUpdateProduct.php',
+              enctype: 'multipart/form-data',
+              data:data,
+              contentType: false,
+              processData: false,
+              beforeSend: function(){	
+                  // alert();
+              },
+              success : function(response){	
+                  if(response.includes("success")){
+                    toastr.success('Successfull !');
+                  }else{
+                    toastr.error('Something wemt wrong !');
+                  }
+                  loadProduct(1,"",5);
+                  resetProductForm("update");
+              }
+          });
+  });
 
 
 

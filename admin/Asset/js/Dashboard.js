@@ -9,7 +9,7 @@ $('document').ready(function() {
 			},
 			dataType: 'json',
 			beforeSend: function(){	
-			    // alert("Do you want");
+			    alert("Do you want");
 			},
 			success : function(response){	
 				$('#sidebar_profile_name').text(response.name);
