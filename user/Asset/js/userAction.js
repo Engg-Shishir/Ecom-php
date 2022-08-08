@@ -15,23 +15,6 @@ $(function(){
       if((userName&& userEmail&& userPassword&& userConfirmPassword)!=""){
          data.append('userName',userName);
 
-
-         //###################### Check email is active or not by Api ######################
-         // $.ajax({				
-         //    type : 'GET',
-         //    url  :  "https://isitarealemail.com/api/email/validate?email=" +
-         //    userEmail,
-         //    success : function(data){
-         //       if (data.status === 'valid') {
-         //          data.append('userEmail',userEmail);
-         //          check="1";
-         //       } else{
-         //          $('#userEmail').addClass('is-invalid');
-         //       }
-         //    }
-         // });
-
-
          if(isValidEmailAddress(userEmail)){
             data.append('userEmail',userEmail);
             if(isPasswordMatch(userPassword,userConfirmPassword)){

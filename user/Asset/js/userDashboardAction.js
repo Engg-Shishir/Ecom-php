@@ -15,13 +15,8 @@ $(function(){
              },
              success : function(response){	
                 $('#sidebar_profile_name').text(response.name);
-
-				// $('#sidebar_profile_logo').attr("src","");
-				// $('#profile_photo_show').attr("src", "");
                  $('#sidebar_profile_logo').attr("src","../Image/"+response.photo);
                  $('#profile_photo_show').attr("src","../Image/"+response.photo);
-
-				//  $('#profile_photo_show').attr("src","../Image/"+response.photo);
 				$("#profileImageShowDiv").html("");
                 var img = "<img class=' shadow' id='profile_photo_show' src='../Image/"+response.photo+"'   height='200px' width='100%'>";
 				$("#profileImageShowDiv").html(img);

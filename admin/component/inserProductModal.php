@@ -4,10 +4,6 @@
     <div class="modal-content">
       <div class="modal-header text-center bg-dark text-light">
         <h5 class="modal-title text-light" id="exampleModalLabel">Insert Product</h5>
-        <!-- <button type="button" class="btn btn-sm text-light"  >
-           X
-        </button> -->
-
         <button type="button" class="btn btn-danger shadow inserProductModalCloseBtn" data-dismiss="modal">
           <i class="fas fa-minus"></i>
         </button>
@@ -19,15 +15,8 @@
           </div>
           <div class="row my-auto  mt-3">
             <div class="col-md-12">
-              <!-- <div class="form-group">
-                          <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="product_photo_choser" placeholder="hello">
-                              <label class="custom-file-label" for="customFile">Product Image</label>
-                          </div>
-                      </div> -->
               <input type="hidden" name="sno" id="sno" value="">
 
-              
               <div class="form-group">
                 <label for="images" class="control-label">Images</label>
                 <div class="custom-file">
@@ -113,19 +102,11 @@
             <div class="col-md-12">
               <div class="form-group ">
                 <label for="productDetails">Product Details:</label>
-                <!-- <textarea placeholder="Product Details" id="pdetails" class="form-control"></textarea> -->
                 <textarea name="productDetails" id="summernote" class="form-control"></textarea>
               </div>
             </div>
           </div>
-          <!-- <div class="row">
-                  <div class="col-md-4 offset-4">
-                    <img id="productInsertImagePreview" data-name="" src="" alt="" height="150px" width="150px" style="display:none;" >
-                  </div>
-                </div> -->
           <div class="form-group d-flex align-items-center justify-content-end mt-3">
-            <!-- <button type="button" class="btn btn-dark" id="insert_btn_product">Insert
-                    </button>  -->
             <button type="submit" class="btn btn-dark" id="insert_btn_product">Insert
             </button>
             <button type="button" class="btn btn-danger shadow ml-1 inserProductModalCloseBtn" data-dismiss="modal">
@@ -137,4 +118,3 @@
     </div>
   </div>
 </div>
-

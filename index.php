@@ -4,7 +4,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="Eng">
 
 <head>
 	<!-- Meta Tag -->
@@ -14,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-	<title>Eshop - eCommerce HTML5 Template.</title>
+	<title>Eshop Ecommerce</title>
 	<link rel="icon" type="image/png" href="./Asset/frontend/images/favicon.png">
 
 	<?php include_once "./Asset/Component/css.php"; ?>
@@ -31,21 +31,4 @@
 
 </body>
 <?php include_once "./Asset/Component/js.php"; ?>
-<script>
-	$(function() {
-		// Banner Slick Slider
-		$('.content').slick({
-			dots: false,
-			infinite: true,
-			// fade: true,
-			cssEase: 'linear',
-			autoplay: true,
-			autoplaySpeed: 3000,
-			prevArrow: '.prev',
-			nextArrow: '.next'
-
-		});
-	});
-</script>
-
 </html>
