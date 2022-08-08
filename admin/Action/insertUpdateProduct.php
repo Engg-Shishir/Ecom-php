@@ -20,9 +20,9 @@ $sirial = $_POST['sno'];
 
 
 
-if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetails != "" && $pquantity != "" && $pdiscount != "" && $pscharge != "Select Shipping Charge"){
+if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetails != "" && $pquantity != "" && $pdiscount != "" && $pscharge != "Select Shipping Charge") {
 
-    if($action == "insert") {
+    if ($action == "insert") {
         foreach ($_FILES['images']['name'] as $key => $value) {
             $file_name = explode(".", $_FILES['images']['name'][$key]);
             $img_ext = strtolower(end($file_name));
@@ -36,14 +36,14 @@ if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetail
                 }
             }
         }
-    
+
         if (count($products) > 0) {
             $image = json_encode($products);
-    
+
             $sno = sernum();
             $sql = "INSERT INTO product(sno,name, price, category, details, quantity, discount, scharge,image) VALUES ('" . $sno . "','" . $pname . "','" . $pprice . "','" . $pcategory . "','" . $pdetails . "','" . $pquantity . "','" . $pdiscount . "','" . $pscharge . "','" . $image . "')";
-    
-    
+
+
             $run = mysqli_query($conn, $sql);
             if ($run) {
                 echo "success";
@@ -53,7 +53,7 @@ if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetail
         } else {
             echo "empty filed warning";
         }
-    }else {
+    } else {
         foreach ($_FILES['images']['name'] as $key => $value) {
             $file_name = explode(".", $_FILES['images']['name'][$key]);
             $img_ext = strtolower(end($file_name));
@@ -67,33 +67,28 @@ if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetail
                 }
             }
         }
-        
-    
+
+
         if (count($products) > 0) {
             $image = json_encode($products);
 
 
-            $sql = mysqli_query($conn,"UPDATE `product`SET `name`='".$pname."',`price`='".$pprice."',`category`='".$pcategory."', `details`='".$pdetails."',`quantity`='".$pquantity."',`discount`='".$pdiscount."',`scharge`='".$pscharge."',`image`='$image' WHERE  `sno`='".$sirial."'");
+            $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "',`image`='$image' WHERE  `sno`='" . $sirial . "'");
 
             if ($sql) {
                 echo "success";
             }
         } else {
-            $sql = mysqli_query($conn,"UPDATE `product`SET `name`='".$pname."',`price`='".$pprice."',`category`='".$pcategory."', `details`='".$pdetails."',`quantity`='".$pquantity."',`discount`='".$pdiscount."',`scharge`='".$pscharge."' WHERE  `sno`='".$sirial."'");
+            $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "' WHERE  `sno`='" . $sirial . "'");
 
             if ($sql) {
-                echo"success";
+                echo "success";
             }
         }
     }
-}else{
+} else {
     echo "failed";
 }
-
-
-
-
-
 
 
 

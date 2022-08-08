@@ -7,4 +7,3 @@
     }else{
         header("location: page/login.php");
     }
-?>
