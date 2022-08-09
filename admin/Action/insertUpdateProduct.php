@@ -2,7 +2,8 @@
 session_start();
 include_once("../../Connection/connection.php");
 $action = $_POST['actions'];
-$products = array();
+
+
 
 
 $pname = $_POST['productName'];
@@ -19,28 +20,18 @@ $sirial = $_POST['sno'];
 
 
 
-
 if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetails != "" && $pquantity != "" && $pdiscount != "" && $pscharge != "Select Shipping Charge") {
 
+    $productsRecive = array();
+
     if ($action == "insert") {
-        foreach ($_FILES['images']['name'] as $key => $value) {
-            $file_name = explode(".", $_FILES['images']['name'][$key]);
-            $img_ext = strtolower(end($file_name));
-            $allowed_ext = array("jpg", "jpeg", "png");
-            if (in_array($img_ext, $allowed_ext)) {
-                $new_name = $_POST["productName"] . '.' . $key . '.' . $img_ext;
-                $sourcePath = $_FILES['images']['tmp_name'][$key];
-                $targetPath = "../Asset/image/product/" . $new_name;
-                if (move_uploaded_file($sourcePath, $targetPath)) {
-                    array_push($products, $new_name);
-                }
-            }
-        }
 
-        if (count($products) > 0) {
-            $image = json_encode($products);
+        $sno = sernum();
+        $productsRecive = returnImageArray($sno);
+        $image = json_encode($productsRecive);
 
-            $sno = sernum();
+        if (count($productsRecive) > 0) {
+
             $sql = "INSERT INTO product(sno,name, price, category, details, quantity, discount, scharge,image) VALUES ('" . $sno . "','" . $pname . "','" . $pprice . "','" . $pcategory . "','" . $pdetails . "','" . $pquantity . "','" . $pdiscount . "','" . $pscharge . "','" . $image . "')";
 
 
@@ -53,41 +44,78 @@ if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetail
         } else {
             echo "empty filed warning";
         }
-    } else {
-        foreach ($_FILES['images']['name'] as $key => $value) {
-            $file_name = explode(".", $_FILES['images']['name'][$key]);
-            $img_ext = strtolower(end($file_name));
-            $allowed_ext = array("jpg", "jpeg", "png");
-            if (in_array($img_ext, $allowed_ext)) {
-                $new_name = $_POST["productName"] . '.' . $key . '.' . $img_ext;
-                $sourcePath = $_FILES['images']['tmp_name'][$key];
-                $targetPath = "../Asset/image/product/" . $new_name;
-                if (move_uploaded_file($sourcePath, $targetPath)) {
-                    array_push($products, $new_name);
+    }else{
+       
+        $productsRecives = array();
+
+    
+            if ($action=="updateWithFile") {
+                $productsRecives = returnImageArray($sirial);
+                $image = json_encode($productsRecives);
+
+                $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "',`image`='$image' WHERE  `sno`='" . $sirial . "'");
+    
+                if ($sql) {
+                    echo "success UploadImageUpdatedData";
+                }
+            }else {
+                $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "' WHERE  `sno`='" . $sirial . "'");
+    
+                if ($sql) {
+                    echo "success without file check";
                 }
             }
-        }
 
-
-        if (count($products) > 0) {
-            $image = json_encode($products);
-
-
-            $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "',`image`='$image' WHERE  `sno`='" . $sirial . "'");
-
-            if ($sql) {
-                echo "success";
-            }
-        } else {
-            $sql = mysqli_query($conn, "UPDATE `product`SET `name`='" . $pname . "',`price`='" . $pprice . "',`category`='" . $pcategory . "', `details`='" . $pdetails . "',`quantity`='" . $pquantity . "',`discount`='" . $pdiscount . "',`scharge`='" . $pscharge . "' WHERE  `sno`='" . $sirial . "'");
-
-            if ($sql) {
-                echo "success";
-            }
-        }
     }
 } else {
     echo "failed";
+}
+
+
+
+
+
+
+
+function returnImageArray($datas)
+{
+    $products = array();
+    $storePath = "../Asset/image/product/".$datas."/";
+    unlinkImage($storePath);
+    foreach ($_FILES['images']['name'] as $key => $value) {
+        $file_name = explode(".", $_FILES['images']['name'][$key]);
+        $img_ext = strtolower(end($file_name));
+        $allowed_ext = array("jpg", "jpeg", "png");
+        if (in_array($img_ext, $allowed_ext)) {
+            $new_name = $datas . $key . '.' . $img_ext;
+            $sourcePath = $_FILES['images']['tmp_name'][$key];
+            $imageLocation = $storePath . $new_name;
+            
+            if (move_uploaded_file($sourcePath, $imageLocation)) {
+                array_push($products, $new_name);
+            }
+            
+        }
+    }
+    return $products;
+}
+
+function unlinkImage($storePath)
+{
+    
+    if (!is_dir($storePath)) {
+        mkdir($storePath, 0777, true);
+    }else{
+        $files = glob($storePath."*");
+        foreach($files as $file){ // iterate files
+            if(is_file($file)) {
+              unlink($file); // delete file
+            }
+        }
+        rmdir($storePath);
+        mkdir($storePath, 0777, true);
+    }
+
 }
 
 

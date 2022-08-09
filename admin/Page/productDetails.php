@@ -9,9 +9,16 @@ if (!isset($_SESSION['user_session'])) {
 }
 ?>
 
-<!-- <link rel="stylesheet" href="../Asset/zoom/css/normalize.css" />
-<link rel="stylesheet" href="../Asset/zoom/css/foundation.css" />
-<link rel="stylesheet" href="../Asset/zoom/css/demo.css" /> -->
+<?php
+if(isset($_GET['sno'])){
+    $qry = $conn->query("SELECT * from `products` where sno = '{$_GET['sno']}' ");
+    if($qry->num_rows > 0){
+      
+    }
+}
+?>
+
+
 <script src="../Asset/zoom/js/vendor/jquery.js"></script>
 
 

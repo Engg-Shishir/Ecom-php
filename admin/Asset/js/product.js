@@ -1,6 +1,8 @@
 function displayImg(input) {
   var filesAmount = input.files.length;
+  // alert(filesAmount);
   var preview = document.querySelector("#preview");
+  preview.innerHTML = "";
   for (i = 0; i < filesAmount; i++) {
     var reader = new FileReader();
     var file = input.files[i];
@@ -22,7 +24,7 @@ $(document).ready(function () {
     resetProductForm("");
   });
 
-  function resetProductForm(whoCallme) {
+  function resetProductForm($whoCallme) {
     $("#product").trigger("reset");
 
     //  Reset or clear select2 field
@@ -33,7 +35,7 @@ $(document).ready(function () {
 
     $("#preview").html("");
     $("#summernote").summernote("code", "");
-    if (whoCallme == "update") $("#exampleModal").modal("toggle");
+    if ($whoCallme == "update") $("#exampleModal").modal("toggle");
     //  $('#exampleModalLabel').html("Insert Product");
     //  $('#insert_btn_product').html("Insert");
   }
@@ -71,8 +73,7 @@ $(document).ready(function () {
             if (key < total - 1) {
               $('<tr class="text-center">')
                 .html(
-                  "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/" +
-                    perseImage[0] +
+                  "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/"+value.sno+"/"+perseImage[0] +
                     "' /> </td>" +
                     "<td>" +
                     value.name +
@@ -94,8 +95,8 @@ $(document).ready(function () {
                     "</td>" +
                     "<td class='shadow'> <a href='#' class='editProduct' data-sno='" +
                     value.id +
-                    "'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-id='" +
-                    value.id +
+                    "'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-sno='" +
+                    value.sno +
                     "'><i class='fas fa-trash text-danger'></i></a> <a href='./productDetails.php?id=" +
                     value.id +
                     "' class='viewProduct' data-id='" +
@@ -130,7 +131,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".deleteProduct", function () {
-    var id = $(this).data("id");
+    var sirialNo = $(this).data("sno");
     Swal.fire({
       title: "Are you sure?",
       text: "delete this product",
@@ -146,7 +147,7 @@ $(document).ready(function () {
           type: "POST",
           cache: false,
           data: {
-            id: id,
+            sno: sirialNo,
             action: "delete",
           },
           success: function (response) {
@@ -190,7 +191,7 @@ $(document).ready(function () {
 
         var append_image = "";
         perseImage.forEach((e) => {
-          var image = "../Asset/image/product/" + e;
+          var image = "../Asset/image/product/"+data.sno+"/"+ e; 
           append_image +=
             "<img src='" +
             image +
@@ -221,11 +222,22 @@ $(document).ready(function () {
 
   $("#product").submit(function (e) {
     e.preventDefault();
-
+  
+    // alert($("#images").files.length);
     var sno = $("#sno").val();
     var data = new FormData(this);
     if (sno == "") data.append("actions", "insert");
-    else data.append("actions", "update");
+    else {
+      var files = $("#images")[0].files.length;
+      if(files>0){
+        data.append("actions", "updateWithFile");
+      }else{
+        data.append("actions", "updateWithoutFile");
+      }
+    }
+
+  
+
 
     $.ajax({
       type: "POST",
@@ -238,14 +250,26 @@ $(document).ready(function () {
         // alert();
       },
       success: function (response) {
-        if (response.includes("success")) {
-          toastr.success("Successfull !");
-        } else {
-          toastr.error("Something wemt wrong !");
-        }
-        loadProduct(1, "", 5);
-        resetProductForm("update");
-      },
+        alert(response);
+        // if (response.includes("success")) {
+        //   toastr.success("Successfull !");
+        //   loadProduct(1, "", 5);
+        // } else {
+        //   toastr.error("Something wemt wrong !");
+        // }
+        // if (response.includes("UploadImageUpdatedData")) {
+        //   setTimeout(() => {
+        //     location.reload(true);
+        //   }, 2000);
+        // } else {
+        //   if (response.includes("Insert")) {
+        //     resetProductForm("insert");
+        //   } else {
+        //     resetProductForm("update");
+        //   }
+        // }
+        
+      }
     });
   });
 });

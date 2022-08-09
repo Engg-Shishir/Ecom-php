@@ -126,87 +126,35 @@ if ($action == "edit") {
   }
 }
 
-if ($action == "insert" || $action == "update") {
-  $pname = $_POST['pname'];
-  $pprice = $_POST['pprice'];
-  $pcategory = $_POST['pcategory'];
-  $pdetails = $_POST['pdetails'];
-  $pquantity = $_POST['pquantity'];
-  $pdiscount = $_POST['pdiscount'];
-  $pscharge = $_POST['pscharge'];
 
-  if ($pname != "" && $pprice != "" && $pcategory != "Select Category" && $pdetails != "" && $pquantity != "" && $pdiscount != "" && $pscharge != "Select Shipping Charge") {
-
-    if ($action == "insert") {
-      $sno = sernum();
-      $image = getImageName($sno);
-      if ($image != "") {
-        $sql = "INSERT INTO `product`(`sno`,`name`, `price`, `category`, `details`, `quantity`, `discount`, `scharge`,`image`) VALUES ('$sno','$pname','$pprice','$pcategory','$pdetails','$pquantity','$pdiscount','$pscharge','$image')";
-
-        if ($conn->query($sql) == TRUE) {
-          echo "success";
-        }
-      } else {
-        echo "failed";
-      }
-    }
-
-    if ($action == "update") {
-      if (isset($_FILES['image'])) {
-        $sirial = $_POST['sno'];
-        $image = getImageName($sirial);
-        if ($image != "") {
-          $run = mysqli_query($conn, "UPDATE `product` 
-            SET `name`='$pname',
-            `price`='$pprice',
-            `category`='$pcategory',
-            `details`='$pdetails',
-            `quantity`='$pquantity',
-            `discount`='$pdiscount',
-            `scharge`='$pscharge',
-            `image`='$image'
-             WHERE  `sno`='$sirial'");
-          if ($run) {
-            echo "success";
-          }
-        }
-      } else {
-        $sirial = $_POST['sno'];
-        $run = mysqli_query($conn, "UPDATE `product` 
-            SET `name`='$pname',
-            `price`='$pprice',
-            `category`='$pcategory',
-            `details`='$pdetails',
-            `quantity`='$pquantity',
-            `discount`='$pdiscount',
-            `scharge`='$pscharge'
-             WHERE  `sno`='{$sirial}'");
-        if ($run) {
-          echo "success";
-        }
-      }
-    }
-  }
-}
 
 if ($action == "delete") {
-  $resultset = mysqli_query($conn, "SELECT sno FROM product WHERE id='{$_POST['id']}'");
-  $sno = mysqli_fetch_array($resultset);
+  $storePath = "../Asset/image/product/" . $_POST['sno'] . "/";
+  unlinkImage($storePath);
 
-
-
-  unlinkImage($sno[0]);
-
-
-  $sql = "DELETE FROM product WHERE id= {$_POST['id']}";
+  $sql = "DELETE FROM product WHERE sno='" . $_POST['sno'] . "'";
   if (mysqli_query($conn, $sql) == TRUE) {
     echo "done";
   }
 }
-?>
 
 
-<?php
+function unlinkImage($storePath)
+{
+  $files = glob($storePath . "*");
+  if ($files) {
+    foreach ($files as $file) { // iterate files
+      if (is_file($file)) {
+        unlink($file); // delete file one by one
+      }
+    }
+    rmdir($storePath); // delete each product folder
+  }
+}
+
+
+
+
 function sernum()
 {
   $template   = 'XX99-XX99-99XX';
@@ -228,45 +176,6 @@ function sernum()
   return $sernum;
 }
 
-function getImageName($sno)
-{
-
-  $img_name = $_FILES['image']['name'];
-  $img_type = $_FILES['image']['type'];
-  $tmp_name = $_FILES['image']['tmp_name'];
-  $img_explode = explode('.', $img_name);
-  $img_ext = strtolower(end($img_explode));
-
-  $extensions = ["jpeg", "png", "jpg"];
-  if (in_array($img_ext, $extensions) === true) {
-    $types = ["image/jpeg", "image/jpg", "image/png"];
-    if (in_array($img_type, $types) === true) {
-
-
-      $new_img_name = $sno . "." . $img_ext;
-
-      unlinkImage($sno);
-
-      move_uploaded_file($tmp_name, "../Asset/image/product/" . $new_img_name);
-
-      return $new_img_name;
-    }
-  } else {
-    return "";
-  };
-}
-
-function unlinkImage($imageName)
-{
-  // echo $imageName;
-  $name1 = "../image/product/" . $imageName . ".jpg";
-  $name2 = "../image/product/" . $imageName . ".png";
-  $name3 = "../image/product/" . $imageName . ".jpeg";
-  if (file_exists($name1)) unlink($name1);
-  if (file_exists($name2)) unlink($name2);
-  if (file_exists($name3)) unlink($name3);
-}
-?>  
 
 
 
