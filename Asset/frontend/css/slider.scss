@@ -1,42 +1,23 @@
-#sliders{
-    .slider{
-        height: 60vh;
-        width: 100%;
-        // z-index: 1;
-        position: relative;
-        // Slider Dots Disable
-        .slick-dots{
-            display: none !important; 
-        }
-        // Slider Item
-        .slickItem{
-            height: 100%;
-            width: 100%;
-            img{
-                height: 60vh;
-                width: 100%;
-            }
-        }
 
-        // Disable default slider controller
-        .slick-prev, .slick-next {
-            display: none !important;
-        }  
-        // Make custom slider controller      
+.carousel{
+        .carousel-indicators{
+            z-index: -1;
+        }
         .prev,.next {
             position: absolute;
             cursor: pointer;
             top: 45%;
             // z-index: 1;
-            font-size: 30px;
-            height: 50px;
-            width: 50px;
-            background-color: #fbebcf;
+            font-size: 15px;
+            height: 20px;
+            width: 20px;
+            background-color: #ff8d03;
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 1 !important;
             i{
-                color: #f7941d;
+                color: #f5f5f5;
             }
         }
         .prev{
@@ -45,25 +26,18 @@
         .next{
             right: 0%;
         }
-    }
 }
 
-@mixin header_slider {
-    header{
-        .slider{
-            height: 70vh;
-            // Slider Item
-            .slickItem{
-                img{
-                    height: 70vh;
-                }
-            }
-            // Make custom slider controller      
-            .prev,.next {
-                font-size: 20px;
-                height: 40px;
-                width: 40px;
-            }
+@media screen and (min-width: 746px) {
+
+    .carousel{
+        .carousel-indicators{
+            z-index: 1 !important;
         }
-    }
+        .prev,.next {
+            font-size: 30px;
+            height: 40px;
+            width: 40px;
+        }
+}
 }

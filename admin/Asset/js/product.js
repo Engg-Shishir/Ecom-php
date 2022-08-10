@@ -97,8 +97,8 @@ $(document).ready(function () {
                     value.id +
                     "'><i class='fas fa-pen'></i></a> <a href='#' class='deleteProduct' data-sno='" +
                     value.sno +
-                    "'><i class='fas fa-trash text-danger'></i></a> <a href='./productDetails.php?id=" +
-                    value.id +
+                    "'><i class='fas fa-trash text-danger'></i></a> <a href='./productDetails.php?sno=" +
+                    value.sno +
                     "' class='viewProduct' data-id='" +
                     value.id +
                     "'><i class='fas fa-eye'></i></a></td>"
@@ -250,24 +250,24 @@ $(document).ready(function () {
         // alert();
       },
       success: function (response) {
-        alert(response);
-        // if (response.includes("success")) {
-        //   toastr.success("Successfull !");
-        //   loadProduct(1, "", 5);
-        // } else {
-        //   toastr.error("Something wemt wrong !");
-        // }
-        // if (response.includes("UploadImageUpdatedData")) {
-        //   setTimeout(() => {
-        //     location.reload(true);
-        //   }, 2000);
-        // } else {
-        //   if (response.includes("Insert")) {
-        //     resetProductForm("insert");
-        //   } else {
-        //     resetProductForm("update");
-        //   }
-        // }
+        // alert(response);
+        if (response.includes("success")) {
+          toastr.success("Successfull !");
+          loadProduct(1, "", 5);
+        } else {
+          toastr.error("Something wemt wrong !");
+        }
+        if (response.includes("UploadImageUpdatedData")) {
+          setTimeout(() => {
+            location.reload(true);
+          }, 2000);
+        } else {
+          if (response.includes("Insert")) {
+            resetProductForm("insert");
+          } else {
+            resetProductForm("update");
+          }
+        }
         
       }
     });

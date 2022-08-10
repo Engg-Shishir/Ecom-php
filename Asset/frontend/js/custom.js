@@ -7,5 +7,8 @@ $(function(){
     $('#userLoginBtn').on("click",function(e){
         $('.user-login').toggleClass('active');
     });
+    $('.carousel').carousel({
+        interval: 1000
+    });
 
 });
