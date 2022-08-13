@@ -159,7 +159,7 @@
                                     <!-- Shopping Item -->
                                     <div class="user-login">
                                             <ul class="d-flex flex-column">
-                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./User/Page/dashboard.php">Profile</a>
+                                                <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./User/Page/dashboard.php">Your Account</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Orders</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="">Catr</a>
                                                 <a class=" btn animate text-light px-5 py-1 text-left " href="./user/Action/logout.php">Logout</a>

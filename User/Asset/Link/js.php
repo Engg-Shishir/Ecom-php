@@ -1,0 +1,10 @@
+<script src="../../Asset/Plugin/Jquery/jquery.min.js"></script>
+<script src="../../Asset/Plugin/Jquery/popper.min.js"></script>
+<script src="../../Asset/Plugin/Bootstrap/bootstrap.bundle.min.js"></script>
+<script src="../../Asset/Plugin/Tempusdominus/tempusdominus-bootstrap-4.min.js"></script>
+<script src="../../Asset/Plugin/AdminLte/adminlte.js"></script>
+<script src="../../Asset/Plugin/ToastAlert/toastr.min.js"></script>
+<script src="../../Asset/Plugin/ToastAlert/sweetalert.js"></script>
+<script src="../../Asset/Plugin/Select2/select2.min.js"></script>
+<script src="../../Asset/Plugin/Summernote/summernote-bs4.min.js"></script>
+<script src="../../Asset/JS/common.js"></script>

@@ -8,7 +8,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
   position: relative;
   font-weight:400px;
 }
@@ -572,13 +571,13 @@ ul.sub-menu {
   padding-bottom: 45px;
 }
 
-.carousel-indicators li {
+/* .carousel-indicators li {
   background: #C4C4BE;
 }
 
 .carousel-indicators li.active {
 	  background: #FE980F;
-}
+} */
 
 .item {
   padding-left: 100px;
@@ -899,7 +898,6 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
 }
 
 .single-products:hover .product-overlay {
@@ -1750,8 +1748,7 @@ h2.title {
   margin-right: 10px
 }
 
-.user_info > li > span {
-}
+
 
 .user_info input, select, textarea {
   background: #F0F0E9;

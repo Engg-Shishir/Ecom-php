@@ -1,10 +1,22 @@
 .carousel .carousel-indicators {
-  z-index: -1;
+  margin-bottom: -25px !important;
+}
+.carousel .carousel-indicators li {
+  width: 5px !important;
+  padding: 3px;
+  background-color: #757575;
+  opacity: 1 !important;
+}
+.carousel .carousel-indicators li.active {
+  background-color: #ff8d03;
+  -webkit-animation: bounce 2s ease-in;
+          animation: bounce 2s ease-in;
 }
 .carousel .prev, .carousel .next {
   position: absolute;
   cursor: pointer;
   top: 45%;
+  z-index: 1;
   font-size: 15px;
   height: 20px;
   width: 20px;
@@ -26,7 +38,12 @@
 
 @media screen and (min-width: 746px) {
   .carousel .carousel-indicators {
-    z-index: 1 !important;
+    margin-bottom: 0px !important;
+  }
+  .carousel .carousel-indicators li {
+    background-color: #ffffff;
+    width: 5px !important;
+    padding: 7px;
   }
   .carousel .prev, .carousel .next {
     font-size: 30px;

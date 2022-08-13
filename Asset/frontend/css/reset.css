@@ -231,13 +231,13 @@ big {
 }
 
 .section {
-	padding: 100px 0;
+	padding: 80px 0;
 	position: relative;
 }
 .section-title {
-	text-align: center;
-	margin-bottom: 50px;
-	padding: 0 215px;
+	text-align: left !important;
+	/* margin-bottom: 50px; */
+	padding: 0 20px;
 }
 .section-title h2 {
 	font-size: 30px;
@@ -247,17 +247,17 @@ big {
 	color: #2c2d3f;
 	font-weight: 700;
 	margin-bottom: 10px;
-	padding-bottom: 15px;
+	padding-bottom: 10px;
 }
 .section-title h2::before {
 	position: absolute;
 	content: "";
 	height: 2px;
-	width: 50px;
+	width: 70px;
 	background: #F7941D;
-	left: 50%;
+	/* left: 50%; */
 	bottom: 0;
-	margin-left: -25px;
+	/* margin-left: -25px; */
 }
 .section-title p {
 	font-size: 14px;

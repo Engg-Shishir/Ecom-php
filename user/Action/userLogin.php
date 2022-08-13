@@ -4,7 +4,7 @@ session_start();
 $userEmail = mysqli_real_escape_string($conn, $_POST['email']);
 $userPassword = mysqli_real_escape_string($conn, $_POST['password']);
 
-$sql = "SELECT * FROM `users` WHERE `email`='".$userEmail."'";
+$sql = "SELECT * FROM `users` WHERE `email`='" . $userEmail . "'";
 $resultset = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($resultset);
 

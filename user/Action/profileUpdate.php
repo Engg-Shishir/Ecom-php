@@ -36,9 +36,9 @@ if ($action == "update") {
                     $select = mysqli_query($conn, "SELECT email FROM users WHERE uid ='" . $uids . "'");
                     $row = mysqli_fetch_array($select);
 
-                    $select1 = mysqli_query($conn, "UPDATE `users` SET `email`='$email',`pass`='$password' WHERE `email`='" . $row['email'] . "'");
+                    $select1 = mysqli_query($conn, "UPDATE `users` SET `email`='{$email}',`pass`='" . $password . "' WHERE `email`='" . $row['email'] . "'");
 
-                    $select2 = mysqli_query($conn, "UPDATE `userdetails` SET `email`='$email',`name`='$name',`phone`='$phone',`photo`='$new_img_name' WHERE `email`='" . $row['email'] . "'");
+                    $select2 = mysqli_query($conn, "UPDATE `userdetails` SET `email`='" . $email . "',`name`='" . $name . "',`phone`='" . $phone . "',`photo`='" . $new_img_name . "' WHERE `email`='" . $row['email'] . "'");
 
                     if ($select1 && $select2) {
                         echo "success_image";

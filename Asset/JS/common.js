@@ -46,18 +46,9 @@ $(document).ready(function () {
     placeholder: "Select an option",
     closeOnSelect: true,
   });
-});
 
-$(function () {
-  // Banner Slick Slider
-  $(".content").slick({
-    dots: false,
-    infinite: true,
-    // fade: true,
-    cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 3000,
-    prevArrow: ".prev",
-    nextArrow: ".next",
+  $(".carousel").carousel({
+    interval: 2500,
   });
+  
 });

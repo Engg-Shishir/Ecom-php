@@ -8,7 +8,7 @@ $(function(){
         $('.user-login').toggleClass('active');
     });
     $('.carousel').carousel({
-        interval: 1000
+        interval: 2500
     });
 
 });
