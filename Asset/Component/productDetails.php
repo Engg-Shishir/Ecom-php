@@ -24,13 +24,13 @@ $person = json_decode($data['image']);
     <div class="row">
         <div class="col-md-3">
             <div class="xzoom-container pt-2">
-                <img width="400px" height="400px" class="xzoom4" id="xzoom-fancy" src="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $person[0]; ?>" xoriginal="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $person[0]; ?>" />
+                <img width="400px" height="400px" class="xzoom" id="xzoom-fancy" src="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $person[0]; ?>" xoriginal="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $person[0]; ?>" />
 
                 <div class="xzoom-thumbs mt-2">
                     <?php
                     foreach ($person as $key => $value) { ?>
                         <a href="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $value; ?>">
-                            <img class="xzoom-gallery4" width="80" height="80px" src="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $value; ?>" />
+                            <img class="xzoom-gallery" width="50" height="50px" src="./admin/Asset/image/product/<?php echo $sno; ?>/<?php echo $value; ?>" />
                         </a>
                     <?php
                     }
@@ -42,23 +42,29 @@ $person = json_decode($data['image']);
             <h3 class="product-title mr-1"><?php echo  $data['name']; ?></h3>
             <h4 class="price">৳&nbsp;<span><?php echo  $data['price']; ?></span></h4>
 
+             <div class="row">
+               <?php echo stripslashes(html_entity_decode($data["details"])) ?>
+             </div>
 
-
-            <div class="row  py-3">
-                <div class="col-md-12">
-
+            <div class="row mt-1">
+                <div class="col-md-4">
+                  <div class="_p-qty">
+                    <div class="value-button decrease_">-</div>
+                    <input type="text" name="qty" id="number" value="1" disabled />
+                    <div class="value-button increase_">+</div>
+                  </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8 mt-1">
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <div class="btn-group" role="group">
+                        <div class="btn-group p-0" role="group">
                             <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle colorToggleButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Color
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item selectColor" href="#">Red</a>
-                                <a class="dropdown-item selectColor" href="#">Green</a>
-                                <a class="dropdown-item selectColor" href="#">Orange</a>
-                                <a class="dropdown-item selectColor" href="#">Black</a>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="cursor:pointer;">
+                                <a class="dropdown-item selectColor">Red</a>
+                                <a class="dropdown-item selectColor">Green</a>
+                                <a class="dropdown-item selectColor">Orange</a>
+                                <a class="dropdown-item selectColor">Black</a>
                             </div>
                         </div>
                         <div class="btn-group" role="group">
@@ -73,11 +79,11 @@ $person = json_decode($data['image']);
                                 <a class="dropdown-item selectSize" href="#">XXL</a>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary"><i class="fas fa-solid fa-cart-plus"></i></button>
-                        <button type="button" class="btn btn-secondary"><i class="fas fa-heart"></i></button>
+                        <button sno="<?php echo  $data['sno']; ?>" type="button" class="btn btn-secondary"><i class="fas fa-solid fa-cart-plus"></i></button>
+                        <button sno="<?php echo  $data['sno']; ?>" type="button" class="btn btn-secondary wishlistBtn"><i class="fas fa-heart"></i></button>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
         <div class="col-md-3"></div>
     </div>

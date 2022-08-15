@@ -1,10 +1,18 @@
 (function ($) {
     $(document).ready(function() {
-        $('.xzoom, .xzoom-gallery').xzoom({zoomWidth: 400, title: true, tint: '#333', Xoffset: 15});
-        $('.xzoom2, .xzoom-gallery2').xzoom({position: '#xzoom2-id', tint: '#ffa200'});
-        $('.xzoom3, .xzoom-gallery3').xzoom({position: 'lens', lensShape: 'circle', sourceClass: 'xzoom-hidden'});
-        $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});
-        $('.xzoom5, .xzoom-gallery5').xzoom({tint: '#006699', Xoffset: 15});
+        $('.xzoom, .xzoom-gallery').xzoom({
+            mposition:'fullscreen',
+            zoomWidth: 600,
+            zoomHeight:600, 
+            title: true, 
+            tint: '#333', 
+            Xoffset: 5,
+            Yoffset: -150,
+            fadeIn:true,
+            fadeOut:true,
+            adaptive:false,
+            hover:true
+        });
 
         //Integration with fancybox plugin
         $('#xzoom-fancy').on('click', function(event) {
