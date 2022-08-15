@@ -14,9 +14,6 @@ if (mysqli_num_rows($resultset) > 0) {
   $data = mysqli_fetch_assoc($resultset);
 }
 $person = json_decode($data['image']);
-//  echo "<pre>";
-//     echo print_r($person[0]);
-//  echo"</pre>";
 ?>
 
 

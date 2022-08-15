@@ -1,3 +1,6 @@
+.carousel {
+  overflow: hidden !important;
+}
 .carousel .carousel-indicators {
   margin-bottom: -25px !important;
 }
@@ -8,7 +11,7 @@
   opacity: 1 !important;
 }
 .carousel .carousel-indicators li.active {
-  background-color: #ff8d03;
+  background-color: #df5200;
   -webkit-animation: bounce 2s ease-in;
           animation: bounce 2s ease-in;
 }
@@ -20,20 +23,22 @@
   font-size: 15px;
   height: 20px;
   width: 20px;
-  background-color: #ff8d03;
+  transform: rotate(45deg);
+  background-color: #df5200;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 1 !important;
 }
 .carousel .prev i, .carousel .next i {
+  display: none;
   color: #f5f5f5;
 }
 .carousel .prev {
-  left: 0%;
+  left: -20px;
 }
 .carousel .next {
-  right: 0%;
+  right: -20px;
 }
 
 @media screen and (min-width: 746px) {

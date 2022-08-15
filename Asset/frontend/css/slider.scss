@@ -1,5 +1,6 @@
 
 .carousel{
+        overflow: hidden !important;
         .carousel-indicators{
             margin-bottom: -25px!important;
         }
@@ -10,7 +11,7 @@
             opacity: 1 !important;
         }
         .carousel-indicators li.active{
-            background-color: #ff8d03;
+            background-color: #df5200;
             // border: 2px solid black;
             animation: bounce 2s ease-in;
         } 
@@ -23,20 +24,22 @@
             font-size: 15px;
             height: 20px;
             width: 20px;
-            background-color: #ff8d03;
+            transform: rotate(45deg);
+            background-color: #df5200;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 1 !important;
             i{
+                display: none;
                 color: #f5f5f5;
             }
         }
         .prev{
-            left: 0%;
+            left: -20px;
         }
         .next{
-            right: 0%;
+            right: -20px;
         }
 }
 

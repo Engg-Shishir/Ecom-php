@@ -1,0 +1,75 @@
+.productColl {
+  box-shadow: rgb(236, 208, 0) 0px 2px 5px -1px, rgb(236, 208, 0) 0px 1px 3px -1px;
+}
+
+.single-product .product-content {
+  position: relative;
+  overflow: hidden;
+}
+.single-product .product-content .button-heads {
+  position: absolute;
+  background: #5b5b5b;
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+  z-index: 9;
+  transition: all 0.4s ease;
+}
+.single-product .product-content .button-heads .product-action {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  border-radius: 3px;
+}
+.single-product .product-content .button-heads .product-action a {
+  background-color: transparent;
+  color: #929292;
+  display: block;
+  display: inline-block;
+  margin-right: 15px;
+  text-align: right;
+  height: 30px;
+  position: relative;
+  top: 2px;
+}
+.single-product .product-content .button-heads .product-action a :last-child {
+  margin-right: 0;
+  border: none;
+}
+.single-product .product-content .button-heads .product-action a i {
+  font-size: 16px;
+  line-height: 40px;
+  transition: all 0.3s ease;
+  color: white;
+}
+.single-product .product-content .button-heads .product-action a span {
+  visibility: hidden;
+  position: absolute;
+  background: #F7941D !important;
+  color: #fff !important;
+  text-align: center;
+  padding: 5px 12px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.6s, margin 0.3s;
+  font-size: 11px;
+  right: 0;
+  line-height: 14px;
+  top: -12px;
+  margin-top: -5px;
+  margin-right: 0;
+  display: inline-block;
+  width: 120px;
+  border-radius: 15px 0 0 15px;
+}
+.single-product .product-content .button-heads .product-action a :hover {
+  color: #f7941d;
+}
+.single-product .product-content:hover .button-heads {
+  bottom: 0px;
+}/*# sourceMappingURL=product.css.map */

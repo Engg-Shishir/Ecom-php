@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade modal-fullscreen" data-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+  <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header text-center bg-dark text-light">
         <h5 class="modal-title text-light" id="exampleModalLabel">Insert Product</h5>

@@ -9,3 +9,8 @@
 <script src="./Asset/JS/custom.js"></script>
 <script src="./user/Asset/js/userAction.js"></script>
 <script src="./Asset/Plugin/ToastAlert/toastr.min.js"></script>
+
+<script type="text/javascript" src="./admin/Asset/zoom/fancybox/source/jquery.fancybox.js"></script>
+<script type="text/javascript" src="./admin/Asset/zoom/magnific-popup/js/magnific-popup.js"></script>
+<script type="text/javascript" src="./admin/Asset/zoom/dist/xzoom.min.js"></script>
+<script src="./admin/Asset/zoom/js/productDetailsPageSetup.js"></script>

@@ -1041,7 +1041,7 @@ object {
 
 
 /* Start Modal Css */
-.modal-dialog .quickview-slider-active{
+/* .modal-dialog .quickview-slider-active{
 	display:block;
 	height:100%;
 	width:550px;
@@ -1051,25 +1051,26 @@ object {
 	display:inline-block;
 }
 .modal-dialog {
-  margin: 12% auto 8%;
+  margin: 5% auto 8%;
   max-width: 1358px;
   width: 1358px;
-}
+  padding: 35px;
+} */
 
-@media only screen and (min-width: 1366px) and (max-width: 1600px) {
+/* @media only screen and (min-width: 1366px) and (max-width: 1600px) {
   .modal-dialog {
     width: 1145px;
     max-width: 1145px;
   }
-}
+} */
 
-@media only screen and (min-width: 1200px) and (max-width: 1365px) {
+/* @media only screen and (min-width: 1200px) and (max-width: 1365px) {
   .modal-dialog {
     width: 1145px;
     max-width: 1145px;
   }
-}
-
+} */
+/* 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .modal-dialog {
     width: 960px;
@@ -1086,9 +1087,8 @@ object {
 
 @media only screen and (max-width: 767px) {
   .modal-dialog {
-    width: 100%;
+    width: 90%;
     max-width: 100%;
-    padding: 35px 0;
   }
 }
 
@@ -1098,12 +1098,12 @@ object {
 
 .modal-dialog .modal-content .modal-header {
 	border: none;
-	padding: 0;
-	right: 10px;
+	/* padding: 0; */
+	/* right: 10px;
 	top: 10px;
 	position: absolute;
 	z-index: 9999;
-}
+} */
 
 @media only screen and (max-width: 767px) {
   .modal-dialog .modal-content .modal-header {
@@ -1145,10 +1145,10 @@ object {
   background:#F7941D;
 }
 .modal-dialog .modal-content .modal-body {
-	padding: 0px;
-	overflow-y: auto;
-	max-height: 510px;
-	height: 700px;
+	padding: 10px;
+	/* overflow-y: auto; */
+	/* max-height: 510px; */
+	/* height: 700px; */
 }
 .quickview-content {
 	padding: 40px 40px;
@@ -1629,7 +1629,7 @@ object {
 	width: 151px;
 	display: inline-block;
 }
-.modal .product-gallery .single-slider{
+/* .modal .product-gallery .single-slider{
 	width:100%;
 	height:100%;
 	display:block;
@@ -1641,8 +1641,8 @@ object {
     top: 50%;
     width: 100%;
 	margin-top:-25px;
-}
-.modal .owl-carousel .owl-nav div {
+} */
+/* .modal .owl-carousel .owl-nav div {
 	height: 60px;
 	width: 30px;
 	line-height: 58px;
@@ -1657,8 +1657,8 @@ object {
 	-moz-transition:all 0.4s ease;
 	transition:all 0.4s ease;
 	box-shadow: 0px 0px 10px #3333331c;
-}
-.modal .owl-carousel .owl-nav div:hover{
+} */
+/* .modal .owl-carousel .owl-nav div:hover{
 	color:#fff;
 	background:#F7941D;
 }
@@ -1674,7 +1674,7 @@ object {
 	width:100%;
 	height:100%;
 	display:block;
-}
+} */ */
 .quickview-content .quantity .button {
 	display: inline-block;
 	position: absolute;
@@ -1790,12 +1790,12 @@ object {
 	font-size: 14px;
 	/* display: block; */
 }
-.default-social ul li a i {
+/* .default-social ul li a i {
   
 }
 .default-social ul li a:hover {
   color: #F7941D;
-}
+} */
 /* End Modal Css */
 
 /* Video Animations */

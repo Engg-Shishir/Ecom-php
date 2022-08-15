@@ -101,5 +101,10 @@ if (!isset($_SESSION['user_session'])) {
 </body>
 <script src="../Asset/js/Dashboard.js"></script>
 <script src="../Asset/js/product.js"></script>
-
+<script type="text/javascript">
+  google_ad_client = "ca-pub-2783044520727903";
+  google_ad_slot = "2780937993";
+  google_ad_width = 728;
+  google_ad_height = 90;
+</script>
 </html>
