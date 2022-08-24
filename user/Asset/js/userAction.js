@@ -131,8 +131,8 @@ $(function () {
       },
       success: function (response) {
         // $('.usernameShow').text(response.name);
-        var data = "<i class='ti-user usernameShow'></i>&nbsp;" + response.name;
-
+        var data = "<i class='ti-user usernameShow'></i>&nbsp;" + response.user.name;
+        $(".cartCountSpan").text(response.cart);
         $("#userLoginBtn").html(data);
       },
     });

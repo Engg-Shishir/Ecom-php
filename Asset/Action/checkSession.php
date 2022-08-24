@@ -6,13 +6,14 @@ session_start();
 
 
 // Get current url
-$currentUrl = $_SERVER["REQUEST_URI"];
+// $currentUrl = $_SERVER["REQUEST_URI"];
 // Remove / from url : trim($currentUrl,"/");
 // $currentPageName = basename($currentUrl);
 
 if(!isset($_SESSION['user_session'])){
    echo "Should login first";
-   
+}else{
+   echo "Should login first";
 }
 
 ?>

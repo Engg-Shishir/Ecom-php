@@ -45,7 +45,7 @@
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            <a href="#" class="single-icon"><i class="fas fa-user" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
@@ -109,6 +109,7 @@
                             </li>
                             <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
                             <li><i class="ti-email"></i> support@shophub.com</li>
+                            <li><i class="ti-location-pin"></i> Store location</li>
                         </ul>
                     </div>
                     <!--/ End Top Left -->
@@ -117,7 +118,6 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-location-pin"></i> Store location</li>
                             <?php   
                               if(!isset($_SESSION['user_session'])){
                             ?>
@@ -153,10 +153,6 @@
                             <li>
                                 <div class="sinlge-bar shopping">
                                     <a id="userLoginBtn" href="#"><i class="ti-user usernameShow mr-2"></i></a>
-                                    <p id="userLoginBtn">
-                                        
-                                    </p>
-                                    <!-- Shopping Item -->
                                     <div class="user-login">
                                             <ul class="d-flex flex-column">
                                                 <a class=" btn animate text-light px-5 py-1 text-left mb-1" href="./User/Page/dashboard.php">Your Account</a>
@@ -239,7 +235,14 @@
                                                 </ul>
                                             </li>
                                             <li class="mb-2 mb-lg-0"><a href="contact.html">Contact Us</a></li>
-                                            <li class="mb-2 mb-lg-0 d-flex align-items-center justify-content-center">
+                                            <?php   
+                                                 if(isset($_SESSION['user_session'])){
+                                            ?>
+                                            <li class="cartLi" data-toggle="modal" data-target="#exampleModal" data-backdrop="static">
+                                                <i class="fas fa-solid fa-cart-arrow-down"><span class="cartCountSpan"></span></i>
+                                            </li>
+                                            <?php   }?>
+                                            <li class="mb-2 pl-3 mb-lg-0 d-flex align-items-center justify-content-center">
                                             <div class="input-group">
                                                 <input id="searchProductField" type="text" class="form-control pl-1" placeholder="Search">
                                                 <div class="input-group-append">
@@ -248,6 +251,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                             </li>
                                         </ul>
                                     </div>

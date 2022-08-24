@@ -18,7 +18,7 @@ $(function () {
         $("#profile_photo_show").attr("src", "../Image/" + response.photo);
         $("#profileImageShowDiv").html("");
         var img =
-          "<img class=' shadow' id='profile_photo_show' src='../Image/" +
+          "<img class=' shadow' id='profile_photo_show' src='../image/" +
           response.photo +
           "'   height='200px' width='100%'>";
         $("#profileImageShowDiv").html(img);

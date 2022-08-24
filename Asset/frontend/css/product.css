@@ -50,7 +50,7 @@
 .single-product .product-content .button-heads .product-action a span {
   visibility: hidden;
   position: absolute;
-  background: #F7941D !important;
+  background: #f7941d !important;
   color: #fff !important;
   text-align: center;
   padding: 5px 12px;
@@ -70,6 +70,6 @@
 .single-product .product-content .button-heads .product-action a :hover {
   color: #f7941d;
 }
-.single-product .product-content:hover .button-heads {
+.single-product:hover .button-heads {
   bottom: 0px;
 }/*# sourceMappingURL=product.css.map */

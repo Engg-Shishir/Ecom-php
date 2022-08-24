@@ -8,6 +8,7 @@ if (isset($_POST['id'])) {
     $result = mysqli_query($conn, "SELECT * FROM product WHERE id< '" . $start . "' ORDER BY id DESC LIMIT " . $limit);
 
     if (mysqli_num_rows($result) > 0) {
+        
         $products = array();
         while ($row = mysqli_fetch_assoc($result)) {
             $products[] = $row;

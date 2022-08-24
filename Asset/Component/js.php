@@ -16,3 +16,6 @@
 <script type="text/javascript" src="./Asset/plugin/zoom/dist/xzoom.min.js"></script>
 <script src="./Asset/plugin/zoom/js/settings.js"></script>
 <script src="./Asset/JS/product/product.js"></script>
+<script src="./Asset/JS/product/global.js"></script>
+
+
