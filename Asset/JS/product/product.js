@@ -72,23 +72,28 @@ $(function(){
             res.forEach(element => {
                 var perseImage = JSON.parse(element.image);
                 var image = "./admin/Asset/image/product/"+element.psno+"/"+perseImage[0];
-                var data = '<tr>'+
+                var data = '<tr class="">'+
                 '<td class="text-center image" data-title="No">'+
-                    '<img src="'+image+'" height="60px" width="60px">'+
+                   '<div class="d-flex align-items-center justify-content-center">'+
+                        '<div class="mr-4"><input data-sno="'+element.psno+'" onChange="productSelect(this);" type="checkbox" name="checkbox" id="checkbox" / style="height:20px;width:20px;"></div>'+
+                        '<div><img src="'+image+'" height="60px" width="60px"></div>'+
+                    '</div>'+
                 '</td>'+
                 '<td class="text-center product-des" data-title="Description">'+
                     '<p class="product-name"><a href="#">'+element.name+'</a></p>'+
                 '</td>'+
-                '<td class="text-center price" data-title="Price">'+
+                '<td class="text-center" data-title="Price">'+
                     '<span>$'+element.price+' </span>'+
                 '</td>'+
                 '<td class="text-center _p-qty">'+
-                    '<div class="value-button decrease_" onClick="decreaseValue(this);">-</div>'+
-                    '<input type="text" name="qty" id="number" value="1" disabled />'+
-                    '<div class="value-button increase_" onClick="increaseValue(this);">+</div>'+
+                    '<div>'+
+                        '<div class="value-button decrease_" data-sno="'+element.psno+'" onClick="decreaseValue(this);">-</div>'+
+                        '<input type="text" name="qty" id="number" value="'+element.qty+'" disabled />'+
+                        '<div class="value-button increase_" data-sno="'+element.psno+'" onClick="increaseValue(this);">+</div>'+
+                    '</div>'+
                 '</td>'+
                 '<td class="text-center total-amount" data-title="Total">'+
-                    '<span>$'+element.price*element.qty+'</span>'+
+                    '<span class="CartTableprice'+element.psno+'">$'+element.price*element.qty+'</span>'+
                 '</td>'+
                 '<td class="text-center action" data-title="Remove">'+
                     '<a href="#"><i class="ti-trash remove-icon"></i></a>'+

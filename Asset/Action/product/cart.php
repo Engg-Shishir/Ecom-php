@@ -51,6 +51,26 @@ if(!isset($_SESSION['user_session'])){
          } 
           echo json_encode($products);
       }
+   }elseif($_POST['action'] == "upadate Cart qrtyAndPrice"){
+      // echo $_POST['cart']."----".$_POST['sno'];
+      $updateToCart = mysqli_query($conn, "UPDATE `cart` SET `qty`='".$_POST['cart']."' WHERE `psno`='".$_POST['sno']."' ");
+
+      if ($updateToCart) {
+
+            $getCart = mysqli_query($conn, "SELECT cart.psno,cart.qty,product.price FROM cart 
+            INNER JOIN product ON cart.psno = product.sno
+            where `psno` = '".$_POST['sno']."' ");
+            $data = mysqli_fetch_assoc($getCart);
+            echo json_encode($data);
+     }
+   }elseif($_POST['action'] == "upadate Cart checkOutPartData"){
+
+      $getCart = mysqli_query($conn, "SELECT cart.qty,product.price FROM cart 
+      INNER JOIN product ON cart.psno = product.sno
+      where `psno` = '".$_POST['sno']."' ");
+      $data = mysqli_fetch_assoc($getCart);
+      echo json_encode($data);
+
    }
 
 }

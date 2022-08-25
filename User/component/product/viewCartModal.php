@@ -38,7 +38,7 @@
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" placeholder="Cupon insert" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button">Apply</button>
+                                                <button class="btn cartCheckoutcontinueBtn two" type="button">Apply</button>
                                             </div>
                                         </div>
                                     </form>
@@ -46,13 +46,25 @@
                             </div>
                             <div class="right">
                                 <ul>
-                                    <li>Discount:&nbsp;&nbsp;$<span>0.00</span></li>
-                                    <li>Subtotal:&nbsp;&nbsp;$<span>330.00</span></li>
                                     <li>
-                                        <a class="locationToggleBrn" href="#" data-test='0'>
-                                            Access point :<i class="fas fa-solid fa-angle-down"></i>
-                                        </a>
-                                        <!-- Shopping Item -->
+                                        <div class="d-flex align-items-center justify-content-lg-between">
+                                            <p>Total Products </p>
+                                            <p class="totalProductInCheckout">0</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center justify-content-lg-between">
+                                            <p>Subtotal </p>
+                                            <p>$&nbsp;<span class="totalPriceInCheckout">0.00</span></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center justify-content-lg-between">
+                                            <a class="locationToggleBrn" href="#" data-test='0'>Access point</a>
+                                            <p  class="locationToggleBrn" href="#" data-test='0' style="cursor:pointer ;">
+                                               <i class="fas fa-solid fa-angle-down"></i>
+                                            </p>
+                                        </div>
                                         <div class="collapse locationToggle" id="collapseExample">
                                             <div class="gif" style="display: none;">
                                                 <img src="./Asset/image/3.gif">
@@ -60,8 +72,9 @@
                                             <div class="contentLoactionShow text-black"></div>
                                         </div>
                                     </li>
+
                                 </ul>
-                                <div class="btn-group">
+                                <div class="btn-group w-100">
                                     <button type="button" class="btn cartCheckoutcontinueBtn one">Checkout</button>
                                     <button type="button" class="btn cartCheckoutcontinueBtn two">Shoping Continue</button>
                                 </div>
