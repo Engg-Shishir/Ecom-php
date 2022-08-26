@@ -13,20 +13,20 @@ $(function () {
         // alert("Do you want");
       },
       success: function (response) {
-        $("#sidebar_profile_name").text(response.name);
-        $("#sidebar_profile_logo").attr("src", "../Image/" + response.photo);
-        $("#profile_photo_show").attr("src", "../Image/" + response.photo);
+        $("#sidebar_profile_name").text(response.user.name);
+        $("#sidebar_profile_logo").attr("src", "../image/" + response.user.photo);
+        $("#profile_photo_show").attr("src", "../image/" + response.user.photo);
         $("#profileImageShowDiv").html("");
         var img =
           "<img class=' shadow' id='profile_photo_show' src='../image/" +
-          response.photo +
+          response.user.photo +
           "'   height='200px' width='100%'>";
         $("#profileImageShowDiv").html(img);
 
-        $("#name").val(response.name);
-        $("#phone").val(response.phone);
-        $("#user_email").val(response.email);
-        $("#password").val(response.pass);
+        $("#name").val(response.user.name);
+        $("#phone").val(response.user.phone);
+        $("#user_email").val(response.user.email);
+        $("#password").val(response.user.pass);
         $("#file").val("");
       },
     });
@@ -97,4 +97,6 @@ $(function () {
       },
     });
   });
+
+  
 });

@@ -73,7 +73,10 @@ $(document).ready(function () {
             if (key < total - 1) {
               $('<tr class="text-center">')
                 .html(
-                  "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/"+value.sno+"/"+perseImage[0] +
+                  "<td ><img height='50pxpx' width='50px' src='../Asset/image/product/" +
+                    value.sno +
+                    "/" +
+                    perseImage[0] +
                     "' /> </td>" +
                     "<td>" +
                     value.name +
@@ -191,7 +194,7 @@ $(document).ready(function () {
 
         var append_image = "";
         perseImage.forEach((e) => {
-          var image = "../Asset/image/product/"+data.sno+"/"+ e; 
+          var image = "../Asset/image/product/" + data.sno + "/" + e;
           append_image +=
             "<img src='" +
             image +
@@ -222,22 +225,19 @@ $(document).ready(function () {
 
   $("#product").submit(function (e) {
     e.preventDefault();
-  
+
     // alert($("#images").files.length);
     var sno = $("#sno").val();
     var data = new FormData(this);
     if (sno == "") data.append("actions", "insert");
     else {
       var files = $("#images")[0].files.length;
-      if(files>0){
+      if (files > 0) {
         data.append("actions", "updateWithFile");
-      }else{
+      } else {
         data.append("actions", "updateWithoutFile");
       }
     }
-
-  
-
 
     $.ajax({
       type: "POST",
@@ -268,8 +268,7 @@ $(document).ready(function () {
             resetProductForm("update");
           }
         }
-        
-      }
+      },
     });
   });
 });

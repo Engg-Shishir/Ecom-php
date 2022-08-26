@@ -96,6 +96,12 @@ if (strpos($_SERVER['REQUEST_URI'], "product.php")) { ?> <script>
                 <p>Category</p>
               </a>
             </li>
+            <li class="nav-item  brand_category-li">
+              <a href="cupon.php" class="nav-link">
+                <i class=" fas fa-solid fa-angle-right"></i>
+                <p>Cupon</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item logout-li">

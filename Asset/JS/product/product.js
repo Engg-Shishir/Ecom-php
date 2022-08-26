@@ -72,15 +72,15 @@ $(function(){
             res.forEach(element => {
                 var perseImage = JSON.parse(element.image);
                 var image = "./admin/Asset/image/product/"+element.psno+"/"+perseImage[0];
-                var data = '<tr class="">'+
+                var data = '<tr class="tbodyRow">'+
                 '<td class="text-center image" data-title="No">'+
                    '<div class="d-flex align-items-center justify-content-center">'+
-                        '<div class="mr-4"><input data-sno="'+element.psno+'" onChange="productSelect(this);" type="checkbox" name="checkbox" id="checkbox" / style="height:20px;width:20px;"></div>'+
+                        '<div class="mr-4"><input class="productCheck'+element.psno+'" data-sno="'+element.psno+'" onChange="productSelect(this);" type="checkbox" name="checkbox" id="checkbox" / style="height:20px;width:20px;"></div>'+
                         '<div><img src="'+image+'" height="60px" width="60px"></div>'+
                     '</div>'+
                 '</td>'+
                 '<td class="text-center product-des" data-title="Description">'+
-                    '<p class="product-name"><a href="#">'+element.name+'</a></p>'+
+                    '<p class="product-name"><a href="product.php?sno='+element.psno +'">'+element.name+'</a></p>'+
                 '</td>'+
                 '<td class="text-center" data-title="Price">'+
                     '<span>$'+element.price+' </span>'+
