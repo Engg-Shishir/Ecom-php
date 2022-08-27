@@ -69,10 +69,6 @@ $(function(){
           success: function (data) {
             var res = $.parseJSON(data);
 
-            
-
-            console.log(res);
-
             var cart = res.cart;
             cart.forEach(element => {
                 var perseImage = JSON.parse(element.image);
@@ -111,14 +107,14 @@ $(function(){
                 '</td>';
 
             
-            $('<tr class="text-center">').html(data).appendTo('#cartShowTable');
-
-                $(".totalProductInCheckout").text(res.checkout.totalProduct);
-                $(".totalSubPriceInCheckout").text(res.checkout.subTotal);
-                $(".totalSchargeInCheckout").text(res.checkout.sCharge);
-                $(".totalPriceInCheckout").html(res.checkout.total);
+                $('<tr class="text-center">').html(data).appendTo('#cartShowTable');
 
             });
+
+            $(".totalProductInCheckout").text(res.checkout.totalProduct);
+            $(".totalSubPriceInCheckout").text(res.checkout.subTotal);
+            $(".totalSchargeInCheckout").text(res.checkout.sCharge);
+            $(".totalPriceInCheckout").html(res.checkout.total);
 
           }
       });
