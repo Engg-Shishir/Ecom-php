@@ -79,7 +79,7 @@ $person = json_decode($data['image']);
                                 <a class="dropdown-item selectSize" href="#">XXL</a>
                             </div>
                         </div>
-                        <button sno="<?php echo  $data['sno']; ?>" type="button" class="btn btn-secondary"><i class="fas fa-solid fa-cart-plus"></i></button>
+                        <button sno="<?php echo  $data['sno']; ?>" type="button" class="btn btn-secondary cartBtn"><i class="fas fa-solid fa-cart-plus"></i></button>
                         <button sno="<?php echo  $data['sno']; ?>" type="button" class="btn btn-secondary wishlistBtn"><i class="fas fa-heart"></i></button>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ $(function(){
   $('.wishlistBtn').on('click',function(){
     var sno =  $(this).data('sno');
         $.ajax({
-            url: './Asset/Action/product/php',
+            url: './Asset/Action/product/cart.php',
             type: 'POST',
             data: {
               sno:sno,
@@ -30,7 +30,7 @@ $(function(){
     var sno =  $(this).data('sno');
     // $('#test').data('id', 'Next');
     $.ajax({
-        url: './Asset/Action/product/php',
+        url: './Asset/Action/product/cart.php',
         type: 'POST',
         data: {
           sno:sno,
