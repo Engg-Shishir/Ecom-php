@@ -29,32 +29,26 @@ if (!isset($_SESSION['user_session'])) {
 
       $uid = $_SESSION['user_session'];
 
-      $query = "SELECT `psno`,`qty`,`name`,price,`image`,`scharge`
+      $query = "SELECT `psno`,`qty`,`name`,`price`,`image`,`scharge`,`check`
       From cart,product
       where cart.uid = $uid 
       and cart.psno = product.sno";
 
       $row = mysqli_query($conn, $query);
-      // $cust = mysqli_fetch_array($row);
 
-
-      //    $products = array();
-      //    $products = $cust;
-
-      //   $keys = ['psno', 'price'];
-      //   $values = [$total_data, $products];
-      //   $array = array_combine($keys, $values);
-
+      $products = array();
       if (mysqli_num_rows($row) > 0) {
-
-         $products = array();
          while ($rows = mysqli_fetch_assoc($row)) {
             $products[] = $rows;
          }
-         echo json_encode($products);
       }
+
+      $checkoutData = writeCheckout($conn);
+      $keys = ['cart', 'checkout'];
+      $values = [$products, $checkoutData];
+      $array = array_combine($keys, $values);
+      echo json_encode($array);
    } elseif ($_POST['action'] == "upadate Cart qrtyAndPrice") {
-      // echo $_POST['cart']."----".$_POST['sno'];
       $updateToCart = mysqli_query($conn, "UPDATE `cart` SET `qty`='" . $_POST['cart'] . "' WHERE `psno`='" . $_POST['sno'] . "' ");
 
       if ($updateToCart) {
@@ -63,79 +57,116 @@ if (!isset($_SESSION['user_session'])) {
             INNER JOIN product ON cart.psno = product.sno
             where `psno` = '" . $_POST['sno'] . "' ");
          $data = mysqli_fetch_assoc($getCart);
-         echo json_encode($data);
+         // echo json_encode($data);
+
+         $checkoutData = writeCheckout($conn);
+         // echo json_encode($checkoutData);
+
+         $keys = ['cart', 'checkout'];
+         $values = [$data, $checkoutData];
+         $array = array_combine($keys, $values);
+         echo json_encode($array);
+
+
       }
    } elseif ($_POST['action'] == "upadate Cart checkOutPartData") {
 
-      $getCart = mysqli_query($conn, "SELECT cart.qty,product.price,product.scharge FROM cart 
-      INNER JOIN product ON cart.psno = product.sno
-      where `psno` = '" . $_POST['sno'] . "' ");
-      // Cart Tble data
-      $data = mysqli_fetch_assoc($getCart);
+      $uid = $_SESSION['user_session'];
 
-      // echo json_encode($data);
-
-
-      $run2 = mysqli_query($conn, "SELECT * FROM preprocesscheckout where `sno` = '" . $_SESSION['checkoutSno'] . "' ");
-      $rowCount = mysqli_num_rows($run2);
-      
-
-
-
-      if ($rowCount > 0) {
-         // preprocesscheckout Tble data
-         $data2 = mysqli_fetch_assoc($run2);
-         
-         if($_POST["isChecked"]=="checked"){
-            if($data2['totalProduct'] < $data['qty']){
-               $totalProduct = $data2['totalProduct'] + ($data['qty'] - $data2['totalProduct']);
-            }else{
-               $totalProduct = $data2['totalProduct'] - ($data2['totalProduct'] - $data['qty']);
-            }
-            $subTotal = $data2['subTotal'] + ($data['qty'] * $data['price']);
-            $sCharge = $data2['sCharge'] + $data['scharge'];
-            $total = $data2['total']+ ($data['qty'] * $data['price']) + $data['scharge'];
-
-         }else{
-            $totalProduct = $data2['totalProduct'] - $data['qty'];
-            $subTotal = $data2['subTotal'] - ($data['qty'] * $data['price']);
-            $sCharge = $data2['sCharge'] - $data['scharge'];
-            $total = $data2['total']- ($data['qty'] * $data['price']) - $data['scharge'];
-         }
-
-         $updateToCart = mysqli_query($conn, "UPDATE `preprocesscheckout` 
-         SET `totalProduct`='" . $totalProduct . "', 
-         `subTotal`='" . $subTotal . "',
-         `sCharge`='" . $sCharge . "', 
-         `total`='" . $total . "' 
-         WHERE `sno`='" . $_SESSION['checkoutSno'] . "' ");
-         
-
-
+      if ($_POST["isChecked"] == "checked") {
+         mysqli_query($conn, "UPDATE `cart` SET `check`= 1 WHERE `psno`='" . $_POST['sno'] . "' ");
       } else {
-         $sql = "INSERT INTO preprocesscheckout (`totalProduct`,`subTotal`,`sCharge`,`total`,`sno`) VALUES ('" . $data['qty'] . "','" . ($data['qty'] * $data['price']) . "','" . $data['scharge'] . "','" . (($data['qty'] * $data['price'])+$data['scharge']) . "','" . $_SESSION['checkoutSno'] . "')";
+         mysqli_query($conn, "UPDATE `cart` SET `check`= 0 WHERE `psno`='" . $_POST['sno'] . "' ");
+      }
 
-         $getCart = mysqli_query($conn,$sql);
+      $checkoutData = writeCheckout($conn);
+      echo json_encode($checkoutData);
+
+
+   } elseif ($_POST['action'] == "cuponCheck") {
+
+
+      $musql = "SELECT discount FROM cupon where `name` = '" . $_POST['cupon'] . "' ";
+      $rows = mysqli_query($conn, $musql);
+      if (mysqli_num_rows($rows) > 0) {
+
+         $data = mysqli_fetch_assoc($rows);
+         $updateToCart11 = mysqli_query($conn, "UPDATE `preprocesscheckout` SET `cupon`='" . $data['discount'] . "' WHERE `sno`='" . $_SESSION['checkoutSno'] . "' ");   
+
+         if ($updateToCart11) {
+
+            $checkoutData = writeCheckout($conn);
+            echo json_encode($checkoutData);
+
+         }
+      }
+   }
+}
+
+
+
+function writeCheckout($conn)
+{
+   $uid = $_SESSION['user_session'];
+
+   $sql =  "SELECT cart.psno,cart.qty,cart.check,product.price,product.scharge FROM cart 
+   INNER JOIN product ON cart.psno = product.sno
+   where `check` = 1  ";
+
+   $row = mysqli_query($conn, $sql);
+   if (mysqli_num_rows($row) > 0) {
+
+
+      $totalProduct = 0;
+      $subTotal = 0;
+      $sCharge = 0;
+      $total = 0;
+
+      while ($rows = mysqli_fetch_assoc($row)) {
+         $totalProduct = $totalProduct + $rows['qty'];
+         $subTotal = $subTotal + $rows['qty'] * $rows['price'];
+         $sCharge = $sCharge + $rows['scharge'];
+         $total = $total + $rows['qty'] * $rows['price'] + $rows['scharge'];
       }
 
 
+      $sql1 =  "SELECT sno,cupon FROM preprocesscheckout where `sno` = '" . $_SESSION['checkoutSno'] . "'  ";
+      $row1 = mysqli_query($conn, $sql1);
+      if (mysqli_num_rows($row1) > 0) {
+         $rows = mysqli_fetch_assoc($row1);
+         if($rows['cupon']==null){
+            $updateToCart11 = mysqli_query($conn, "UPDATE `preprocesscheckout` SET `totalProduct`='" . $totalProduct . "',`subTotal`='" . $subTotal . "',`sCharge`='" . $sCharge . "',`total`='" . $total . "' WHERE `sno`='" . $_SESSION['checkoutSno'] . "' ");
+
+         }else{
+            $updateToCart11 = mysqli_query($conn, "UPDATE `preprocesscheckout` SET `totalProduct`='" . $totalProduct . "',`subTotal`='" . $subTotal . "',`sCharge`='" . $sCharge . "',`total`='" . ($total-$rows['cupon']) . "' WHERE `sno`='" . $_SESSION['checkoutSno'] . "' ");
+         }
 
 
 
-      // if (mysqli_query($conn, $sql)) {
-      //    $getCart = mysqli_query($conn, "SELECT * FROM cart where `uid` = '" . $_SESSION['user_session'] . "' ");
-      //    $total_data = mysqli_num_rows($getCart);
-      //    echo $total_data;
-      // } else {
-      //    echo "not insertde";
-      // }
-   } elseif ($_POST['action'] == "cuponCheck") {
 
-      $getCart = mysqli_query($conn, "SELECT discount FROM cupon where `name` = '" . $_POST['cupon'] . "' ");
-      $data = mysqli_fetch_assoc($getCart);
-      echo json_encode($data);
+         if ($updateToCart11) {
+            $insertChekoutTableDataget1 = mysqli_query($conn, "SELECT * FROM preprocesscheckout where `sno` = '" . $_SESSION['checkoutSno'] . "' ");
+            $data11 = mysqli_fetch_assoc($insertChekoutTableDataget1);
+            return $data11;
+         }
+
+      }else{
+         $sql = "INSERT INTO preprocesscheckout (`totalProduct`,`subTotal`,`sCharge`,`total`,`sno`) VALUES ('" . $totalProduct . "','" . $subTotal . "','" . $sCharge . "','" . $total . "','" . $_SESSION['checkoutSno'] . "')";
+         $insertChekoutTableData = mysqli_query($conn, $sql);
+         if ($insertChekoutTableData) {
+
+            $insertChekoutTableDataget = mysqli_query($conn, "SELECT * FROM preprocesscheckout where `sno` = '" . $_SESSION['checkoutSno'] . "' ");
+            $data1 = mysqli_fetch_assoc($insertChekoutTableDataget);
+            return $data1;
+         }
+      }
+
    }
 }
+
+
+
+
 
 
 function sernum()

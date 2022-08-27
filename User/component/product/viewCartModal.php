@@ -32,71 +32,81 @@
                         </div>
 
                         <div class="col-lg-3 col-md-7 col-12">
-                            <div class="left">
-                                <div class="coupon">
-                                    <form id="cuponApplyForm">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control cartCuponInsertField" placeholder="Cupon insert" >
-                                            <div class="input-group-append">
-                                                <button class="btn cartCuponcontinueBtn two" type="button">Apply</button>
+                            <div class="checkout">
+                                <div class="top">
+                                    <div class="coupon">
+                                        <form id="cuponApplyForm">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control cartCuponInsertField" placeholder="Cupon insert">
+                                                <div class="input-group-append">
+                                                    <button class="btn cartCuponcontinueBtn two" type="button">Apply</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
+
+                                    <ul>
+                                        <li class="mb-2">
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <a class="locationToggleBrn" href="#" data-test='0'>Access point</a>
+                                                <p class="locationToggleBrn" href="#" data-test='0' style="cursor:pointer ;">
+                                                    <i class="fas fa-solid fa-angle-down"></i>
+                                                </p>
+                                            </div>
+                                            <div class="collapse locationToggle" id="collapseExample">
+                                                <div class="gif" style="display: none;">
+                                                    <img src="./Asset/image/3.gif">
+                                                </div>
+                                                <div class="contentLoactionShow text-black"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <p>Total Products </p>
+                                                <p class="totalProductInCheckout">0</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <p>Subtotal </p>
+                                                <p>$&nbsp;<span class="totalSubPriceInCheckout">0.00</span></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <p>Shipping Charge </p>
+                                                <p>$&nbsp;<span class="totalSchargeInCheckout">0.00</span></p>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <p>Cupon Discount </p>
+                                                <p>$&nbsp;<span class="totalDiscountInCheckout">0.00</span></p>
+                                            </div>
+                                        </li>
+
+                                        <li class="mt-4">
+                                            <div class="d-flex align-items-center justify-content-lg-between">
+                                                <p><strong>Total</strong></p>
+                                                <p>$&nbsp;<strong><span class="totalPriceInCheckout">0.00</span></strong></p>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                    <div class="btn-group w-100">
+                                        <button type="button" class="btn cartCheckoutcontinueBtn one">Checkout</button>
+                                        <button type="button" class="btn cartCheckoutcontinueBtn two">Shoping Continue</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="right">
-                                <ul>
-                                    <li class="mb-2">
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <a class="locationToggleBrn" href="#" data-test='0'>Access point</a>
-                                            <p  class="locationToggleBrn" href="#" data-test='0' style="cursor:pointer ;">
-                                               <i class="fas fa-solid fa-angle-down"></i>
-                                            </p>
+                                <div class="checkoutBottom">
+                                    <div class="loader">
+                                        <div class="logo">
+                                            <div class="white"></div>
+                                            <div class="orange"></div>
+                                            <div class="red"></div>
                                         </div>
-                                        <div class="collapse locationToggle" id="collapseExample">
-                                            <div class="gif" style="display: none;">
-                                                <img src="./Asset/image/3.gif">
-                                            </div>
-                                            <div class="contentLoactionShow text-black"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <p>Total Products </p>
-                                            <p class="totalProductInCheckout">0</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <p>Subtotal </p>
-                                            <p>$&nbsp;<span class="totalSubPriceInCheckout">0.00</span></p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <p>Shipping Charge </p>
-                                            <p>$&nbsp;<span class="totalSchargeInCheckout">0.00</span></p>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <p>Cupon Discount </p>
-                                            <p>$&nbsp;<span class="totalDiscountInCheckout">0.00</span></p>
-                                        </div>
-                                    </li>
-
-                                    <li class="mt-4">
-                                        <div class="d-flex align-items-center justify-content-lg-between">
-                                            <p><strong>Total</strong></p>
-                                            <p>$&nbsp;<strong><span class="totalPriceInCheckout">0.00</span></strong></p>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                <div class="btn-group w-100">
-                                    <button type="button" class="btn cartCheckoutcontinueBtn one">Checkout</button>
-                                    <button type="button" class="btn cartCheckoutcontinueBtn two">Shoping Continue</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

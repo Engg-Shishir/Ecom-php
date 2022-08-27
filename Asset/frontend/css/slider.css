@@ -1,3 +1,285 @@
+.checkout {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.checkout .checkoutBottom {
+  display: none;
+}
+.checkout .checkoutBottom .loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 10;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkout .checkoutBottom .loader .logo {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: white;
+}
+.checkout .checkoutBottom .loader .logo::before, .checkout .checkoutBottom .loader .logo::after {
+  z-index: 1;
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  border: 4px solid transparent;
+  width: 0;
+  height: 0;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+.checkout .checkoutBottom .loader .logo::before {
+  top: 0;
+  left: 0;
+  -webkit-animation: border-before 1.5s infinite;
+          animation: border-before 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+.checkout .checkoutBottom .loader .logo::after {
+  bottom: 0;
+  right: 0;
+  -webkit-animation: border-after 1.5s infinite;
+          animation: border-after 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+.checkout .checkoutBottom .loader .logo > div {
+  position: absolute;
+  opacity: 0;
+}
+.checkout .checkoutBottom .loader .logo div.white {
+  border-left: 4px solid black;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  -webkit-animation: white 1.5s infinite;
+          animation: white 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+.checkout .checkoutBottom .loader .logo div.orange {
+  border-top: 4px solid black;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 0;
+  background-color: #f3b93f;
+  -webkit-animation: orange 1.5s infinite;
+          animation: orange 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+.checkout .checkoutBottom .loader .logo div.red {
+  border-right: 4px solid black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: #ea5664;
+  -webkit-animation: red 1.5s infinite;
+          animation: red 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes border-before {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: black;
+    border-right-color: transparent;
+  }
+  12.49% {
+    border-right-color: transparent;
+  }
+  12.5% {
+    height: 0;
+    width: 100%;
+    border-top-color: black;
+    border-right-color: black;
+  }
+  25%, 100% {
+    width: 100%;
+    height: 100%;
+    border-top-color: black;
+    border-right-color: black;
+  }
+}
+
+@keyframes border-before {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: black;
+    border-right-color: transparent;
+  }
+  12.49% {
+    border-right-color: transparent;
+  }
+  12.5% {
+    height: 0;
+    width: 100%;
+    border-top-color: black;
+    border-right-color: black;
+  }
+  25%, 100% {
+    width: 100%;
+    height: 100%;
+    border-top-color: black;
+    border-right-color: black;
+  }
+}
+@-webkit-keyframes border-after {
+  0%, 24.99% {
+    width: 0;
+    height: 0;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  25% {
+    width: 0;
+    height: 0;
+    border-left-color: transparent;
+    border-bottom-color: black;
+  }
+  37.49% {
+    border-left-color: transparent;
+    border-bottom-color: black;
+  }
+  37.5% {
+    height: 0;
+    width: 100%;
+    border-left-color: black;
+    border-bottom-color: black;
+  }
+  50%, 100% {
+    width: 100%;
+    height: 100%;
+    border-left-color: black;
+    border-bottom-color: black;
+  }
+}
+@keyframes border-after {
+  0%, 24.99% {
+    width: 0;
+    height: 0;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  25% {
+    width: 0;
+    height: 0;
+    border-left-color: transparent;
+    border-bottom-color: black;
+  }
+  37.49% {
+    border-left-color: transparent;
+    border-bottom-color: black;
+  }
+  37.5% {
+    height: 0;
+    width: 100%;
+    border-left-color: black;
+    border-bottom-color: black;
+  }
+  50%, 100% {
+    width: 100%;
+    height: 100%;
+    border-left-color: black;
+    border-bottom-color: black;
+  }
+}
+@-webkit-keyframes red {
+  0%, 50% {
+    width: 0;
+    opacity: 0;
+  }
+  50.01% {
+    opacity: 1;
+  }
+  65%, 100% {
+    opacity: 1;
+    width: 27%;
+  }
+}
+@keyframes red {
+  0%, 50% {
+    width: 0;
+    opacity: 0;
+  }
+  50.01% {
+    opacity: 1;
+  }
+  65%, 100% {
+    opacity: 1;
+    width: 27%;
+  }
+}
+@-webkit-keyframes orange {
+  0%, 65% {
+    height: 0;
+    opacity: 0;
+  }
+  65.01% {
+    opacity: 1;
+  }
+  80%, 100% {
+    opacity: 1;
+    height: 50%;
+  }
+}
+@keyframes orange {
+  0%, 65% {
+    height: 0;
+    opacity: 0;
+  }
+  65.01% {
+    opacity: 1;
+  }
+  80%, 100% {
+    opacity: 1;
+    height: 50%;
+  }
+}
+@-webkit-keyframes white {
+  0%, 75% {
+    width: 0;
+    opacity: 0;
+  }
+  75.01% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 1;
+    width: 23%;
+  }
+}
+@keyframes white {
+  0%, 75% {
+    width: 0;
+    opacity: 0;
+  }
+  75.01% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 1;
+    width: 23%;
+  }
+}
 .carousel {
   overflow: hidden !important;
 }
@@ -11,11 +293,12 @@
   opacity: 1 !important;
 }
 .carousel .carousel-indicators li.active {
-  background-color: #F7941D;
+  background-color: #f7941d;
   -webkit-animation: bounce 2s ease-in;
           animation: bounce 2s ease-in;
 }
-.carousel .prev, .carousel .next {
+.carousel .prev,
+.carousel .next {
   position: absolute;
   cursor: pointer;
   top: 45%;
@@ -30,7 +313,8 @@
   justify-content: center;
   opacity: 1 !important;
 }
-.carousel .prev i, .carousel .next i {
+.carousel .prev i,
+.carousel .next i {
   display: none;
   color: #f5f5f5;
 }
@@ -50,7 +334,8 @@
     width: 5px !important;
     padding: 7px;
   }
-  .carousel .prev, .carousel .next {
+  .carousel .prev,
+.carousel .next {
     font-size: 30px;
     height: 40px;
     width: 40px;

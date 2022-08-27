@@ -63,33 +63,20 @@ $(function () {
           action:"cuponCheck"
         },
         beforeSend: function () {
+          $('.checkoutBottom').css({'display':'block'});
         },
         success: function (data) {
           var res = jQuery.parseJSON(data);
-          if(res.discount != "" || res.discount != null){
 
-            var count =parseInt($(".totalProductInCheckout").text());
-            if(count==0){
-              alert("Please select your product");
-            }else{
+          setTimeout(() => {
+             $('.checkoutBottom').css({'display':'none'});
+          }, 1200);
 
-              var qty =parseInt($(".totalDiscountInCheckout").text());
-              qty = qty+parseInt(res.discount);
-              $(".totalDiscountInCheckout").html(qty);
- 
- 
-              var price =parseInt($(".totalSubPriceInCheckout").text());
-    
-              var ShippingCharge =parseInt($(".totalSchargeInCheckout").text());
- 
- 
-              totalPriceInCheckout = ShippingCharge+price-qty;
-              $(".totalPriceInCheckout").html(totalPriceInCheckout);
-            }
-
-          }else{
-
-          }
+          $(".totalProductInCheckout").text(res.totalProduct);
+          $(".totalSubPriceInCheckout").text(res.subTotal);
+          $(".totalSchargeInCheckout").text(res.sCharge);
+          $(".totalDiscountInCheckout").text(res.cupon);
+          $(".totalPriceInCheckout").html((res.total));
         }
       });
 
@@ -106,10 +93,6 @@ $(function () {
 function increaseValue(_this) {
   value = parseInt($(_this).siblings("input#number").val());
   //   value = isNaN(value) ? 0 : value;
-
-
-  
-  
   var sno = $(_this).data("sno");
   value++;
   if (value > 3) {
@@ -138,15 +121,13 @@ function decreaseValue(_this) {
     $(".increase_").removeClass("not-allowed");
     updateCartQty(_this,value,sno);
   }
-
-  //   value < 1 ? (value = 1) : "";
 }
 
 
 function updateCartQty(_thiss,_thisCartQty,_thisCartSno){
   // var quantity =  $(this).data('sno');
   // alert(_thisCartSno);
-          // console.log(_thiss);
+  // console.log(_thiss);
 
   $.ajax({
       url: './Asset/Action/product/cart.php',
@@ -160,19 +141,23 @@ function updateCartQty(_thiss,_thisCartQty,_thisCartSno){
           // alert();
           // console.log(_this);
           $(_thiss).html("<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+
+          $('.checkoutBottom').css({'display':'block'});
+
       },
       success: function (data) {
         var res = jQuery.parseJSON(data);
         // console.log(res);
           setTimeout(() => {
-            $(_thiss).siblings("input#number").val(res.qty);
-            $(".CartTableprice"+res.psno).html("$ "+(parseInt(res.qty))*(parseInt(res.price)));
+            $(_thiss).siblings("input#number").val(res.cart.qty);
+            $(".CartTableprice"+res.cart.psno).html("$ "+(parseInt(res.cart.qty))*(parseInt(res.cart.price)));
             $(_thiss).html("+");
+
+            $('.checkoutBottom').css({'display':'none'});
           }, 1000);
 
 
-          var checkBoxDic = $(".productCheck"+res.psno);
-          // console.log(checkBoxDic[0]);
+          var checkBoxDic = $(".productCheck"+res.cart.psno);
           if(checkBoxDic[0].checked) {
             productSelect(checkBoxDic[0]);
             // alert("This is checked");
@@ -202,49 +187,19 @@ function productSelect(_this){
         // alert();
         // console.log(_this);
         // $(_thiss).html("<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+
+        $('.checkoutBottom').css({'display':'block'});
     },
     success: function (data) {
       var res = jQuery.parseJSON(data);
-        if(_this.checked) {
-          
-          // var qty =parseInt($(".totalProductInCheckout").text());
-          // qty = qty+parseInt(res.qty);
-          // $(".totalProductInCheckout").html(qty);
-
-          // var discount =parseInt($(".totalDiscountInCheckout").text());
-
-          // var price =parseInt($(".totalSubPriceInCheckout").text());
-          // price = price+(parseInt(res.qty)*parseInt(res.price));
-          // $(".totalSubPriceInCheckout").html(price);
-
-          // var ShippingCharge =parseInt($(".totalSchargeInCheckout").text());
-          // ShippingCharge = ShippingCharge+(parseInt(res.scharge));
-          // $(".totalSchargeInCheckout").html(ShippingCharge);
-
-          // totalPriceInCheckout = ShippingCharge+price-discount;
-          // $(".totalPriceInCheckout").html(totalPriceInCheckout);
-
-        }else{
-          
-          // var qty =parseInt($(".totalProductInCheckout").text());
-          // qty = qty-parseInt(res.qty);
-          // $(".totalProductInCheckout").html(qty);
-
-
-          // var price =parseInt($(".totalSubPriceInCheckout").text());
-          // price = price-(parseInt(res.qty)*parseInt(res.price));
-          // $(".totalSubPriceInCheckout").html(price);
-
-          
-          // var ShippingCharge =parseInt($(".totalSchargeInCheckout").text());
-          // ShippingCharge = ShippingCharge-(parseInt(res.scharge));
-          // $(".totalSchargeInCheckout").html(ShippingCharge);
-
-          // totalPriceInCheckout = ShippingCharge+price;
-          // $(".totalPriceInCheckout").html(totalPriceInCheckout);
-        }
-
-
+      setTimeout(() => {
+        $('.checkoutBottom').css({'display':'none'});
+      }, 1200);
+      
+         $(".totalProductInCheckout").text(res.totalProduct);
+         $(".totalSubPriceInCheckout").text(res.subTotal);
+         $(".totalSchargeInCheckout").text(res.sCharge);
+         $(".totalPriceInCheckout").html(res.total);
     }
   });
 }

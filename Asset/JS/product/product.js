@@ -2,7 +2,7 @@ $(function(){
   $('.wishlistBtn').on('click',function(){
     var sno =  $(this).data('sno');
         $.ajax({
-            url: './Asset/Action/product/cart.php',
+            url: './Asset/Action/product/php',
             type: 'POST',
             data: {
               sno:sno,
@@ -30,7 +30,7 @@ $(function(){
     var sno =  $(this).data('sno');
     // $('#test').data('id', 'Next');
     $.ajax({
-        url: './Asset/Action/product/cart.php',
+        url: './Asset/Action/product/php',
         type: 'POST',
         data: {
           sno:sno,
@@ -69,13 +69,24 @@ $(function(){
           success: function (data) {
             var res = $.parseJSON(data);
 
-            res.forEach(element => {
+            
+
+            console.log(res);
+
+            var cart = res.cart;
+            cart.forEach(element => {
                 var perseImage = JSON.parse(element.image);
                 var image = "./admin/Asset/image/product/"+element.psno+"/"+perseImage[0];
-                var data = '<tr class="tbodyRow">'+
-                '<td class="text-center image" data-title="No">'+
+                var data = '<td class="text-center image" data-title="No">'+
                    '<div class="d-flex align-items-center justify-content-center">'+
-                        '<div class="mr-4"><input class="productCheck'+element.psno+'" data-sno="'+element.psno+'" onChange="productSelect(this);" type="checkbox" name="checkbox" id="checkbox" / style="height:20px;width:20px;"></div>'+
+                        '<div class="mr-4">';
+                         if(element.check == 1){
+                            data +='<input type="checkbox" class="productCheck'+element.psno+'" data-sno="'+element.psno+'" onChange="productSelect(this);"   style="height:20px;width:20px;" checked>';
+                         }else{
+                            data +='<input type="checkbox" class="productCheck'+element.psno+'" data-sno="'+element.psno+'" onChange="productSelect(this);"   style="height:20px;width:20px;">';
+                         }
+                        
+                        data += '</div>'+
                         '<div><img src="'+image+'" height="60px" width="60px"></div>'+
                     '</div>'+
                 '</td>'+
@@ -97,10 +108,16 @@ $(function(){
                 '</td>'+
                 '<td class="text-center action" data-title="Remove">'+
                     '<a href="#"><i class="ti-trash remove-icon"></i></a>'+
-                '</td>'+
-            '</tr>';
+                '</td>';
 
-              $('#cartShowTable').append(data);
+            
+            $('<tr class="text-center">').html(data).appendTo('#cartShowTable');
+
+                $(".totalProductInCheckout").text(res.checkout.totalProduct);
+                $(".totalSubPriceInCheckout").text(res.checkout.subTotal);
+                $(".totalSchargeInCheckout").text(res.checkout.sCharge);
+                $(".totalPriceInCheckout").html(res.checkout.total);
+
             });
 
           }
